@@ -7,9 +7,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1, user-scalable=no"
     />
-    <!-- Favicon -->
     <link rel="icon" type="image/png" href="images/favicon.png" />
-    <!-- Open Graph Tags -->
     <meta property="og:title" content="Luitwin Mallmann Data Science Frankfurt" />
     <meta property="og:description" content="Ihr Data Science, AI und BI Experte aus Frankfurt am Main" />
     <meta property="og:image" content="images/favicon.png" />
@@ -20,12 +18,715 @@
     <noscript
       ><link rel="stylesheet" href="assets/css/noscript.css"
     /></noscript>
+
+    <style>
+      :root {
+        --modern-bg: #08111f;
+        --modern-surface: rgba(255, 255, 255, 0.08);
+        --modern-surface-strong: rgba(255, 255, 255, 0.14);
+        --modern-border: rgba(255, 255, 255, 0.18);
+        --modern-text: #f8fafc;
+        --modern-muted: rgba(248, 250, 252, 0.72);
+        --modern-accent: #5eead4;
+        --modern-accent-2: #60a5fa;
+        --modern-shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      .modern-home {
+        background: var(--modern-bg);
+      }
+
+      .modern-home #header {
+        backdrop-filter: blur(18px);
+        background: rgba(8, 17, 31, 0.62);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .modern-home #header.alt {
+        background: rgba(8, 17, 31, 0.38);
+      }
+
+      .modern-home #nav ul li a,
+      .modern-home .language-switch {
+        transition: color 220ms ease, opacity 220ms ease, transform 220ms ease;
+      }
+
+      .modern-home #nav ul li a:hover,
+      .modern-home .language-switch:hover {
+        color: var(--modern-accent) !important;
+        transform: translateY(-1px);
+      }
+
+      .modern-hero {
+        position: relative;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        overflow: hidden;
+        background:
+          radial-gradient(circle at 20% 20%, rgba(96, 165, 250, 0.30), transparent 32rem),
+          radial-gradient(circle at 80% 30%, rgba(94, 234, 212, 0.24), transparent 28rem),
+          linear-gradient(135deg, #08111f 0%, #101827 54%, #0f172a 100%);
+      }
+
+      .modern-hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image:
+          linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+        background-size: 58px 58px;
+        mask-image: radial-gradient(circle at center, black, transparent 72%);
+        pointer-events: none;
+      }
+
+      .modern-hero::after {
+        content: "";
+        position: absolute;
+        width: 26rem;
+        height: 26rem;
+        border: 1px solid rgba(94, 234, 212, 0.18);
+        border-radius: 999px;
+        right: -8rem;
+        top: 14%;
+        filter: blur(0.2px);
+        animation: floatOrb 10s ease-in-out infinite alternate;
+      }
+
+
+
+      .ai-hero-background {
+        position: absolute;
+        inset: 0;
+        overflow: hidden;
+        pointer-events: none;
+      }
+
+      .ai-canvas {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.88;
+        mix-blend-mode: screen;
+      }
+
+      .ai-hero-background::before,
+      .ai-hero-background::after {
+        content: "";
+        position: absolute;
+        inset: -20%;
+        opacity: 0.7;
+        background-image:
+          radial-gradient(circle at 22% 24%, rgba(94, 234, 212, 0.26) 0 2px, transparent 3px),
+          radial-gradient(circle at 68% 34%, rgba(96, 165, 250, 0.24) 0 2px, transparent 3px),
+          radial-gradient(circle at 42% 76%, rgba(167, 139, 250, 0.22) 0 2px, transparent 3px),
+          linear-gradient(115deg, transparent 0 12%, rgba(94, 234, 212, 0.13) 12.2%, transparent 12.6% 38%, rgba(96, 165, 250, 0.12) 38.2%, transparent 38.7% 100%),
+          linear-gradient(62deg, transparent 0 24%, rgba(167, 139, 250, 0.11) 24.2%, transparent 24.7% 64%, rgba(94, 234, 212, 0.10) 64.2%, transparent 64.7% 100%);
+        background-size: 260px 260px, 330px 330px, 410px 410px, 520px 520px, 640px 640px;
+        animation: aiNetworkDrift 24s linear infinite;
+      }
+
+      .ai-hero-background::after {
+        opacity: 0.42;
+        filter: blur(1px);
+        transform: rotate(180deg) scale(1.12);
+        animation-duration: 36s;
+        animation-direction: reverse;
+      }
+
+      .ai-glow {
+        position: absolute;
+        width: 34rem;
+        height: 34rem;
+        border-radius: 999px;
+        background: radial-gradient(circle, rgba(94, 234, 212, 0.22), transparent 66%);
+        filter: blur(24px);
+        animation: aiGlowFloat 12s ease-in-out infinite alternate;
+      }
+
+      .ai-glow.one {
+        left: -10rem;
+        top: 12%;
+      }
+
+      .ai-glow.two {
+        right: -8rem;
+        bottom: 5%;
+        background: radial-gradient(circle, rgba(96, 165, 250, 0.20), transparent 66%);
+        animation-delay: -4s;
+      }
+
+      .ai-orbit {
+        position: absolute;
+        inset: 12% 10%;
+        border: 1px solid rgba(94, 234, 212, 0.13);
+        border-radius: 42% 58% 52% 48%;
+        animation: aiOrbit 18s linear infinite;
+      }
+
+      .ai-orbit.second {
+        inset: 18% 18%;
+        border-color: rgba(96, 165, 250, 0.14);
+        animation-duration: 26s;
+        animation-direction: reverse;
+      }
+
+      .hero-card::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        padding: 1px;
+        background: linear-gradient(135deg, rgba(94, 234, 212, 0.75), rgba(96, 165, 250, 0.25), rgba(167, 139, 250, 0.5));
+        mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+        mask-composite: exclude;
+        pointer-events: none;
+        opacity: 0.75;
+      }
+
+      .hero-card::after {
+        content: "";
+        position: absolute;
+        inset: -1px;
+        border-radius: inherit;
+        background: linear-gradient(100deg, transparent 0%, rgba(255, 255, 255, 0.13) 44%, transparent 58%);
+        transform: translateX(-130%);
+        animation: heroShimmer 7s ease-in-out infinite;
+        pointer-events: none;
+      }
+
+      .hero-card {
+        position: relative;
+        z-index: 1;
+        width: min(920px, calc(100% - 2rem));
+        padding: clamp(2rem, 5vw, 4.5rem) !important;
+        border: 1px solid var(--modern-border);
+        border-radius: 34px;
+        background: linear-gradient(145deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.055));
+        box-shadow: var(--modern-shadow);
+        backdrop-filter: blur(22px);
+      }
+
+      .hero-eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-bottom: 1.25rem;
+        padding: 0.55rem 0.9rem;
+        border: 1px solid rgba(94, 234, 212, 0.32);
+        border-radius: 999px;
+        color: var(--modern-accent);
+        font-size: 0.78rem;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        background: rgba(94, 234, 212, 0.08);
+      }
+
+      .hero-logo {
+        display: block;
+        max-width: 360px;
+        width: 100%;
+        height: auto;
+        margin: 0 auto 1.5rem;
+        filter: drop-shadow(0 18px 34px rgba(0, 0, 0, 0.26));
+      }
+
+      .modern-hero h1 {
+        max-width: 820px;
+        margin: 0 auto 1rem;
+        color: var(--modern-text);
+        font-size: clamp(2.15rem, 6vw, 4.9rem);
+        line-height: 1.02;
+        letter-spacing: -0.055em;
+      }
+
+      .modern-hero p {
+        color: var(--modern-muted);
+        font-size: clamp(1rem, 2vw, 1.25rem);
+      }
+
+      .hero-actions .button,
+      .modern-contact .button,
+      .modern-home .button.primary {
+        border-radius: 999px;
+        box-shadow: 0 18px 48px rgba(94, 234, 212, 0.18);
+        transition: transform 220ms ease, box-shadow 220ms ease, filter 220ms ease;
+      }
+
+      .hero-actions .button:hover,
+      .modern-contact .button:hover,
+      .modern-home .button.primary:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 24px 58px rgba(94, 234, 212, 0.28);
+        filter: brightness(1.05);
+      }
+
+      .hero-portrait {
+        display: block;
+        max-width: 132px;
+        width: 100%;
+        margin: 1rem auto 0;
+        border: 3px solid rgba(255, 255, 255, 0.28);
+        border-radius: 24px;
+        box-shadow: 0 18px 48px rgba(0, 0, 0, 0.35);
+        transform: rotate(-1deg);
+      }
+
+      .hero-proof {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 0.85rem;
+        max-width: 720px;
+        margin: 1.75rem auto 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .hero-proof li {
+        padding: 0.9rem 1rem;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        border-radius: 20px;
+        background: rgba(255, 255, 255, 0.075);
+        text-align: left;
+      }
+
+      .hero-proof strong {
+        display: block;
+        color: var(--modern-text);
+        font-size: 1.05rem;
+        line-height: 1.1;
+      }
+
+      .hero-proof span {
+        display: block;
+        margin-top: 0.25rem;
+        color: var(--modern-muted);
+        font-size: 0.78rem;
+        line-height: 1.35;
+      }
+
+      .floating-ai-card {
+        position: absolute;
+        z-index: 1;
+        max-width: 190px;
+        padding: 0.85rem 1rem;
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        border-radius: 18px;
+        background: rgba(8, 17, 31, 0.45);
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.24);
+        backdrop-filter: blur(16px);
+        color: rgba(248, 250, 252, 0.86);
+        font-size: 0.78rem;
+        line-height: 1.35;
+        animation: floatCard 9s ease-in-out infinite alternate;
+      }
+
+      .floating-ai-card strong {
+        display: block;
+        margin-bottom: 0.25rem;
+        color: var(--modern-accent);
+        font-size: 0.76rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .floating-ai-card.one {
+        left: max(1rem, 7vw);
+        top: 25%;
+      }
+
+      .floating-ai-card.two {
+        right: max(1rem, 7vw);
+        bottom: 22%;
+        animation-delay: -3s;
+      }
+
+      .modern-projects {
+        background: linear-gradient(180deg, #0f172a 0%, #111827 100%) !important;
+      }
+
+      .modern-projects .spotlight {
+        margin: 0 auto;
+        overflow: hidden;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        background: transparent !important;
+      }
+
+      .modern-projects .spotlight .image img {
+        min-height: 100%;
+        object-fit: cover;
+        transform: scale(1.02);
+        transition: transform 700ms ease, filter 700ms ease;
+      }
+
+      .modern-projects .spotlight:hover .image img {
+        transform: scale(1.07);
+        filter: saturate(1.08) contrast(1.04);
+      }
+
+      .modern-projects .spotlight .content {
+        position: relative;
+      }
+
+      .modern-projects .spotlight .content::before {
+        content: "";
+        display: block;
+        width: 56px;
+        height: 3px;
+        margin-bottom: 1.4rem;
+        border-radius: 999px;
+        background: linear-gradient(90deg, var(--modern-accent), var(--modern-accent-2));
+      }
+
+      .modern-services {
+        background:
+          radial-gradient(circle at 15% 0%, rgba(96, 165, 250, 0.18), transparent 28rem),
+          #0b1220 !important;
+      }
+
+      .modern-services .features li {
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 24px;
+        background: linear-gradient(145deg, rgba(255, 255, 255, 0.10), rgba(255, 255, 255, 0.045));
+        box-shadow: 0 18px 56px rgba(0, 0, 0, 0.18);
+        transition: transform 260ms ease, border-color 260ms ease, background 260ms ease;
+      }
+
+      .modern-services .features li:hover {
+        transform: translateY(-8px);
+        border-color: rgba(94, 234, 212, 0.42);
+        background: linear-gradient(145deg, rgba(94, 234, 212, 0.12), rgba(255, 255, 255, 0.055));
+      }
+
+      .modern-process {
+        background: linear-gradient(180deg, #111827 0%, #0b1220 100%) !important;
+      }
+
+      .process-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1.25rem;
+        margin-top: 2rem;
+      }
+
+      .process-card {
+        position: relative;
+        overflow: hidden;
+        min-height: 220px;
+        padding: 1.75rem;
+        border: 1px solid rgba(255, 255, 255, 0.13);
+        border-radius: 26px;
+        background: linear-gradient(145deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.04));
+        box-shadow: 0 18px 56px rgba(0, 0, 0, 0.18);
+        transition: transform 260ms ease, border-color 260ms ease;
+      }
+
+      .process-card:hover {
+        transform: translateY(-8px);
+        border-color: rgba(96, 165, 250, 0.42);
+      }
+
+      .process-card::after {
+        content: attr(data-step);
+        position: absolute;
+        right: 1.2rem;
+        bottom: -0.35rem;
+        color: rgba(255, 255, 255, 0.05);
+        font-size: 6rem;
+        font-weight: 800;
+        line-height: 1;
+      }
+
+      .process-card h3 {
+        position: relative;
+        z-index: 1;
+        margin-bottom: 0.8rem;
+      }
+
+      .process-card p {
+        position: relative;
+        z-index: 1;
+        color: var(--modern-muted);
+      }
+
+      .project-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin: 1rem 0 0;
+      }
+
+      .project-tags span {
+        padding: 0.35rem 0.65rem;
+        border: 1px solid rgba(94, 234, 212, 0.25);
+        border-radius: 999px;
+        color: rgba(248, 250, 252, 0.8);
+        font-size: 0.72rem;
+        background: rgba(94, 234, 212, 0.07);
+      }
+
+      .modern-contact {
+        background:
+          linear-gradient(135deg, rgba(94, 234, 212, 0.15), rgba(96, 165, 250, 0.12)),
+          #08111f !important;
+      }
+
+      .modern-contact .inner {
+        border: 1px solid var(--modern-border);
+        border-radius: 30px;
+        background: rgba(255, 255, 255, 0.09);
+        box-shadow: var(--modern-shadow);
+        backdrop-filter: blur(18px);
+      }
+
+      .contact-logo {
+        display: block;
+        max-width: 320px;
+        width: 100%;
+        height: auto;
+        margin: 2rem auto 0;
+      }
+
+      .reveal-section {
+        opacity: 0;
+        transform: translateY(34px);
+        transition: opacity 700ms ease, transform 700ms ease;
+      }
+
+      .reveal-section.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+
+
+      @keyframes aiNetworkDrift {
+        from {
+          transform: translate3d(0, 0, 0) rotate(0deg);
+        }
+        to {
+          transform: translate3d(-260px, -180px, 0) rotate(8deg);
+        }
+      }
+
+      @keyframes aiGlowFloat {
+        from {
+          transform: translate3d(0, 0, 0) scale(1);
+        }
+        to {
+          transform: translate3d(4rem, 2rem, 0) scale(1.12);
+        }
+      }
+
+      @keyframes aiOrbit {
+        from {
+          transform: rotate(0deg) scale(1);
+        }
+        50% {
+          transform: rotate(180deg) scale(1.04);
+        }
+        to {
+          transform: rotate(360deg) scale(1);
+        }
+      }
+
+      @keyframes heroShimmer {
+        0%, 42% {
+          transform: translateX(-130%);
+        }
+        68%, 100% {
+          transform: translateX(130%);
+        }
+      }
+
+      @keyframes floatOrb {
+        from {
+          transform: translate3d(0, 0, 0) scale(1);
+        }
+        to {
+          transform: translate3d(-2rem, 2rem, 0) scale(1.08);
+        }
+      }
+
+      @keyframes floatCard {
+        from {
+          transform: translate3d(0, 0, 0) rotate(-1deg);
+        }
+        to {
+          transform: translate3d(0.8rem, -1.1rem, 0) rotate(1deg);
+        }
+      }
+
+      .modern-home #header.is-scrolled {
+        background: rgba(8, 17, 31, 0.82);
+        box-shadow: 0 12px 34px rgba(0, 0, 0, 0.22);
+      }
+
+
+
+      .site-ai-background {
+        position: fixed;
+        inset: 0;
+        z-index: 0;
+        overflow: hidden;
+        pointer-events: none;
+        background:
+          radial-gradient(circle at 15% 12%, rgba(94, 234, 212, 0.14), transparent 32rem),
+          radial-gradient(circle at 85% 18%, rgba(96, 165, 250, 0.13), transparent 30rem),
+          radial-gradient(circle at 50% 92%, rgba(167, 139, 250, 0.10), transparent 34rem),
+          linear-gradient(135deg, #08111f 0%, #0f172a 52%, #111827 100%);
+      }
+
+      .site-ai-background::before {
+        content: "";
+        position: absolute;
+        inset: -18%;
+        opacity: 0.34;
+        background-image:
+          linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+          radial-gradient(circle at 25% 25%, rgba(94, 234, 212, 0.20) 0 2px, transparent 3px),
+          radial-gradient(circle at 65% 55%, rgba(96, 165, 250, 0.18) 0 2px, transparent 3px);
+        background-size: 72px 72px, 72px 72px, 260px 260px, 340px 340px;
+        animation: fullAiGridDrift 38s linear infinite;
+      }
+
+      .site-ai-background::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(180deg, rgba(8, 17, 31, 0.10), rgba(8, 17, 31, 0.72)),
+          radial-gradient(circle at center, transparent 0 42%, rgba(3, 7, 18, 0.42) 100%);
+      }
+
+      .page-ai-canvas {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.72;
+        mix-blend-mode: screen;
+      }
+
+      .cursor-blur-glow {
+        position: fixed;
+        left: 0;
+        top: 0;
+        z-index: 0;
+        width: 34rem;
+        height: 34rem;
+        border-radius: 999px;
+        pointer-events: none;
+        opacity: 0;
+        transform: translate3d(-50%, -50%, 0);
+        background:
+          radial-gradient(circle at 35% 35%, rgba(94, 234, 212, 0.30), transparent 42%),
+          radial-gradient(circle at 65% 60%, rgba(96, 165, 250, 0.24), transparent 48%),
+          radial-gradient(circle at 50% 50%, rgba(167, 139, 250, 0.18), transparent 62%);
+        filter: blur(38px);
+        transition: opacity 240ms ease;
+        will-change: transform, opacity;
+      }
+
+      .modern-home #page-wrapper {
+        position: relative;
+        z-index: 1;
+      }
+
+      .modern-home .wrapper,
+      .modern-projects,
+      .modern-services,
+      .modern-contact,
+      #footer {
+        position: relative;
+        background-color: transparent !important;
+      }
+
+      .modern-hero {
+        background: transparent !important;
+      }
+
+      @keyframes fullAiGridDrift {
+        from {
+          transform: translate3d(0, 0, 0) rotate(0deg);
+        }
+        to {
+          transform: translate3d(-180px, -220px, 0) rotate(5deg);
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+
+        .modern-hero::after,
+        .ai-canvas,
+        .page-ai-canvas,
+        .site-ai-background::before,
+        .cursor-blur-glow,
+        .ai-hero-background::before,
+        .ai-hero-background::after,
+        .ai-glow,
+        .ai-orbit,
+        .hero-card::after,
+        .floating-ai-card,
+        .reveal-section,
+        .modern-projects .spotlight .image img,
+        .modern-services .features li,
+        .process-card,
+        .modern-home .button.primary {
+          animation: none !important;
+          transition: none !important;
+          transform: none !important;
+        }
+
+        .reveal-section {
+          opacity: 1;
+        }
+      }
+
+      @media screen and (max-width: 736px) {
+        .hero-card {
+          border-radius: 24px;
+        }
+
+        .modern-hero h1 {
+          font-size: clamp(2rem, 12vw, 3rem);
+        }
+
+        .hero-eyebrow {
+          font-size: 0.68rem;
+        }
+
+        .hero-proof,
+        .process-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .floating-ai-card {
+          display: none;
+        }
+      }
+    </style>
+
   </head>
-  <body class="landing is-preload">
+  <body class="landing is-preload modern-home">
+    <div class="site-ai-background" aria-hidden="true">
+      <canvas class="page-ai-canvas" id="pageAiCanvas"></canvas>
+    </div>
+    <div class="cursor-blur-glow" id="cursorBlurGlow" aria-hidden="true"></div>
     <div class="top-black-bar"></div>
     <div id="page-wrapper">
       <header id="header" class="alt">
-        <!-- Language switch button: visually positioned at the far left for accessibility and easy language switching to English -->
         <a href="index_ENG.html" class="language-switch">
           <img src="images/gb.svg" alt="English" class="flag-icon" />
           English
@@ -59,16 +760,31 @@
           </ul>
         </nav>
       </header>
-      <!-- Removed duplicate English button -->
 
-      <section id="banner">
-        <div class="inner">
-          <img src="images/Luitwin Mallmann data science logo.png" alt="Luitwin Mallmann Data Science" style="max-width: 360px; width: 100%; height: auto;" />
+      <section id="banner" class="modern-hero reveal-section">
+        <div class="ai-hero-background" aria-hidden="true">
+          <canvas class="ai-canvas" id="aiHeroCanvas"></canvas>
+          <span class="ai-glow one"></span>
+          <span class="ai-glow two"></span>
+          <span class="ai-orbit"></span>
+          <span class="ai-orbit second"></span>
+          <span class="floating-ai-card one"><strong>Predictive AI</strong>Forecasts, trends and planning support.</span>
+          <span class="floating-ai-card two"><strong>BI Dashboards</strong>Clear insights for business decisions.</span>
+        </div>
+        <div class="inner hero-card">
+          <span class="hero-eyebrow">Data Science • AI • Business Intelligence</span>
+          <img class="hero-logo" src="images/Luitwin Mallmann data science logo.png" alt="Luitwin Mallmann Data Science" />
+          <h1>Daten verstehen. Entscheidungen verbessern.</h1>
           <p>
             Ihr Data Science, AI und BI Experte<br />
             aus Frankfurt am Main
           </p>
-          <ul class="actions special">
+          <ul class="hero-proof">
+            <li><strong>Forecasting</strong><span>Zeitreihen, Planung und Nachfrageprognosen</span></li>
+            <li><strong>BI & Reporting</strong><span>Dashboards mit klarer Entscheidungslogik</span></li>
+            <li><strong>AI Enablement</strong><span>Workshops, Infrastruktur und Umsetzung</span></li>
+          </ul>
+          <ul class="actions special hero-actions">
             <li>
               <a
                 href="#"
@@ -79,26 +795,16 @@
             </li>
           </ul>
             <img
+            class="hero-portrait"
             src="images/Bild_Luitwin_Mallmann.jpg"
             alt="Luitwin Mallmann"
-            style="
-              margin-top: 0.5em;
-              margin-bottom: 2em;
-              max-width: 120px;
-              width: 100%;
-              border-radius: 12px;
-              box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            "
             />
         </div>
-        <a href="#one" class="more scrolly">Meine Projekte</a>
+        <a href="#two" class="more scrolly">Meine Projekte</a>
       </section>
 
-      <!-- Projekt entfernt auf Anfrage: Vorhersage von Gebäudetypen -->
-
-      <section id="two" class="wrapper alt style2">
-        <!-- Projekt 1 -->
-        <section class="spotlight">
+      <section id="two" class="wrapper alt style2 modern-projects">
+        <section class="spotlight reveal-section">
           <div class="image">
             <img src="images/LufthansaCargo.png" alt="Lufthansa Cargo Logo" />
           </div>
@@ -115,10 +821,10 @@
               Excel-Modelle wurden durch produktionsreife Vorhersagemodelle
               ersetzt.
             </p>
+            <div class="project-tags"><span>AI Forecasting</span><span>Time Series</span><span>Production Models</span></div>
           </div>
         </section>
-        <!-- Projekt 2 -->
-        <section class="spotlight">
+        <section class="spotlight reveal-section">
           <div class="image">
             <img src="images/pexels-yankrukov-8867434.jpg" alt="" />
           </div>
@@ -132,10 +838,10 @@
               Taskvolumen im Service Center erheblich, wodurch Überplanung
               reduziert und die Personalkosten gesenkt werden konnten.
             </p>
+            <div class="project-tags"><span>SARIMAX</span><span>Workforce Planning</span><span>Cost Optimization</span></div>
           </div>
         </section>
-        <!-- Projekt 3 -->
-        <section class="spotlight">
+        <section class="spotlight reveal-section">
           <div class="image">
             <img src="images/pexels-rdne-7947752.jpg" alt="" />
           </div>
@@ -146,11 +852,35 @@
               Umsatzes und ermöglicht gezielte Verbesserungen zur langfristigen
               Optimierung der Forecasts.
             </p>
+            <div class="project-tags"><span>PowerBI</span><span>Forecast Accuracy</span><span>Monitoring</span></div>
           </div>
         </section>
       </section>
 
-      <section id="Leistungspaket" class="wrapper style3 special">
+      <section id="approach" class="wrapper special modern-process reveal-section">
+        <div class="inner">
+          <header class="major">
+            <h2>Von Daten zu Entscheidungen</h2>
+            <p>Ein klarer Ablauf, damit AI- und BI-Projekte nicht nur technisch funktionieren, sondern im Alltag wirklich genutzt werden.</p>
+          </header>
+          <div class="process-grid">
+            <article class="process-card reveal-section" data-step="01">
+              <h3>Problem schärfen</h3>
+              <p>Gemeinsame Klärung von Ziel, Datenlage, Nutzerbedarf und messbarem Business Impact.</p>
+            </article>
+            <article class="process-card reveal-section" data-step="02">
+              <h3>Lösung entwickeln</h3>
+              <p>Vom Prototyp bis zum belastbaren Modell, Dashboard oder Datenprodukt mit sauberer Kommunikation.</p>
+            </article>
+            <article class="process-card reveal-section" data-step="03">
+              <h3>Verankern</h3>
+              <p>Training, Übergabe und Monitoring, damit Ergebnisse langfristig nachvollziehbar bleiben.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="Leistungspaket" class="wrapper style3 special modern-services reveal-section">
         <div class="inner">
           <header class="major">
             <h2>Mein Leistungspaket</h2>
@@ -161,7 +891,7 @@
             </p>
           </header>
           <ul class="features">
-            <li class="icon fa-paper-plane">
+            <li class="icon fa-paper-plane reveal-section">
               <h3>Python & ML</h3>
               <p>
                 Mit Bibliotheken wie Pandas, PySpark und Seaborn verarbeite ich
@@ -169,35 +899,35 @@
                 Excel-Lösungen übertreffen.
               </p>
             </li>
-            <li class="icon solid fa-laptop">
+            <li class="icon solid fa-laptop reveal-section">
               <h3>PowerBI, MicroStrategy, Tableau</h3>
               <p>
                 Visualisierung Ihrer Daten in den Tools Ihrer Wahl mit klarer
                 Ergebniskommunikation.
               </p>
             </li>
-            <li class="icon solid fa-code">
+            <li class="icon solid fa-code reveal-section">
               <h3>Datenarchitektur & Cloud</h3>
               <p>
                 Beratung zu moderner, skalierbarer Architektur – mit Fokus auf
                 Azure, Databricks und Data factory.
               </p>
             </li>
-            <li class="icon solid fa-headphones-alt">
+            <li class="icon solid fa-headphones-alt reveal-section">
               <h3>Schulungen</h3>
               <p>
                 Maßgeschneiderte Workshops und Coachings für Ihr Team – für
                 nachhaltigen Kompetenzaufbau.
               </p>
             </li>
-            <li class="icon fa-heart">
+            <li class="icon fa-heart reveal-section">
               <h3>Data Storytelling</h3>
               <p>
                 Ergebnisse überzeugend präsentieren, um datenbasierte
                 Entscheidungen im Unternehmen zu verankern.
               </p>
             </li>
-            <li class="icon fa-flag">
+            <li class="icon fa-flag reveal-section">
               <h3>Product Owner</h3>
               <p>
                 SCRUM & SAFe-zertifiziert: Agile Projektsteuerung mit klarer
@@ -208,7 +938,7 @@
         </div>
       </section>
 
-      <section id="contact" class="wrapper style4">
+      <section id="contact" class="wrapper style4 modern-contact reveal-section">
         <div class="inner">
           <header>
             <h2>Kontakt</h2>
@@ -232,7 +962,7 @@
               >
             </li>
           </ul>
-          <img src="images/Luitwin Mallmann data science logo.png" alt="Luitwin Mallmann Data Science" style="max-width: 360px; width: 100%; height: auto; margin-top: 2em;" />
+          <img class="contact-logo" src="images/Luitwin Mallmann data science logo.png" alt="Luitwin Mallmann Data Science" />
         </div>
       </section>
 
@@ -284,14 +1014,12 @@
     <script src="assets/js/main.js"></script>
 
     <script>
-      // Security solution for missing JS function
       window.addEventListener("load", () => {
         document.body.classList.remove("is-preload");
       });
 
       function openCalendly() {
         document.getElementById("calendlyModal").style.display = "block";
-        // Load Calendly widget script dynamically if not already loaded
         if (
           !document.querySelector(
             'script[src="https://assets.calendly.com/assets/external/widget.js"]'
@@ -306,7 +1034,6 @@
       function closeCalendly() {
         document.getElementById("calendlyModal").style.display = "none";
       }
-      // Close when clicking outside modal
       window.addEventListener("click", function (event) {
         const calendlyModal = document.getElementById("calendlyModal");
         if (calendlyModal && event.target == calendlyModal) {
@@ -316,7 +1043,6 @@
     </script>
 
     <script>
-      // Burger menu functionality
       document.addEventListener("DOMContentLoaded", function () {
         const burgerToggle = document.querySelector(".burger-menu-toggle");
         const navMenu = document.getElementById("nav-menu");
@@ -325,19 +1051,11 @@
           burgerToggle.addEventListener("click", function (e) {
             e.preventDefault();
             e.stopPropagation();
-
-            // Toggle menu visibility
             navMenu.classList.toggle("open");
-
-            // Toggle burger animation
             burgerToggle.classList.toggle("active");
-
-            // Update ARIA attributes for accessibility
             const isExpanded = navMenu.classList.contains("open");
             burgerToggle.setAttribute("aria-expanded", isExpanded);
           });
-
-          // Close menu when clicking on a link
           navMenu.addEventListener("click", function (e) {
             if (e.target.tagName === "A") {
               navMenu.classList.remove("open");
@@ -345,8 +1063,6 @@
               burgerToggle.setAttribute("aria-expanded", "false");
             }
           });
-
-          // Close menu when clicking outside
           document.addEventListener("click", function (e) {
             if (
               !navMenu.contains(e.target) &&
@@ -357,8 +1073,6 @@
               burgerToggle.setAttribute("aria-expanded", "false");
             }
           });
-
-          // Close menu on window resize if switching to desktop
           window.addEventListener("resize", function () {
             if (window.innerWidth > 768) {
               navMenu.classList.remove("open");
@@ -367,6 +1081,219 @@
             }
           });
         }
+      });
+    </script>
+
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const header = document.getElementById("header");
+        const hero = document.querySelector(".modern-hero");
+        const heroCard = document.querySelector(".hero-card");
+        const floatingCards = document.querySelectorAll(".floating-ai-card");
+        const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+        function updateHeaderState() {
+          if (header) {
+            header.classList.toggle("is-scrolled", window.scrollY > 24);
+          }
+        }
+
+        updateHeaderState();
+        window.addEventListener("scroll", updateHeaderState, { passive: true });
+
+        if (hero && heroCard && !reduceMotion) {
+          hero.addEventListener("pointermove", function (event) {
+            const rect = hero.getBoundingClientRect();
+            const x = (event.clientX - rect.left) / rect.width - 0.5;
+            const y = (event.clientY - rect.top) / rect.height - 0.5;
+            heroCard.style.transform = "translate3d(" + x * 10 + "px, " + y * 8 + "px, 0)";
+            floatingCards.forEach(function (card, index) {
+              const factor = index === 0 ? 18 : -18;
+              card.style.transform = "translate3d(" + x * factor + "px, " + y * factor + "px, 0)";
+            });
+          });
+
+          hero.addEventListener("pointerleave", function () {
+            heroCard.style.transform = "";
+            floatingCards.forEach(function (card) {
+              card.style.transform = "";
+            });
+          });
+        }
+      });
+    </script>
+
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const canvas = document.getElementById("aiHeroCanvas");
+        const hero = document.querySelector(".modern-hero");
+        const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+        if (!canvas || !hero || reduceMotion) {
+          return;
+        }
+
+        const ctx = canvas.getContext("2d");
+        const pointer = { x: 0, y: 0, active: false };
+        let width = 0;
+        let height = 0;
+        let dpr = 1;
+        let particles = [];
+        let rafId = 0;
+
+        function resizeCanvas() {
+          const rect = hero.getBoundingClientRect();
+          dpr = Math.min(window.devicePixelRatio || 1, 2);
+          width = Math.max(rect.width, 1);
+          height = Math.max(rect.height, 1);
+          canvas.width = Math.floor(width * dpr);
+          canvas.height = Math.floor(height * dpr);
+          canvas.style.width = width + "px";
+          canvas.style.height = height + "px";
+          ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+          const count = Math.min(95, Math.max(42, Math.floor(width * height / 15000)));
+          particles = Array.from({ length: count }, function (_, index) {
+            const depth = 0.45 + Math.random() * 0.9;
+            return {
+              x: Math.random() * width,
+              y: Math.random() * height,
+              vx: (Math.random() - 0.5) * 0.34 * depth,
+              vy: (Math.random() - 0.5) * 0.34 * depth,
+              r: (1.2 + Math.random() * 2.2) * depth,
+              pulse: Math.random() * Math.PI * 2,
+              hue: index % 3
+            };
+          });
+        }
+
+        function draw(time) {
+          ctx.clearRect(0, 0, width, height);
+
+          const gradient = ctx.createRadialGradient(width * 0.5, height * 0.42, 0, width * 0.5, height * 0.42, Math.max(width, height) * 0.75);
+          gradient.addColorStop(0, "rgba(94, 234, 212, 0.07)");
+          gradient.addColorStop(0.45, "rgba(96, 165, 250, 0.035)");
+          gradient.addColorStop(1, "rgba(8, 17, 31, 0)");
+          ctx.fillStyle = gradient;
+          ctx.fillRect(0, 0, width, height);
+
+          particles.forEach(function (particle) {
+            const pointerForce = pointer.active ? 1 : 0;
+            const dx = pointer.x - particle.x;
+            const dy = pointer.y - particle.y;
+            const dist = Math.hypot(dx, dy);
+
+            if (pointerForce && dist < 220) {
+              particle.vx -= dx * 0.000018;
+              particle.vy -= dy * 0.000018;
+            }
+
+            particle.x += particle.vx + Math.sin(time * 0.0004 + particle.pulse) * 0.08;
+            particle.y += particle.vy + Math.cos(time * 0.00035 + particle.pulse) * 0.08;
+            particle.vx *= 0.998;
+            particle.vy *= 0.998;
+
+            if (particle.x < -20) particle.x = width + 20;
+            if (particle.x > width + 20) particle.x = -20;
+            if (particle.y < -20) particle.y = height + 20;
+            if (particle.y > height + 20) particle.y = -20;
+          });
+
+          for (let i = 0; i < particles.length; i++) {
+            for (let j = i + 1; j < particles.length; j++) {
+              const a = particles[i];
+              const b = particles[j];
+              const dx = a.x - b.x;
+              const dy = a.y - b.y;
+              const dist = Math.hypot(dx, dy);
+              const maxDist = width < 700 ? 105 : 145;
+
+              if (dist < maxDist) {
+                const alpha = (1 - dist / maxDist) * 0.24;
+                ctx.beginPath();
+                ctx.moveTo(a.x, a.y);
+                ctx.lineTo(b.x, b.y);
+                ctx.strokeStyle = "rgba(94, 234, 212, " + alpha + ")";
+                ctx.lineWidth = 1;
+                ctx.stroke();
+              }
+            }
+          }
+
+          particles.forEach(function (particle) {
+            const pulse = 0.55 + Math.sin(time * 0.002 + particle.pulse) * 0.25;
+            const color = particle.hue === 0 ? "94, 234, 212" : particle.hue === 1 ? "96, 165, 250" : "167, 139, 250";
+            ctx.beginPath();
+            ctx.arc(particle.x, particle.y, particle.r + pulse, 0, Math.PI * 2);
+            ctx.fillStyle = "rgba(" + color + ", 0.72)";
+            ctx.fill();
+            ctx.beginPath();
+            ctx.arc(particle.x, particle.y, particle.r * 4.5, 0, Math.PI * 2);
+            ctx.fillStyle = "rgba(" + color + ", 0.045)";
+            ctx.fill();
+          });
+
+          rafId = requestAnimationFrame(draw);
+        }
+
+        hero.addEventListener("pointermove", function (event) {
+          const rect = hero.getBoundingClientRect();
+          pointer.x = event.clientX - rect.left;
+          pointer.y = event.clientY - rect.top;
+          pointer.active = true;
+        });
+
+        hero.addEventListener("pointerleave", function () {
+          pointer.active = false;
+        });
+
+        const resizeObserver = new ResizeObserver(resizeCanvas);
+        resizeObserver.observe(hero);
+        window.addEventListener("resize", resizeCanvas);
+
+        resizeCanvas();
+        rafId = requestAnimationFrame(draw);
+
+        window.addEventListener("beforeunload", function () {
+          cancelAnimationFrame(rafId);
+          resizeObserver.disconnect();
+        });
+      });
+    </script>
+
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const revealItems = document.querySelectorAll(".reveal-section");
+
+        if (!("IntersectionObserver" in window)) {
+          revealItems.forEach(function (item) {
+            item.classList.add("is-visible");
+          });
+          return;
+        }
+
+        const revealObserver = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("is-visible");
+                revealObserver.unobserve(entry.target);
+              }
+            });
+          },
+          {
+            threshold: 0.16,
+            rootMargin: "0px 0px -60px 0px"
+          }
+        );
+
+        revealItems.forEach(function (item, index) {
+          item.style.transitionDelay = Math.min(index * 70, 280) + "ms";
+          revealObserver.observe(item);
+        });
       });
     </script>
 
@@ -388,4 +1315,155 @@
   </div>
 </div>
 
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const canvas = document.getElementById("pageAiCanvas");
+        const glow = document.getElementById("cursorBlurGlow");
+        const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+        if (!canvas || reduceMotion) {
+          return;
+        }
+
+        const ctx = canvas.getContext("2d");
+        const pointer = { x: window.innerWidth * 0.5, y: window.innerHeight * 0.35, targetX: window.innerWidth * 0.5, targetY: window.innerHeight * 0.35, active: false };
+        let width = 0;
+        let height = 0;
+        let dpr = 1;
+        let particles = [];
+        let rafId = 0;
+
+        function resizePageCanvas() {
+          dpr = Math.min(window.devicePixelRatio || 1, 2);
+          width = window.innerWidth;
+          height = window.innerHeight;
+          canvas.width = Math.floor(width * dpr);
+          canvas.height = Math.floor(height * dpr);
+          canvas.style.width = width + "px";
+          canvas.style.height = height + "px";
+          ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+          const count = Math.min(135, Math.max(58, Math.floor(width * height / 11500)));
+          particles = Array.from({ length: count }, function (_, index) {
+            const depth = 0.45 + Math.random() * 1.05;
+            return {
+              x: Math.random() * width,
+              y: Math.random() * height,
+              vx: (Math.random() - 0.5) * 0.26 * depth,
+              vy: (Math.random() - 0.5) * 0.26 * depth,
+              r: (0.9 + Math.random() * 2.1) * depth,
+              pulse: Math.random() * Math.PI * 2,
+              hue: index % 3
+            };
+          });
+        }
+
+        function drawPageAi(time) {
+          pointer.x += (pointer.targetX - pointer.x) * 0.08;
+          pointer.y += (pointer.targetY - pointer.y) * 0.08;
+
+          if (glow) {
+            glow.style.transform = "translate3d(" + pointer.x + "px, " + pointer.y + "px, 0) translate3d(-50%, -50%, 0)";
+          }
+
+          ctx.clearRect(0, 0, width, height);
+
+          const scan = (time * 0.018) % (height + 320) - 160;
+          const scanGradient = ctx.createLinearGradient(0, scan - 90, 0, scan + 90);
+          scanGradient.addColorStop(0, "rgba(94, 234, 212, 0)");
+          scanGradient.addColorStop(0.5, "rgba(94, 234, 212, 0.045)");
+          scanGradient.addColorStop(1, "rgba(94, 234, 212, 0)");
+          ctx.fillStyle = scanGradient;
+          ctx.fillRect(0, scan - 90, width, 180);
+
+          particles.forEach(function (particle) {
+            const dx = pointer.x - particle.x;
+            const dy = pointer.y - particle.y;
+            const dist = Math.hypot(dx, dy);
+
+            if (pointer.active && dist < 260) {
+              const force = (1 - dist / 260) * 0.018;
+              particle.vx += (dx / Math.max(dist, 1)) * force;
+              particle.vy += (dy / Math.max(dist, 1)) * force;
+            }
+
+            particle.x += particle.vx + Math.sin(time * 0.00035 + particle.pulse) * 0.12;
+            particle.y += particle.vy + Math.cos(time * 0.00032 + particle.pulse) * 0.12;
+            particle.vx *= 0.992;
+            particle.vy *= 0.992;
+
+            if (particle.x < -30) particle.x = width + 30;
+            if (particle.x > width + 30) particle.x = -30;
+            if (particle.y < -30) particle.y = height + 30;
+            if (particle.y > height + 30) particle.y = -30;
+          });
+
+          for (let i = 0; i < particles.length; i++) {
+            for (let j = i + 1; j < particles.length; j++) {
+              const a = particles[i];
+              const b = particles[j];
+              const dx = a.x - b.x;
+              const dy = a.y - b.y;
+              const dist = Math.hypot(dx, dy);
+              const maxDist = width < 760 ? 105 : 150;
+
+              if (dist < maxDist) {
+                const alpha = (1 - dist / maxDist) * 0.18;
+                ctx.beginPath();
+                ctx.moveTo(a.x, a.y);
+                ctx.lineTo(b.x, b.y);
+                ctx.strokeStyle = "rgba(94, 234, 212, " + alpha + ")";
+                ctx.lineWidth = 1;
+                ctx.stroke();
+              }
+            }
+          }
+
+          particles.forEach(function (particle) {
+            const pulse = 0.45 + Math.sin(time * 0.002 + particle.pulse) * 0.22;
+            const color = particle.hue === 0 ? "94, 234, 212" : particle.hue === 1 ? "96, 165, 250" : "167, 139, 250";
+            ctx.beginPath();
+            ctx.arc(particle.x, particle.y, particle.r + pulse, 0, Math.PI * 2);
+            ctx.fillStyle = "rgba(" + color + ", 0.62)";
+            ctx.fill();
+          });
+
+          rafId = requestAnimationFrame(drawPageAi);
+        }
+
+        window.addEventListener("pointermove", function (event) {
+          pointer.targetX = event.clientX;
+          pointer.targetY = event.clientY;
+          pointer.active = true;
+          if (glow) {
+            glow.style.opacity = "1";
+          }
+        }, { passive: true });
+
+        document.addEventListener("mouseleave", function () {
+          pointer.active = false;
+          if (glow) {
+            glow.style.opacity = "0";
+          }
+        });
+
+        window.addEventListener("blur", function () {
+          pointer.active = false;
+          if (glow) {
+            glow.style.opacity = "0";
+          }
+        });
+
+        window.addEventListener("resize", resizePageCanvas);
+        resizePageCanvas();
+        rafId = requestAnimationFrame(drawPageAi);
+
+        window.addEventListener("beforeunload", function () {
+          cancelAnimationFrame(rafId);
+        });
+      });
+    </script>
+
+</body>
 </html>
