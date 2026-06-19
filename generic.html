@@ -1,15 +1,466 @@
 <!DOCTYPE HTML>
-<html>
+<html lang="de">
   <head>
     <meta charset="utf-8" />
     <title>Luitwin Mallmann Data Science Frankfurt</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-    <!-- Favicon -->
     <link rel="icon" type="image/png" href="images/favicon.png">
     <link rel="stylesheet" href="assets/css/main.css" />
     <link rel="stylesheet" href="assets/css/custom.css" />
     <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+
     <style>
+      :root {
+        --lm-bg: #070b12;
+        --lm-bg-soft: rgba(10, 18, 30, 0.78);
+        --lm-card: rgba(255, 255, 255, 0.075);
+        --lm-card-strong: rgba(255, 255, 255, 0.12);
+        --lm-border: rgba(255, 255, 255, 0.16);
+        --lm-text: rgba(255, 255, 255, 0.92);
+        --lm-muted: rgba(255, 255, 255, 0.66);
+        --lm-accent: #66e3ff;
+        --lm-accent-2: #b87cff;
+        --lm-accent-3: #53ffa6;
+        --lm-shadow: 0 24px 70px rgba(0, 0, 0, 0.34);
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        background: var(--lm-bg) !important;
+        color: var(--lm-text);
+      }
+
+      body, #page-wrapper, header#header.alt {
+        margin-top: 0 !important;
+        padding-top: 0 !important;
+      }
+
+      .site-background,
+      .background-canvas,
+      .mouse-glow,
+      .noise-layer {
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+      }
+
+      .site-background {
+        z-index: -3;
+        overflow: hidden;
+        background:
+          radial-gradient(circle at 18% 12%, rgba(102, 227, 255, 0.20), transparent 30%),
+          radial-gradient(circle at 82% 6%, rgba(184, 124, 255, 0.16), transparent 30%),
+          radial-gradient(circle at 50% 90%, rgba(83, 255, 166, 0.10), transparent 35%),
+          linear-gradient(135deg, #070b12 0%, #0e1724 44%, #090d16 100%);
+      }
+
+      .background-canvas {
+        z-index: -2;
+        opacity: 0.78;
+      }
+
+      .mouse-glow {
+        z-index: -1;
+        width: 340px;
+        height: 340px;
+        left: 0;
+        top: 0;
+        border-radius: 999px;
+        background:
+          radial-gradient(circle, rgba(102, 227, 255, 0.26) 0%, rgba(184, 124, 255, 0.14) 38%, transparent 70%);
+        filter: blur(34px);
+        transform: translate3d(-50%, -50%, 0);
+        opacity: 0.82;
+        transition: opacity 0.25s ease;
+      }
+
+      .noise-layer {
+        z-index: -1;
+        opacity: 0.09;
+        background-image:
+          linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px);
+        background-size: 72px 72px;
+        mask-image: radial-gradient(circle at center, black, transparent 78%);
+      }
+
+      #page-wrapper {
+        background: transparent !important;
+        position: relative;
+        z-index: 1;
+      }
+
+      #header {
+        background: rgba(4, 8, 15, 0.46) !important;
+        backdrop-filter: blur(18px);
+        border-bottom: 1px solid rgba(255,255,255,0.10);
+        transition: background 0.25s ease, box-shadow 0.25s ease;
+      }
+
+      #header.is-scrolled {
+        background: rgba(4, 8, 15, 0.78) !important;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+      }
+
+      #nav ul li a,
+      .language-switch,
+      #header .button {
+        transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+      }
+
+      #nav ul li a:hover,
+      .language-switch:hover,
+      #header .button:hover {
+        transform: translateY(-1px);
+      }
+
+      .burger-menu-toggle {
+        margin-top: 0;
+      }
+
+      .burger-menu-toggle .burger-line {
+        background: #fff;
+      }
+
+      #main > header {
+        position: relative;
+        min-height: 58vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        padding: 8.5em 1.5em 6em;
+        background: transparent !important;
+        text-align: center;
+      }
+
+      #main > header::before {
+        content: "";
+        position: absolute;
+        inset: 12% 8%;
+        border-radius: 44px;
+        background: linear-gradient(135deg, rgba(255,255,255,0.12), rgba(255,255,255,0.045));
+        border: 1px solid rgba(255,255,255,0.16);
+        box-shadow: var(--lm-shadow);
+        backdrop-filter: blur(22px);
+        z-index: -1;
+      }
+
+      #main > header::after {
+        content: "";
+        position: absolute;
+        width: 520px;
+        height: 520px;
+        border-radius: 999px;
+        background: conic-gradient(from 90deg, rgba(102,227,255,0.0), rgba(102,227,255,0.22), rgba(184,124,255,0.18), rgba(83,255,166,0.12), rgba(102,227,255,0.0));
+        filter: blur(18px);
+        opacity: 0.62;
+        animation: slowSpin 18s linear infinite;
+        z-index: -2;
+      }
+
+      @keyframes slowSpin {
+        to { transform: rotate(360deg); }
+      }
+
+      #main > header h2 {
+        margin-bottom: 0.45em;
+        letter-spacing: 0.06em;
+        font-size: clamp(2.35rem, 6vw, 5rem);
+        text-shadow: 0 12px 35px rgba(0,0,0,0.38);
+      }
+
+      #main > header p {
+        max-width: 760px;
+        color: var(--lm-muted);
+        font-size: clamp(1rem, 2vw, 1.25rem);
+      }
+
+      .expertise-badges {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.85rem;
+        margin-top: 2rem;
+      }
+
+      .expertise-badges span {
+        padding: 0.65rem 1rem;
+        border: 1px solid rgba(255,255,255,0.18);
+        border-radius: 999px;
+        background: rgba(255,255,255,0.08);
+        backdrop-filter: blur(16px);
+        color: rgba(255,255,255,0.84);
+        font-size: 0.85rem;
+      }
+
+      .wrapper.style5 {
+        background: transparent !important;
+        color: var(--lm-text);
+      }
+
+      .wrapper.style5 .inner {
+        max-width: 1120px;
+        background: rgba(7, 12, 22, 0.64);
+        border: 1px solid rgba(255,255,255,0.13);
+        border-radius: 34px;
+        box-shadow: var(--lm-shadow);
+        backdrop-filter: blur(22px);
+        padding: clamp(2rem, 5vw, 4rem);
+      }
+
+      .wrapper.style5 h3,
+      .wrapper.style5 h4 {
+        color: #fff;
+      }
+
+      .wrapper.style5 p,
+      .wrapper.style5 li {
+        color: rgba(255,255,255,0.74);
+      }
+
+      .intro-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+        gap: 2rem;
+        align-items: stretch;
+        margin-bottom: 3rem;
+      }
+
+      .intro-panel,
+      .metric-panel,
+      .skill-card,
+      .process-card {
+        border: 1px solid rgba(255,255,255,0.14);
+        background: linear-gradient(135deg, rgba(255,255,255,0.10), rgba(255,255,255,0.055));
+        border-radius: 26px;
+        box-shadow: 0 18px 45px rgba(0,0,0,0.18);
+        backdrop-filter: blur(16px);
+      }
+
+      .intro-panel {
+        padding: 2rem;
+      }
+
+      .metric-panel {
+        display: grid;
+        gap: 1rem;
+        padding: 1.5rem;
+      }
+
+      .metric {
+        padding: 1.15rem;
+        border-radius: 20px;
+        background: rgba(255,255,255,0.075);
+        border: 1px solid rgba(255,255,255,0.10);
+      }
+
+      .metric strong {
+        display: block;
+        color: #fff;
+        font-size: 1.35rem;
+        letter-spacing: 0.03em;
+      }
+
+      .metric span {
+        color: var(--lm-muted);
+        font-size: 0.88rem;
+      }
+
+      .section-eyebrow {
+        color: var(--lm-accent);
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        font-size: 0.76rem;
+        font-weight: 700;
+        margin-bottom: 0.75rem;
+      }
+
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1.25rem;
+        margin: 2rem 0 3rem;
+      }
+
+      .skill-card {
+        padding: 1.65rem;
+        position: relative;
+        overflow: hidden;
+        transform: translateZ(0);
+        transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+      }
+
+      .skill-card::before {
+        content: "";
+        position: absolute;
+        inset: -1px;
+        background: radial-gradient(circle at top left, rgba(102,227,255,0.18), transparent 42%);
+        opacity: 0;
+        transition: opacity 0.25s ease;
+      }
+
+      .skill-card:hover {
+        transform: translateY(-5px);
+        border-color: rgba(102,227,255,0.32);
+        background: linear-gradient(135deg, rgba(255,255,255,0.13), rgba(255,255,255,0.06));
+      }
+
+      .skill-card:hover::before {
+        opacity: 1;
+      }
+
+      .skill-card > * {
+        position: relative;
+        z-index: 1;
+      }
+
+      .skill-icon {
+        display: inline-grid;
+        place-items: center;
+        width: 46px;
+        height: 46px;
+        margin-bottom: 1rem;
+        border-radius: 16px;
+        background: linear-gradient(135deg, rgba(102,227,255,0.28), rgba(184,124,255,0.22));
+        border: 1px solid rgba(255,255,255,0.16);
+        color: #fff;
+        font-weight: 700;
+      }
+
+      .skill-card ul {
+        margin-bottom: 0;
+      }
+
+      .skill-card li {
+        margin-bottom: 0.55rem;
+      }
+
+      .process-section {
+        margin: 3rem 0;
+      }
+
+      .process-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1rem;
+        margin-top: 1.4rem;
+      }
+
+      .process-card {
+        padding: 1.35rem;
+      }
+
+      .process-card strong {
+        color: #fff;
+      }
+
+      .process-card span {
+        display: block;
+        color: var(--lm-muted);
+        font-size: 0.9rem;
+        margin-top: 0.45rem;
+      }
+
+      .cta-panel {
+        margin-top: 3rem;
+        padding: 2rem;
+        border-radius: 28px;
+        background:
+          linear-gradient(135deg, rgba(102,227,255,0.16), rgba(184,124,255,0.10)),
+          rgba(255,255,255,0.06);
+        border: 1px solid rgba(255,255,255,0.16);
+        text-align: center;
+      }
+
+      .cta-panel p {
+        max-width: 680px;
+        margin: 0 auto 1.5rem;
+      }
+
+      .button.primary {
+        box-shadow: 0 12px 32px rgba(102,227,255,0.18);
+      }
+
+      #footer {
+        background: rgba(4, 8, 15, 0.72) !important;
+        backdrop-filter: blur(18px);
+        border-top: 1px solid rgba(255,255,255,0.10);
+      }
+
+      .calendly-modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        inset: 0;
+        background-color: rgba(0,0,0,0.78);
+        animation: fadeIn 0.3s;
+        backdrop-filter: blur(10px);
+      }
+
+      .calendly-modal-content {
+        background: #fff;
+        margin: 5% auto;
+        padding: 20px;
+        width: 90%;
+        max-width: 900px;
+        border-radius: 18px;
+        position: relative;
+        box-shadow: 0 24px 80px rgba(0,0,0,0.40);
+      }
+
+      .close-calendly {
+        color: #555;
+        position: absolute;
+        right: 20px;
+        top: 10px;
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
+        z-index: 2;
+      }
+
+      .close-calendly:hover {
+        color: #111;
+      }
+
+      @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(24px);
+        transition: opacity 0.7s ease, transform 0.7s ease;
+      }
+
+      .reveal.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      @media (max-width: 900px) {
+        .intro-grid,
+        .skills-grid,
+        .process-grid {
+          grid-template-columns: 1fr;
+        }
+
+        #main > header::before {
+          inset: 9% 1rem;
+          border-radius: 28px;
+        }
+
+        .wrapper.style5 .inner {
+          border-radius: 24px;
+        }
+      }
+
       @media (max-width: 600px) {
         .burger-menu-toggle {
           margin-top: 10px;
@@ -17,64 +468,74 @@
           display: inline-block;
           vertical-align: middle;
         }
+
         .desktop-only {
           display: none !important;
         }
+
         .mobile-only {
           display: block !important;
         }
+
         #header .button.mobile-only {
           margin-bottom: 0;
         }
+
+        #main > header {
+          min-height: 62vh;
+          padding: 7.5em 1rem 4.5em;
+        }
+
+        .expertise-badges {
+          gap: 0.55rem;
+        }
+
+        .expertise-badges span {
+          font-size: 0.76rem;
+          padding: 0.55rem 0.75rem;
+        }
+
+        .mouse-glow {
+          width: 230px;
+          height: 230px;
+          filter: blur(28px);
+        }
       }
-      .calendly-modal {
-        display: none;
-        position: fixed;
-        z-index: 1000;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0,0,0,0.8);
-        animation: fadeIn 0.3s;
-      }
-      .calendly-modal-content {
-        background: #fff;
-        margin: 5% auto;
-        padding: 20px;
-        width: 90%;
-        max-width: 900px;
-        border-radius: 8px;
-        position: relative;
-      }
-      .close-calendly {
-        color: #aaa;
-        position: absolute;
-        right: 20px;
-        top: 10px;
-        font-size: 28px;
-        font-weight: bold;
-        cursor: pointer;
-      }
-      .close-calendly:hover {
-        color: #333;
-      }
-      @keyframes fadeIn {
-        from {opacity: 0;}
-        to {opacity: 1;}
-      }
-      /* Remove any grey background or margin from top elements */
-      body, #page-wrapper, header#header.alt {
-        background: transparent !important;
-        margin-top: 0 !important;
-        padding-top: 0 !important;
+
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+
+        .background-canvas,
+        .mouse-glow,
+        #main > header::after {
+          display: none;
+        }
+
+        .reveal {
+          opacity: 1;
+          transform: none;
+          transition: none;
+        }
+
+        * {
+          animation-duration: 0.001ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.001ms !important;
+        }
       }
     </style>
   </head>
-  <body class="is-preload">
-    <!-- Removed top-black-bar for full photo at top -->
-    <div id="page-wrapper">
 
+  <body class="is-preload">
+    <div class="site-background" aria-hidden="true">
+      <canvas id="ai-background" class="background-canvas"></canvas>
+      <div class="mouse-glow"></div>
+      <div class="noise-layer"></div>
+    </div>
+
+    <div id="page-wrapper">
       <header id="header" class="alt">
         <a href="generic_ENG.html" class="language-switch">
           <img src="images/gb.svg" alt="English" class="flag-icon" style="width:20px;height:14px;vertical-align:middle;margin-right:6px;" />
@@ -86,7 +547,7 @@
           <button
             class="burger-menu-toggle"
             aria-label="Toggle navigation menu"
-            aria-expasnded="false"
+            aria-expanded="false"
             aria-controls="nav-menu"
           >
             <span class="burger-line"></span>
@@ -94,11 +555,11 @@
             <span class="burger-line"></span>
           </button>
           <ul id="nav-menu">
-            <li><a href="index.html#Leistungspaket" class="scrolly">Mein Leistungspaket</a></li>
+            <li><a href="index.html#Leistungspaket">Mein Leistungspaket</a></li>
             <li><a href="generic.html">Fachwissen</a></li>
             <li><a href="ai-infrastructure-check.html">KI-Infrastruktur Check</a></li>
-            <li><a href="https://www.linkedin.com/in/luitwin-mallmann-18b80510b/" target="_blank">Über mich</a></li>
-            <li><a href="index.html#contact" class="scrolly">Kontakt</a></li>
+            <li><a href="https://www.linkedin.com/in/luitwin-mallmann-18b80510b/" target="_blank" rel="noopener">Über mich</a></li>
+            <li><a href="index.html#contact">Kontakt</a></li>
             <li><a href="privacy_policy.html">Datenschutz</a></li>
           </ul>
         </nav>
@@ -106,58 +567,119 @@
 
       <article id="main">
         <header>
-          <h2>Meine Expertise</h2>
-          <p>Ein detailliertes Profil meiner Fähigkeiten als Data Scientist und Product Owner.</p>
+          <h2 class="reveal">Meine Expertise</h2>
+          <p class="reveal">Data Science, Business Intelligence und Product Ownership mit Fokus auf messbare Entscheidungen statt nur Dashboards.</p>
+          <div class="expertise-badges reveal">
+            <span>Data Science</span>
+            <span>Business Intelligence</span>
+            <span>Machine Learning</span>
+            <span>Product Ownership</span>
+            <span>Cloud & Data Architecture</span>
+          </div>
         </header>
 
         <section class="wrapper style5">
           <div class="inner">
+            <div class="intro-grid reveal">
+              <div class="intro-panel">
+                <div class="section-eyebrow">Profil</div>
+                <h3>Von Daten zu belastbaren Entscheidungen</h3>
+                <p>
+                  Ein technisches Profil von Backend bis Frontend mit Weitsicht für Mehrwert und über 5 Jahren Erfahrung im Bereich Data Science und Business Intelligence.
+                </p>
+                <p>
+                  Der Schwerpunkt liegt auf pragmatischen Lösungen: Daten verstehen, Modelle entwickeln, Ergebnisse visualisieren und Stakeholder so einbinden, dass daraus konkrete Entscheidungen entstehen.
+                </p>
+              </div>
 
-            <h3>Meine Skills</h3>
-            <p>Ein technisches Profil von Backend bis Frontend mit Weitsicht für Mehrwert mit über 5 Jahren Erfahrung im Bereich Data Science und Business Intelligence.</p>
-            
-            <br>
+              <div class="metric-panel">
+                <div class="metric">
+                  <strong>5+ Jahre</strong>
+                  <span>Erfahrung in Data Science und BI</span>
+                </div>
+                <div class="metric">
+                  <strong>BI + ML</strong>
+                  <span>Analyse, Forecasting und Reporting</span>
+                </div>
+                <div class="metric">
+                  <strong>PO Mindset</strong>
+                  <span>Backlog, Roadmap und Stakeholder-Fokus</span>
+                </div>
+              </div>
+            </div>
 
-            <h4>Data Scientist</h4>
-            <p>Im Bereich der Datenwissenschaft umfassen meine Fähigkeiten:</p>
-            <ul>
-              <li><b>Business Intelligence (BI):</b> Expertise mit Tools wie PowerBI, MicroStrategy und Tableau für umfassende Datenvisualisierung und Reporting.</li>
-              <li><b>Analytics:</b> Fundierte Kenntnisse in Python und SQL für die Datenanalyse und -manipulation.</li>
-              <li><b>Machine Learning (ML):</b> Erfahrung in der Konzeption, Entwicklung und Implementierung von ML-Modellen für Vorhersage und Erkenntnisgewinnung.</li>
-              <li><b>Cloud-Plattformen:</b> Kenntnisse in Azure für skalierbare datengetriebene Projekte und Infrastruktur.</li>
-            </ul>
+            <div class="section-eyebrow reveal">Kompetenzen</div>
+            <h3 class="reveal">Meine Skills</h3>
 
-            <br>
+            <div class="skills-grid">
+              <article class="skill-card reveal">
+                <div class="skill-icon">DS</div>
+                <h4>Data Scientist</h4>
+                <p>Im Bereich der Datenwissenschaft umfassen meine Fähigkeiten:</p>
+                <ul>
+                  <li><b>Business Intelligence:</b> PowerBI, MicroStrategy und Tableau für klare Datenvisualisierung und Reporting.</li>
+                  <li><b>Analytics:</b> Python und SQL für Datenanalyse, Datenaufbereitung und datenbasierte Fragestellungen.</li>
+                  <li><b>Machine Learning:</b> Konzeption, Entwicklung und Implementierung von ML-Modellen für Vorhersage und Erkenntnisgewinnung.</li>
+                  <li><b>Cloud-Plattformen:</b> Azure-Kenntnisse für skalierbare datengetriebene Projekte und Infrastruktur.</li>
+                </ul>
+              </article>
 
-            <h4>Product Owner | Project Management</h4>
-            <p>Als Product Owner verantworte ich die strategische Produktentwicklung und das Management:</p>
-            <ul>
-              <li><b>Stakeholder Management:</b> Durchführung von User-Log-Tracking, WiRE-Rechnungen, Umfragen/NPS-Erhebung und agiles Backlog Management zur Maximierung des Produktwerts.</li>
-              <li><b>Projektmanagement:</b> Zuständigkeit für Budgetbeantragungen, Budget-Tracking, Roadmapping sowie die Anwendung von SAFe und agilen Methoden zur effizienten Projektabwicklung.</li>
-            </ul>
+              <article class="skill-card reveal">
+                <div class="skill-icon">PO</div>
+                <h4>Product Owner | Project Management</h4>
+                <p>Als Product Owner verantworte ich die strategische Produktentwicklung und das Management:</p>
+                <ul>
+                  <li><b>Stakeholder Management:</b> User-Log-Tracking, WiRE-Rechnungen, Umfragen, NPS-Erhebung und agiles Backlog Management.</li>
+                  <li><b>Projektmanagement:</b> Budgetbeantragung, Budget-Tracking, Roadmapping sowie Anwendung von SAFe und agilen Methoden.</li>
+                  <li><b>Produktwert:</b> Priorisierung nach Wirkung, Nutzerfokus und Umsetzbarkeit.</li>
+                </ul>
+              </article>
+            </div>
 
-            <hr />
-            
-            <ul class="actions special" style="margin-top: 3em;">
+            <section class="process-section">
+              <div class="section-eyebrow reveal">Arbeitsweise</div>
+              <h3 class="reveal">Wie ich Projekte strukturiere</h3>
+              <div class="process-grid">
+                <div class="process-card reveal">
+                  <strong>01 · Verstehen</strong>
+                  <span>Ziele, Datenlage, Stakeholder und Entscheidungskontext klären.</span>
+                </div>
+                <div class="process-card reveal">
+                  <strong>02 · Umsetzen</strong>
+                  <span>Analyse, Modelle, Dashboards oder Datenprodukte pragmatisch entwickeln.</span>
+                </div>
+                <div class="process-card reveal">
+                  <strong>03 · Verankern</strong>
+                  <span>Ergebnisse verständlich kommunizieren und nutzbar in Prozesse integrieren.</span>
+                </div>
+              </div>
+            </section>
+
+            <div class="cta-panel reveal">
+              <h3>Sie möchten Ihr Datenprojekt konkretisieren?</h3>
+              <p>
+                Vereinbaren Sie ein kostenloses Erstgespräch, um Ihre Idee, Datenlage oder Fragestellung unverbindlich zu besprechen.
+              </p>
+              <ul class="actions special">
                 <li><a href="#" class="button primary" onclick="openCalendly(); return false;">Erstgespräch vereinbaren</a></li>
-            </ul>
-
+                <li><a href="index.html" class="button">Zur Startseite</a></li>
+              </ul>
+            </div>
           </div>
         </section>
       </article>
 
-      <!-- Calendly Modal -->
-      <div id="calendlyModal" class="calendly-modal">
+      <div id="calendlyModal" class="calendly-modal" role="dialog" aria-modal="true" aria-label="Calendly Terminbuchung">
         <div class="calendly-modal-content">
-          <span class="close-calendly" onclick="closeCalendly()">&times;</span>
+          <span class="close-calendly" onclick="closeCalendly()" aria-label="Schließen">&times;</span>
           <div class="calendly-inline-widget" data-url="https://calendly.com/luitwin/30min" style="min-width:320px;height:630px;"></div>
         </div>
       </div>
 
       <footer id="footer">
         <ul class="icons">
-          <li><a href="https://www.linkedin.com/in/luitwin-mallmann-18b80510b/?locale=en_US" class="icon brands fa-linkedin" target="_blank"><span class="label">LinkedIn</span></a></li>
-          <li><a href="https://github.com/luttilimburg" class="icon brands fa-github" target="_blank"><span class="label">GitHub</span></a></li>
+          <li><a href="https://www.linkedin.com/in/luitwin-mallmann-18b80510b/?locale=en_US" class="icon brands fa-linkedin" target="_blank" rel="noopener"><span class="label">LinkedIn</span></a></li>
+          <li><a href="https://github.com/luttilimburg" class="icon brands fa-github" target="_blank" rel="noopener"><span class="label">GitHub</span></a></li>
           <li><a href="mailto:luitwin@hotmail.de" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
         </ul>
         <ul class="copyright">
@@ -173,45 +695,245 @@
     <script src="assets/js/breakpoints.min.js"></script>
     <script src="assets/js/util.js"></script>
     <script src="assets/js/main.js"></script>
-    
-    <!-- Calendly Integration Script -->
+
     <script>
+      window.addEventListener("load", function () {
+        document.body.classList.remove("is-preload");
+      });
+
       function openCalendly() {
-        document.getElementById('calendlyModal').style.display = 'block';
+        document.getElementById("calendlyModal").style.display = "block";
+
         if (!document.querySelector('script[src="https://assets.calendly.com/assets/external/widget.js"]')) {
-          const script = document.createElement('script');
-          script.src = 'https://assets.calendly.com/assets/external/widget.js';
+          const script = document.createElement("script");
+          script.src = "https://assets.calendly.com/assets/external/widget.js";
           document.body.appendChild(script);
         }
       }
+
       function closeCalendly() {
-        document.getElementById('calendlyModal').style.display = 'none';
+        document.getElementById("calendlyModal").style.display = "none";
       }
-      window.onclick = function(event) {
-        if (event.target == document.getElementById('calendlyModal')) {
+
+      window.addEventListener("click", function (event) {
+        const calendlyModal = document.getElementById("calendlyModal");
+
+        if (calendlyModal && event.target === calendlyModal) {
           closeCalendly();
         }
-      }
-    </script>
+      });
 
-    <!-- Burger Menu Toggle Script -->
-    <script>
-      document.addEventListener('DOMContentLoaded', function () {
-        var burgerToggle = document.querySelector('.burger-menu-toggle');
-        var navMenu = document.getElementById('nav-menu');
+      document.addEventListener("DOMContentLoaded", function () {
+        const burgerToggle = document.querySelector(".burger-menu-toggle");
+        const navMenu = document.getElementById("nav-menu");
+        const header = document.getElementById("header");
+
         if (burgerToggle && navMenu) {
-          burgerToggle.addEventListener('click', function (e) {
+          burgerToggle.addEventListener("click", function (e) {
             e.preventDefault();
-            navMenu.classList.toggle('open');
+            e.stopPropagation();
+
+            navMenu.classList.toggle("open");
+            burgerToggle.classList.toggle("active");
+            burgerToggle.setAttribute("aria-expanded", navMenu.classList.contains("open"));
           });
-          document.addEventListener('click', function (e) {
-            if (!navMenu.contains(e.target) && !burgerToggle.contains(e.target)) {
-              navMenu.classList.remove('open');
+
+          navMenu.addEventListener("click", function (e) {
+            if (e.target.tagName === "A") {
+              navMenu.classList.remove("open");
+              burgerToggle.classList.remove("active");
+              burgerToggle.setAttribute("aria-expanded", "false");
             }
+          });
+
+          document.addEventListener("click", function (e) {
+            if (!navMenu.contains(e.target) && !burgerToggle.contains(e.target)) {
+              navMenu.classList.remove("open");
+              burgerToggle.classList.remove("active");
+              burgerToggle.setAttribute("aria-expanded", "false");
+            }
+          });
+
+          window.addEventListener("resize", function () {
+            if (window.innerWidth > 768) {
+              navMenu.classList.remove("open");
+              burgerToggle.classList.remove("active");
+              burgerToggle.setAttribute("aria-expanded", "false");
+            }
+          });
+        }
+
+        function updateHeader() {
+          if (!header) {
+            return;
+          }
+
+          header.classList.toggle("is-scrolled", window.scrollY > 24);
+        }
+
+        updateHeader();
+        window.addEventListener("scroll", updateHeader, { passive: true });
+
+        const revealElements = document.querySelectorAll(".reveal");
+
+        if ("IntersectionObserver" in window) {
+          const observer = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("is-visible");
+                observer.unobserve(entry.target);
+              }
+            });
+          }, { threshold: 0.16 });
+
+          revealElements.forEach(function (element, index) {
+            element.style.transitionDelay = Math.min(index * 40, 240) + "ms";
+            observer.observe(element);
+          });
+        } else {
+          revealElements.forEach(function (element) {
+            element.classList.add("is-visible");
           });
         }
       });
     </script>
 
+    <script>
+      (function () {
+        const canvas = document.getElementById("ai-background");
+        const glow = document.querySelector(".mouse-glow");
+        const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+        if (!canvas || reducedMotion) {
+          return;
+        }
+
+        const ctx = canvas.getContext("2d", { alpha: true });
+        let width = 0;
+        let height = 0;
+        let dpr = Math.min(window.devicePixelRatio || 1, 2);
+        let particles = [];
+        let mouse = { x: window.innerWidth * 0.5, y: window.innerHeight * 0.32, active: false };
+        let animationFrame = null;
+
+        function resize() {
+          width = window.innerWidth;
+          height = window.innerHeight;
+          dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+          canvas.width = Math.floor(width * dpr);
+          canvas.height = Math.floor(height * dpr);
+          canvas.style.width = width + "px";
+          canvas.style.height = height + "px";
+          ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+          const targetCount = Math.min(110, Math.max(48, Math.floor((width * height) / 18500)));
+
+          particles = Array.from({ length: targetCount }, function () {
+            return {
+              x: Math.random() * width,
+              y: Math.random() * height,
+              vx: (Math.random() - 0.5) * 0.28,
+              vy: (Math.random() - 0.5) * 0.28,
+              size: Math.random() * 1.7 + 0.6,
+              pulse: Math.random() * Math.PI * 2
+            };
+          });
+        }
+
+        function draw() {
+          ctx.clearRect(0, 0, width, height);
+
+          const gradient = ctx.createLinearGradient(0, 0, width, height);
+          gradient.addColorStop(0, "rgba(102, 227, 255, 0.11)");
+          gradient.addColorStop(0.5, "rgba(184, 124, 255, 0.075)");
+          gradient.addColorStop(1, "rgba(83, 255, 166, 0.075)");
+
+          for (let i = 0; i < particles.length; i += 1) {
+            const p = particles[i];
+
+            p.x += p.vx;
+            p.y += p.vy;
+            p.pulse += 0.015;
+
+            if (p.x < -20) p.x = width + 20;
+            if (p.x > width + 20) p.x = -20;
+            if (p.y < -20) p.y = height + 20;
+            if (p.y > height + 20) p.y = -20;
+
+            const dxm = p.x - mouse.x;
+            const dym = p.y - mouse.y;
+            const mouseDistance = Math.sqrt(dxm * dxm + dym * dym);
+
+            if (mouseDistance < 160) {
+              p.x += dxm / Math.max(mouseDistance, 1) * 0.16;
+              p.y += dym / Math.max(mouseDistance, 1) * 0.16;
+            }
+
+            for (let j = i + 1; j < particles.length; j += 1) {
+              const q = particles[j];
+              const dx = p.x - q.x;
+              const dy = p.y - q.y;
+              const distance = Math.sqrt(dx * dx + dy * dy);
+
+              if (distance < 118) {
+                ctx.beginPath();
+                ctx.strokeStyle = "rgba(128, 220, 255," + (0.13 * (1 - distance / 118)) + ")";
+                ctx.lineWidth = 1;
+                ctx.moveTo(p.x, p.y);
+                ctx.lineTo(q.x, q.y);
+                ctx.stroke();
+              }
+            }
+
+            ctx.beginPath();
+            ctx.fillStyle = gradient;
+            ctx.arc(p.x, p.y, p.size + Math.sin(p.pulse) * 0.25, 0, Math.PI * 2);
+            ctx.fill();
+          }
+
+          animationFrame = requestAnimationFrame(draw);
+        }
+
+        function moveGlow(x, y) {
+          mouse.x = x;
+          mouse.y = y;
+          mouse.active = true;
+
+          if (glow) {
+            glow.style.transform = "translate3d(" + x + "px, " + y + "px, 0) translate3d(-50%, -50%, 0)";
+            glow.style.opacity = "0.86";
+          }
+        }
+
+        window.addEventListener("mousemove", function (event) {
+          moveGlow(event.clientX, event.clientY);
+        }, { passive: true });
+
+        window.addEventListener("touchmove", function (event) {
+          if (event.touches && event.touches[0]) {
+            moveGlow(event.touches[0].clientX, event.touches[0].clientY);
+          }
+        }, { passive: true });
+
+        window.addEventListener("mouseleave", function () {
+          if (glow) {
+            glow.style.opacity = "0.42";
+          }
+        });
+
+        window.addEventListener("resize", resize, { passive: true });
+
+        resize();
+        moveGlow(window.innerWidth * 0.5, window.innerHeight * 0.36);
+        draw();
+
+        window.addEventListener("pagehide", function () {
+          if (animationFrame) {
+            cancelAnimationFrame(animationFrame);
+          }
+        });
+      })();
+    </script>
   </body>
 </html>
