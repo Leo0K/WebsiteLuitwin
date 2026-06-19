@@ -282,3 +282,79 @@
     if (raf) cancelAnimationFrame(raf);
   });
 })();
+
+
+
+// Final robust menu behavior for all pages, including shared header partials
+(function () {
+  let menuInitialized = false;
+
+  function initSharedHeaderMenu() {
+    const header = document.getElementById("header");
+    const burgerToggle = document.querySelector(".burger-menu-toggle");
+    const navMenu = document.getElementById("nav-menu");
+
+    if (!burgerToggle || !navMenu || menuInitialized) {
+      return;
+    }
+
+    menuInitialized = true;
+
+    function closeMenu() {
+      navMenu.classList.remove("open");
+      burgerToggle.classList.remove("active");
+      burgerToggle.setAttribute("aria-expanded", "false");
+    }
+
+    function toggleMenu(event) {
+      event.preventDefault();
+      event.stopPropagation();
+      const isOpen = navMenu.classList.toggle("open");
+      burgerToggle.classList.toggle("active", isOpen);
+      burgerToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    }
+
+    burgerToggle.addEventListener("click", toggleMenu);
+
+    navMenu.addEventListener("click", function (event) {
+      if (event.target.closest("a")) {
+        closeMenu();
+      }
+    });
+
+    document.addEventListener("click", function (event) {
+      if (!navMenu.contains(event.target) && !burgerToggle.contains(event.target)) {
+        closeMenu();
+      }
+    });
+
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape") {
+        closeMenu();
+      }
+    });
+
+    window.addEventListener("resize", function () {
+      if (window.innerWidth > 1220) {
+        closeMenu();
+      }
+    }, { passive: true });
+
+    function updateHeader() {
+      if (header) {
+        header.classList.toggle("is-scrolled", window.scrollY > 18);
+      }
+    }
+
+    updateHeader();
+    window.addEventListener("scroll", updateHeader, { passive: true });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initSharedHeaderMenu);
+  } else {
+    initSharedHeaderMenu();
+  }
+
+  document.addEventListener("partials:loaded", initSharedHeaderMenu);
+})();
