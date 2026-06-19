@@ -33,8 +33,21 @@
     const languageUrl = document.body.dataset.languageUrl || "";
     const languageSwitch = document.querySelector("[data-language-switch]");
 
-    if (languageSwitch && languageUrl) {
-      languageSwitch.setAttribute("href", languageUrl);
+    if (languageSwitch) {
+      if (languageUrl) {
+        languageSwitch.setAttribute("href", languageUrl);
+      }
+
+      const currentLanguage = document.body.dataset.siteLanguage || (location.pathname.indexOf("/en/") !== -1 ? "en" : "de");
+      const nextLanguage = currentLanguage === "en" ? "de" : "en";
+
+      languageSwitch.addEventListener("click", function () {
+        try {
+          localStorage.setItem("siteLanguage", nextLanguage);
+        } catch (error) {
+          console.warn("Language preference could not be saved", error);
+        }
+      });
     }
 
     document.querySelectorAll("#nav-menu a[aria-current]").forEach(function (link) {
