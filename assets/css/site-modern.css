@@ -1,8 +1,8 @@
 :root {
   --lm-bg: #07101f;
-  --lm-surface: rgba(15, 23, 42, 0.72);
-  --lm-surface-strong: rgba(15, 23, 42, 0.88);
-  --lm-surface-soft: rgba(15, 23, 42, 0.50);
+  --lm-surface: rgba(15, 23, 42, 0.56);
+  --lm-surface-strong: rgba(15, 23, 42, 0.74);
+  --lm-surface-soft: rgba(15, 23, 42, 0.36);
   --lm-border: rgba(255, 255, 255, 0.14);
   --lm-border-strong: rgba(255, 255, 255, 0.22);
   --lm-text: #f8fafc;
@@ -194,7 +194,7 @@ body.modern-home #page-wrapper {
   padding: clamp(1.75rem, 4vw, 3.5rem) !important;
   border-radius: var(--lm-radius-lg);
   background:
-    linear-gradient(145deg, rgba(15, 23, 42, 0.82), rgba(15, 23, 42, 0.58)),
+    linear-gradient(145deg, rgba(15, 23, 42, 0.62), rgba(15, 23, 42, 0.40)),
     radial-gradient(circle at top left, rgba(94, 234, 212, 0.13), transparent 24rem);
   border: 1px solid var(--lm-border);
   box-shadow: var(--lm-shadow);
@@ -265,7 +265,7 @@ body.modern-home #page-wrapper {
   overflow: hidden;
   border-radius: 28px;
   border: 1px solid rgba(255,255,255,0.14);
-  background: rgba(15, 23, 42, 0.64);
+  background: rgba(15, 23, 42, 0.50);
   box-shadow: 0 18px 52px rgba(0,0,0,0.22);
   backdrop-filter: blur(14px);
   cursor: pointer;
@@ -327,7 +327,7 @@ body.modern-home #page-wrapper {
   padding: 0.45rem 0.72rem;
   border-radius: 999px;
   border: 1px solid rgba(255,255,255,0.18);
-  background: rgba(255,255,255,0.10);
+  background: rgba(255,255,255,0.075);
   color: rgba(255,255,255,0.86);
   font-size: 0.72rem;
   letter-spacing: 0.08em;
@@ -424,7 +424,7 @@ body.modern-home #page-wrapper {
   padding: clamp(2rem, 4vw, 3.25rem) !important;
   border-radius: var(--lm-radius-lg);
   background:
-    linear-gradient(135deg, rgba(15, 23, 42, 0.78), rgba(15, 23, 42, 0.58)),
+    linear-gradient(135deg, rgba(15, 23, 42, 0.58), rgba(15, 23, 42, 0.38)),
     radial-gradient(circle at 12% 12%, rgba(94,234,212,0.18), transparent 26rem),
     radial-gradient(circle at 90% 92%, rgba(96,165,250,0.16), transparent 24rem) !important;
 }
@@ -464,7 +464,7 @@ body.modern-home #page-wrapper {
   position: absolute;
   inset: 5.5rem max(1rem, calc((100vw - 960px) / 2)) 1.5rem;
   border-radius: 32px;
-  background: linear-gradient(135deg, rgba(15,23,42,0.82), rgba(15,23,42,0.55));
+  background: linear-gradient(135deg, rgba(15,23,42,0.62), rgba(15,23,42,0.40));
   border: 1px solid var(--lm-border);
   box-shadow: var(--lm-shadow);
   backdrop-filter: blur(18px);
@@ -500,7 +500,7 @@ body.modern-home #page-wrapper {
   padding: 0.58rem 0.85rem;
   border: 1px solid rgba(255,255,255,0.18);
   border-radius: 999px;
-  background: rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.06);
   color: rgba(255,255,255,0.84);
   font-size: 0.82rem;
   line-height: 1.3;
@@ -510,7 +510,7 @@ body.modern-home #page-wrapper {
   width: min(1120px, calc(100% - 2rem));
   max-width: none;
   margin: 0 auto 4rem;
-  background: rgba(7, 12, 22, 0.66);
+  background: rgba(7, 12, 22, 0.50);
   border: 1px solid rgba(255,255,255,0.13);
   border-radius: var(--lm-radius-lg);
   box-shadow: var(--lm-shadow);
@@ -545,7 +545,7 @@ body.modern-home #page-wrapper {
 
 .intro-panel { padding: clamp(1.25rem, 3vw, 2rem); }
 .metric-panel { display: grid; gap: 0.85rem; padding: 1.2rem; }
-.metric { padding: 1rem; border-radius: 18px; background: rgba(255,255,255,0.075); border: 1px solid rgba(255,255,255,0.10); }
+.metric { padding: 1rem; border-radius: 18px; background: rgba(255,255,255,0.055); border: 1px solid rgba(255,255,255,0.10); }
 .metric strong { display: block; color: #fff; font-size: clamp(1.05rem, 2vw, 1.3rem); line-height: 1.25; }
 .metric span { color: var(--lm-muted); font-size: 0.88rem; line-height: 1.45; }
 
@@ -643,7 +643,7 @@ body.modern-home #page-wrapper {
   align-items: center;
   padding: clamp(1.5rem, 4vw, 3rem);
   border-radius: var(--lm-radius-lg);
-  background: linear-gradient(135deg, rgba(15,23,42,0.84), rgba(15,23,42,0.56));
+  background: linear-gradient(135deg, rgba(15,23,42,0.64), rgba(15,23,42,0.40));
   border: 1px solid var(--lm-border);
   box-shadow: var(--lm-shadow);
   backdrop-filter: blur(18px);
@@ -675,7 +675,7 @@ body.modern-home #page-wrapper {
 .floating-chip {
   border-radius: 999px;
   border: 1px solid rgba(255,255,255,0.16);
-  background: rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.06);
   color: rgba(255,255,255,0.82);
   font-size: 0.78rem;
   line-height: 1.25;
@@ -718,7 +718,7 @@ body.modern-home #page-wrapper {
 .quiz-card {
   padding: clamp(1.25rem, 3vw, 2.25rem);
   border-radius: var(--lm-radius-lg);
-  background: rgba(15, 23, 42, 0.72);
+  background: rgba(15, 23, 42, 0.54);
   border: 1px solid rgba(255, 255, 255, 0.12);
   box-shadow: var(--lm-shadow);
   backdrop-filter: blur(16px);
@@ -728,13 +728,13 @@ body.modern-home #page-wrapper {
 .quiz-intro p { max-width: 760px; color: var(--lm-muted); font-size: 1rem; line-height: 1.75; }
 .progress-wrap { margin: 0 0 1.5rem; }
 .progress-meta { display: flex; justify-content: space-between; gap: 1rem; color: var(--lm-muted); font-size: 0.86rem; margin-bottom: 0.55rem; }
-.progress-bar { height: 10px; overflow: hidden; border-radius: 999px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.08); }
+.progress-bar { height: 10px; overflow: hidden; border-radius: 999px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.08); }
 .progress-fill { width: 0; height: 100%; border-radius: 999px; background: linear-gradient(90deg, var(--lm-accent), var(--lm-accent-2)); transition: width 0.35s ease; }
 .q-block {
   margin-bottom: 1rem;
   padding: clamp(1rem, 2.5vw, 1.4rem);
   border-radius: 20px;
-  background: rgba(255,255,255,0.055);
+  background: rgba(255,255,255,0.042);
   border: 1px solid rgba(255,255,255,0.10);
   text-align: left;
 }
@@ -749,7 +749,7 @@ body.modern-home #page-wrapper {
   min-height: 60px;
   padding: 0.85rem 0.9rem;
   border-radius: 16px;
-  background: rgba(255,255,255,0.055);
+  background: rgba(255,255,255,0.042);
   border: 1px solid rgba(255,255,255,0.11);
   color: rgba(255,255,255,0.82);
   font-size: 0.9rem;
@@ -764,7 +764,7 @@ body.modern-home #page-wrapper {
 .opt.sel { background: rgba(94,234,212,0.18); border-color: rgba(94,234,212,0.62); color: #fff; }
 .result { display: none; margin-top: 1.5rem; }
 .result.show { display: block; }
-.result-panel { border-radius: 22px; overflow: hidden; border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.055); text-align: left; }
+.result-panel { border-radius: 22px; overflow: hidden; border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.042); text-align: left; }
 .result-header { padding: 1.4rem; background: rgba(15,23,42,0.86); border-bottom: 1px solid rgba(255,255,255,0.10); }
 .result-label { text-transform: uppercase; letter-spacing: 0.18em; font-size: 0.75rem; color: var(--lm-accent); margin-bottom: 0.7rem; }
 .result-title { font-size: clamp(1.45rem, 4vw, 2rem); line-height: 1.12; color: #fff; overflow-wrap: anywhere; }
@@ -776,11 +776,11 @@ body.modern-home #page-wrapper {
 .score-label { text-transform: uppercase; letter-spacing: 0.16em; font-size: 0.75rem; margin-bottom: 1rem; color: var(--lm-muted); }
 .score-row { display: grid; grid-template-columns: minmax(95px, 130px) minmax(0, 1fr) minmax(68px, auto); gap: 0.75rem; align-items: center; margin-bottom: 0.85rem; }
 .score-name { color: rgba(255,255,255,0.82); font-size: 0.9rem; overflow-wrap: anywhere; }
-.score-bar-wrap { height: 10px; background: rgba(255,255,255,0.08); border-radius: 999px; overflow: hidden; }
+.score-bar-wrap { height: 10px; background: rgba(255,255,255,0.06); border-radius: 999px; overflow: hidden; }
 .score-bar { height: 100%; border-radius: 999px; transition: width 0.6s cubic-bezier(.4,0,.2,1); }
 .score-val { text-align: right; color: var(--lm-muted); font-size: 0.85rem; overflow-wrap: anywhere; }
 .result-tags { display: flex; flex-wrap: wrap; gap: 0.65rem; border-bottom: 1px solid rgba(255,255,255,0.10); }
-.tag { padding: 0.58rem 0.82rem; border-radius: 999px; border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.055); color: rgba(255,255,255,0.82); font-size: 0.82rem; line-height: 1.25; }
+.tag { padding: 0.58rem 0.82rem; border-radius: 999px; border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.042); color: rgba(255,255,255,0.82); font-size: 0.82rem; line-height: 1.25; }
 .result-cta { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 1rem; align-items: center; }
 .cta-text { color: var(--lm-muted); margin: 0; line-height: 1.65; }
 .cta-text strong { color: #fff; }
@@ -875,4 +875,386 @@ body.modern-home #page-wrapper {
   .reveal,
   .reveal-lite { opacity: 1; transform: none; transition: none; }
   * { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
+}
+
+
+/* Transparency and AI-check CTA refinements */
+.modern-home #banner .inner,
+.expertise-page .wrapper.style5 .inner,
+.quiz-card,
+.ai-check-page #quiz-banner .inner,
+#contact .inner,
+.project-card,
+.features li {
+  background-color: rgba(15, 23, 42, 0.44) !important;
+  border-color: rgba(255, 255, 255, 0.16);
+}
+
+.intro-panel,
+.metric-panel,
+.skill-card,
+.process-card,
+.cta-panel,
+.q-block,
+.result-panel,
+.result-header {
+  background-color: rgba(255, 255, 255, 0.045) !important;
+}
+
+.ai-check-page #contact .inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 1.5rem;
+  align-items: center;
+  text-align: left;
+  max-width: 980px;
+}
+
+.ai-check-page #contact header {
+  text-align: left;
+  margin: 0;
+}
+
+.ai-check-page #contact header p {
+  max-width: 660px;
+  margin-bottom: 0;
+}
+
+.ai-check-page #contact .actions {
+  margin: 0;
+  justify-self: end;
+}
+
+.ai-check-page #contact .actions li {
+  padding: 0;
+}
+
+.ai-check-page #contact .button {
+  white-space: normal;
+  min-width: 260px;
+  text-align: center;
+}
+
+@media screen and (max-width: 900px) {
+  .ai-check-page #contact .inner {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .ai-check-page #contact header,
+  .ai-check-page #contact .actions {
+    text-align: center;
+    justify-self: center;
+  }
+
+  .ai-check-page #contact header p {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* Responsive robustness pass */
+.modern-site .inner,
+.modern-home .inner,
+.projects-inner,
+.quiz-container,
+.intro-grid,
+.skills-grid,
+.process-grid,
+.project-grid,
+.features,
+#contact .inner,
+.ai-check-page #quiz-banner .inner {
+  min-width: 0;
+}
+
+.modern-site h1,
+.modern-site h2,
+.modern-site h3,
+.modern-site h4,
+.modern-home h1,
+.modern-home h2,
+.modern-home h3,
+.modern-home h4,
+.modern-site p,
+.modern-home p,
+.modern-site li,
+.modern-home li,
+.modern-site a,
+.modern-home a,
+.modern-site span,
+.modern-home span {
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+
+/* More transparent shared inner panels, still readable */
+.modern-home #banner .inner,
+.expertise-page .wrapper.style5 .inner,
+.ai-check-page #quiz-banner .inner,
+.quiz-card,
+#contact .inner {
+  background:
+    linear-gradient(135deg, rgba(15, 23, 42, 0.46), rgba(15, 23, 42, 0.28)),
+    radial-gradient(circle at 16% 12%, rgba(94, 234, 212, 0.13), transparent 24rem) !important;
+  border-color: rgba(255,255,255,0.18) !important;
+  box-shadow: 0 22px 62px rgba(0,0,0,0.30) !important;
+  backdrop-filter: blur(20px) saturate(1.12);
+}
+
+.intro-panel,
+.metric-panel,
+.skill-card,
+.process-card,
+.cta-panel,
+.q-block,
+.result-panel,
+.features li,
+.project-card {
+  background: rgba(15, 23, 42, 0.34) !important;
+  border-color: rgba(255,255,255,0.16) !important;
+  backdrop-filter: blur(16px) saturate(1.08);
+}
+
+.result-header,
+.metric,
+.opt,
+.tag,
+.project-chip,
+.expertise-badges span,
+.hero-badges span,
+.floating-chip {
+  background: rgba(255,255,255,0.055) !important;
+}
+
+/* Header and navigation do not overlap content at intermediate widths */
+#header {
+  display: flex !important;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding-left: clamp(0.75rem, 2vw, 1.5rem) !important;
+  padding-right: clamp(0.75rem, 2vw, 1.5rem) !important;
+}
+
+#header .language-switch,
+#header > .button {
+  flex: 0 0 auto;
+}
+
+#nav {
+  min-width: 0;
+  flex: 1 1 auto;
+  display: flex;
+  justify-content: flex-end;
+}
+
+#nav-menu {
+  max-width: 100%;
+}
+
+#nav-menu li,
+#nav-menu a {
+  min-width: 0;
+}
+
+@media screen and (max-width: 1180px) {
+  #header > .button.desktop-only {
+    display: none !important;
+  }
+
+  #nav ul li a {
+    padding-left: 0.45rem !important;
+    padding-right: 0.45rem !important;
+    letter-spacing: 0.05em;
+  }
+}
+
+@media screen and (max-width: 1040px) {
+  #nav-menu:not(.open) {
+    display: none !important;
+  }
+
+  .burger-menu-toggle {
+    display: inline-flex !important;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 42px;
+    height: 42px;
+    margin: 0 !important;
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,0.16);
+    background: rgba(255,255,255,0.07);
+  }
+
+  .burger-menu-toggle .burger-line {
+    display: block;
+    width: 18px;
+    height: 2px;
+    margin: 0 auto;
+    border-radius: 99px;
+  }
+
+  #nav-menu.open {
+    position: fixed;
+    top: 4.4rem;
+    right: 1rem;
+    left: 1rem;
+    display: grid !important;
+    gap: 0.25rem;
+    max-height: calc(100vh - 5.5rem);
+    overflow-y: auto;
+    padding: 0.9rem !important;
+    border-radius: 20px;
+    background: rgba(6, 16, 31, 0.96) !important;
+    border: 1px solid rgba(255,255,255,0.16);
+    box-shadow: 0 24px 80px rgba(0,0,0,0.42);
+    backdrop-filter: blur(18px);
+  }
+
+  #nav-menu.open li,
+  #nav-menu.open a {
+    display: block !important;
+    width: 100% !important;
+    text-align: left !important;
+  }
+
+  #nav-menu.open a {
+    padding: 0.75rem 0.85rem !important;
+    border-radius: 14px;
+    white-space: normal !important;
+  }
+}
+
+@media screen and (min-width: 1041px) {
+  .burger-menu-toggle {
+    display: none !important;
+  }
+}
+
+/* Cards and sections adapt smoothly at tablet widths */
+@media screen and (max-width: 900px) {
+  .features {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+  }
+
+  .features li {
+    width: 100% !important;
+    margin: 0 !important;
+  }
+
+  #contact .inner,
+  .ai-check-page #contact .inner {
+    width: min(100% - 1.25rem, 760px) !important;
+    grid-template-columns: 1fr !important;
+    gap: 1.25rem !important;
+    text-align: center !important;
+  }
+
+  #contact header,
+  .ai-check-page #contact header {
+    text-align: center !important;
+  }
+
+  #contact .actions,
+  .ai-check-page #contact .actions {
+    justify-self: center !important;
+  }
+
+  #contact img {
+    max-width: 190px !important;
+  }
+}
+
+@media screen and (max-width: 560px) {
+  #header {
+    min-height: 3.75rem;
+  }
+
+  .language-switch {
+    font-size: 0.78rem !important;
+    max-width: 45vw;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  #nav-menu.open {
+    top: 3.95rem;
+    left: 0.6rem;
+    right: 0.6rem;
+  }
+
+  #banner,
+  .expertise-page #main > header,
+  .ai-check-page #quiz-banner {
+    padding-top: 6.2rem !important;
+  }
+
+  #banner .inner,
+  .expertise-page .wrapper.style5 .inner,
+  .ai-check-page #quiz-banner .inner,
+  .quiz-card,
+  #contact .inner {
+    width: min(100% - 0.8rem, 680px) !important;
+    border-radius: 20px !important;
+    padding: 1.1rem !important;
+  }
+
+  .project-card,
+  .project-card.is-open {
+    min-height: 390px;
+  }
+
+  .project-content {
+    padding: 1rem;
+  }
+
+  .project-details {
+    font-size: 0.88rem;
+    line-height: 1.55;
+  }
+
+  .result-title,
+  .quiz-intro h2,
+  .ai-check-page #quiz-banner h1,
+  .expertise-page #main > header h2,
+  #banner h1,
+  #contact h2 {
+    letter-spacing: 0.01em !important;
+  }
+
+  .score-row {
+    grid-template-columns: 1fr !important;
+  }
+
+  .score-bar-wrap {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  #banner .inner,
+  .expertise-page .wrapper.style5 .inner,
+  .ai-check-page #quiz-banner .inner,
+  .quiz-card,
+  #contact .inner {
+    width: min(100% - 0.5rem, 680px) !important;
+    padding: 0.9rem !important;
+  }
+
+  .hero-badges,
+  .expertise-badges,
+  .result-tags {
+    gap: 0.4rem !important;
+  }
+
+  .hero-badges span,
+  .expertise-badges span,
+  .tag {
+    font-size: 0.7rem !important;
+    padding: 0.45rem 0.55rem !important;
+  }
 }
