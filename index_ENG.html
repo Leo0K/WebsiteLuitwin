@@ -1,373 +1,152 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <title>Luitwin Mallmann Data Science</title>
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, user-scalable=no"
-    />
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="images/favicon.png" />
-    <link rel="stylesheet" href="assets/css/main.css" />
-    <link rel="stylesheet" href="assets/css/custom.css" />
-    <noscript
-      ><link rel="stylesheet" href="assets/css/noscript.css"
-    /></noscript>
-  </head>
-  <body class="landing is-preload">
-    <div class="top-black-bar"></div>
-    <div id="page-wrapper">
-      <header id="header" class="alt">
-        <a href="index.html" class="language-switch">
-          <img src="images/de.svg" alt="Deutsch" class="flag-icon" />
-          Deutsch
-        </a>
-        <nav id="nav">
-          <button
-        class="burger-menu-toggle"
-        aria-label="Toggle navigation menu"
-        aria-expanded="false"
-        aria-controls="nav-menu"
-          >
-        <span class="burger-line"></span>
-        <span class="burger-line"></span>
-        <span class="burger-line"></span>
-          </button>
-          <ul id="nav-menu">
-        <li>
-          <a href="#Leistungspaket" class="scrolly">My Service Package</a>
-        </li>
-        <li><a href="generic_ENG.html">Expertise</a></li>
-        <li><a href="ai-infrastructure-check_ENG.html">AI Infrastructure Check</a></li>
-        <li>
-          <a
-            href="https://www.linkedin.com/in/luitwin-mallmann-18b80510b/"
-            target="_blank"
-            >About Me</a
-          >
-        </li>
-        <li><a href="#contact" class="scrolly">Contact</a></li>
-        <li><a href="privacy_policy_ENG.html">Privacy Policy</a></li>
-          </ul>
-        </nav>
-      </header>
-      <section id="banner">
-        <div class="inner">
-          <img src="images/Luitwin Mallmann data science logo.png" alt="Luitwin Mallmann Data Science" style="max-width: 360px; width: 100%; height: auto;" />
-          <p>
-            Your Data Science, AI, and BI Expert<br />
-            from Frankfurt am Main
-          </p>
-          <ul class="actions special">
-            <li>
-              <a
-                href="#"
-                class="button primary"
-                onclick="openCalendly(); return false;"
-                >Schedule first call</a
-              >
-            </li>
-          </ul>
-          <img
-            src="images/Bild_Luitwin_Mallmann.jpg"
-            alt="Luitwin Mallmann"
-            style="
-              margin-top: 0.5em;
-              margin-bottom: 2em;
-              max-width: 120px;
-              width: 100%;
-              border-radius: 12px;
-              box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            "
-          />
-        </div>
-        <a href="#one" class="more scrolly">My Projects</a>
-      </section>
+<head>
+  <meta charset="utf-8" />
+  <title>Luitwin Mallmann Data Science</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <link rel="icon" type="image/png" href="images/favicon.png" />
+  <meta property="og:title" content="Luitwin Mallmann Data Science" />
+  <meta property="og:description" content="Your Data Science, AI and BI expert from Frankfurt am Main" />
+  <meta property="og:image" content="images/favicon.png" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://luitwin-mallmann.de/" />
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <link rel="stylesheet" href="assets/css/custom.css" />
+  <link rel="stylesheet" href="assets/css/site-modern.css" />
+  <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+</head>
+<body class="landing is-preload modern-home" data-current-page="index_ENG.html" data-home-page="index_ENG.html" data-language-url="index.html">
+  <div class="site-ai-background" aria-hidden="true">
+    <canvas id="siteAiCanvas"></canvas>
+    <div class="mouse-soft-glow"></div>
+  </div>
 
-      <!-- Project removed by request: Prediction of Building Types -->
+  <div id="page-wrapper">
+    <div data-include="partials/header_EN.html"></div>
 
-      <section id="two" class="wrapper alt style2">
-        <section class="spotlight">
-          <div class="image">
-            <img src="images/LufthansaCargo.png" alt="Lufthansa Cargo Logo" />
-          </div>
-          <div class="content">
-            <h2>
-              Air Cargo Forecasting with AI<br />(Lufthansa Cargo & Utrecht
-              University)
-            </h2>
-            <p>
-              This project was carried out in collaboration with two Master's
-              students. It focused on forecasting air freight prices and
-              volumes. Modern Transformer-based time series models were used.
-              Previous Excel models were replaced by production-ready
-              forecasting models.
-            </p>
-          </div>
-        </section>
-        <section class="spotlight">
-          <div class="image">
-            <img src="images/pexels-yankrukov-8867434.jpg" alt="" />
-          </div>
-          <div class="content">
-            <h2>
-              Forecasting Service Tasks for Staff Planning<br />(Service Center
-              Hahn)
-            </h2>
-            <p>
-              A SARIMAX time series model significantly improved the planning of
-              task volumes in the Service Center, which reduced over-planning
-              and lowered personnel costs.
-            </p>
-          </div>
-        </section>
-        <section class="spotlight">
-          <div class="image">
-            <img src="images/pexels-rdne-7947752.jpg" alt="" />
-          </div>
-          <div class="content">
-            <h2>Monitoring Revenue Forecasts</h2>
-            <p>
-              A PowerBI dashboard tracks the monthly forecast accuracy of
-              revenue and enables targeted improvements for long-term
-              optimization of forecasts.
-            </p>
-          </div>
-        </section>
-      </section>
+    <section id="banner">
+      <div class="inner">
+        <img src="images/Luitwin Mallmann data science logo.png" alt="Luitwin Mallmann Data Science" style="max-width: 360px; width: 100%; height: auto;" />
+        <p>Your Data Science, AI and BI expert<br />from Frankfurt am Main</p>
+        <ul class="actions special">
+          <li><a href="#" class="button primary" onclick="openCalendly(); return false;">Schedule first call</a></li>
+        </ul>
+        <img src="images/Bild_Luitwin_Mallmann.jpg" alt="Luitwin Mallmann" style="margin-top: 0.5em; margin-bottom: 2em; max-width: 120px; width: 100%; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.2);" />
+      </div>
+      <a href="#two" class="more scrolly">My Projects</a>
+    </section>
 
-      <section id="Leistungspaket" class="wrapper style3 special">
-        <div class="inner">
-          <header class="major">
-            <h2>My Service Package</h2>
-            <p>
-              I combine technical expertise in Data Science & Business
-              Intelligence with experience as an agile project manager and
-              Product Owner. I conduct workshops and training sessions and can be hired for data engineering as well as data science projects.
-            </p>
-          </header>
-          <ul class="features">
-            <li class="icon fa-paper-plane">
-              <h3>Python & ML</h3>
-              <p>
-                With libraries like Pandas, PySpark, and Seaborn, I efficiently
-                process your data and develop models that outperform classic
-                Excel solutions.
-              </p>
-            </li>
-            <li class="icon solid fa-laptop">
-              <h3>PowerBI, MicroStrategy, Tableau</h3>
-              <p>
-                Visualization of your data in the tools of your choice with
-                clear results communication.
-              </p>
-            </li>
-            <li class="icon solid fa-code">
-              <h3>Data Architecture & Cloud</h3>
-              <p>
-                Consulting on modern, scalable architecture – with a focus on
-                Azure, Databricks, and Data Factory.
-              </p>
-            </li>
-              <li class="icon solid fa-headphones-alt">
-                <h3>Training Courses</h3>
-                <p>
-                  Tailored workshops and coaching for your team – for sustainable
-                  competence building.
-                </p>
-              </li>
-            <li class="icon fa-heart">
-              <h3>Data Storytelling</h3>
-              <p>
-                Presenting results convincingly to embed data-driven decisions
-                in the company.
-              </p>
-            </li>
-            <li class="icon fa-flag">
-              <h3>Product Owner</h3>
-              <p>
-                SCRUM & SAFe certified: Agile project management with clear
-                prioritization, goal orientation, and user focus.
-              </p>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <section id="contact" class="wrapper style4">
-        <div class="inner">
-          <header>
-            <h2>Contact</h2>
-            <p>
-              Schedule a free initial consultation to discuss your idea or
-              concerns.
-            </p>
-          </header>
-          <ul class="actions stacked">
-            <li>
-              <a
-                href="#"
-                class="button fit primary"
-                onclick="openCalendly(); return false;"
-                >Schedule free first call</a
-              >
-            </li>
-            <li>
-              <a href="mailto:your@email.com" class="button fit">Send Email</a>
-            </li>
-          </ul>
-          <img src="images/Luitwin Mallmann data science logo.png" alt="Luitwin Mallmann Data Science" style="max-width: 360px; width: 100%; height: auto; margin-top: 2em;" />
-        </div>
-      </section>
-
-      <div id="calendlyModal" class="calendly-modal">
-        <div class="calendly-modal-content">
-          <span class="close-calendly" onclick="closeCalendly()">&times;</span>
-          <div
-            class="calendly-inline-widget"
-            data-url="https://calendly.com/luitwin/30min"
-            style="min-width: 320px; height: 630px"
-          ></div>
+    <section id="two" class="wrapper alt style2 projects-section">
+      <div class="projects-inner">
+        <header class="projects-heading">
+          <span class="section-kicker">Selected projects</span>
+          <h2>My Projects</h2>
+          <p>Hover over a card or click it to reveal the full project details.</p>
+        </header>
+        <div class="project-grid" aria-label="Project overview">
+          <article class="project-card" tabindex="0" aria-expanded="false">
+            <div class="project-media"><img src="images/LufthansaCargo.png" alt="Lufthansa Cargo Logo" /></div>
+            <div class="project-content">
+              <div class="project-chip">AI Forecasting</div>
+              <h3>Air Cargo Forecasting with AI</h3>
+              <p class="project-subtitle">Lufthansa Cargo &amp; Utrecht University</p>
+              <p class="project-details">This project was carried out in collaboration with two Master's students. It focused on forecasting air freight prices and volumes. Modern Transformer-based time series models were used. Previous Excel models were replaced by production-ready forecasting models.</p>
+            </div>
+          </article>
+          <article class="project-card" tabindex="0" aria-expanded="false">
+            <div class="project-media"><img src="images/pexels-yankrukov-8867434.jpg" alt="Service center planning" /></div>
+            <div class="project-content">
+              <div class="project-chip">Planning &amp; Optimization</div>
+              <h3>Forecasting Service Tasks</h3>
+              <p class="project-subtitle">Service Center Hahn</p>
+              <p class="project-details">A SARIMAX time series model significantly improved the planning of task volumes in the Service Center, reducing over-planning and lowering personnel costs.</p>
+            </div>
+          </article>
+          <article class="project-card" tabindex="0" aria-expanded="false">
+            <div class="project-media"><img src="images/pexels-rdne-7947752.jpg" alt="Dashboard and revenue forecasts" /></div>
+            <div class="project-content">
+              <div class="project-chip">Business Intelligence</div>
+              <h3>Monitoring Revenue Forecasts</h3>
+              <p class="project-subtitle">Power BI Forecast Monitoring</p>
+              <p class="project-details">A Power BI dashboard tracks monthly revenue forecast accuracy and enables targeted improvements for long-term forecast optimization.</p>
+            </div>
+          </article>
         </div>
       </div>
+    </section>
 
-      <footer id="footer">
-        <ul class="icons">
-          <li>
-            <a
-              href="https://www.linkedin.com/in/luitwin-mallmann-18b80510b/"
-              class="icon brands fa-linkedin"
-              target="_blank"
-              ><span class="label">LinkedIn</span></a
-            >
-          </li>
-          <li>
-            <a
-              href="https://github.com/luttilimburg"
-              class="icon brands fa-github"
-              target="_blank"
-              ><span class="label">GitHub</span></a
-            >
-          </li>
+    <section id="Leistungspaket" class="wrapper style3 special">
+      <div class="inner">
+        <header class="major">
+          <h2>My Service Package</h2>
+          <p>I combine technical expertise in Data Science &amp; Business Intelligence with experience as an agile project manager and Product Owner. I run workshops and training sessions and can support both data engineering and data science projects.</p>
+        </header>
+        <ul class="features">
+          <li class="icon fa-paper-plane"><h3>Python &amp; ML</h3><p>With libraries such as Pandas, PySpark and Seaborn, I process your data efficiently and develop models that go beyond classic Excel solutions.</p></li>
+          <li class="icon solid fa-laptop"><h3>Power BI, MicroStrategy, Tableau</h3><p>Data visualization in the tools of your choice with clear communication of results.</p></li>
+          <li class="icon solid fa-code"><h3>Data Architecture &amp; Cloud</h3><p>Consulting on modern, scalable architecture with a focus on Azure, Databricks and Data Factory.</p></li>
+          <li class="icon solid fa-headphones-alt"><h3>Training Courses</h3><p>Tailored workshops and coaching for your team to build sustainable internal capabilities.</p></li>
+          <li class="icon fa-heart"><h3>Data Storytelling</h3><p>Presenting results convincingly so data-driven decisions become part of the company workflow.</p></li>
+          <li class="icon fa-flag"><h3>Product Owner</h3><p>SCRUM &amp; SAFe certified: agile project management with clear prioritization, goal orientation and user focus.</p></li>
         </ul>
-        <p>&copy; 2025 Luitwin Mallmann Data Science <br />
-            Textorstrasse 84 <br> 
-            60596 Frankfurt am Main
-        </p>
-      </footer>
+      </div>
+    </section>
+
+    <section id="contact" class="wrapper style4">
+      <div class="inner contact-panel reveal">
+        <div class="contact-copy">
+          <span class="section-eyebrow">Contact</span>
+          <h2>Ready for your next data-driven step?</h2>
+          <p>Schedule a free initial consultation to discuss your idea, data situation or concrete challenge.</p>
+          <div class="contact-points"><span>30 minutes</span><span>Free</span><span>Online</span></div>
+        </div>
+        <div class="contact-card">
+          <img src="images/Luitwin Mallmann data science logo.png" alt="Luitwin Mallmann Data Science" />
+          <ul class="actions stacked contact-actions">
+            <li><a href="#" class="button fit primary" onclick="openCalendly(); return false;">Schedule free first call</a></li>
+            <li><a href="mailto:contact@luitwin-mallmann.de" class="button fit">Send Email</a></li>
+          </ul>
+          <a class="contact-mail" href="mailto:contact@luitwin-mallmann.de">contact@luitwin-mallmann.de</a>
+        </div>
+      </div>
+    </section>
+
+    <div id="calendlyModal" class="calendly-modal">
+      <div class="calendly-modal-content">
+        <span class="close-calendly" onclick="closeCalendly()">&times;</span>
+        <div class="calendly-inline-widget" data-url="https://calendly.com/luitwin/30min" style="min-width: 320px; height: 630px"></div>
+      </div>
     </div>
 
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/jquery.scrolly.min.js"></script>
-    <script src="assets/js/jquery.dropotron.min.js"></script>
-    <script src="assets/js/jquery.scrollex.min.js"></script>
-    <script src="assets/js/browser.min.js"></script>
-    <script src="assets/js/breakpoints.min.js"></script>
-    <script src="assets/js/util.js"></script>
-    <script src="assets/js/main.js"></script>
-    <script>
-      // Security solution for missing JS function
-      window.addEventListener("load", () => {
-        document.body.classList.remove("is-preload");
-      });
+    <footer id="footer">
+      <ul class="icons">
+        <li><a href="https://www.linkedin.com/in/luitwin-mallmann-18b80510b/" class="icon brands fa-linkedin" target="_blank" rel="noopener"><span class="label">LinkedIn</span></a></li>
+        <li><a href="https://github.com/luttilimburg" class="icon brands fa-github" target="_blank" rel="noopener"><span class="label">GitHub</span></a></li>
+      </ul>
+      <p>&copy; 2025 Luitwin Mallmann Data Science<br />Textorstrasse 84<br />60596 Frankfurt am Main</p>
+    </footer>
+  </div>
 
-      function openCalendly() {
-        document.getElementById("calendlyModal").style.display = "block";
-        // Load Calendly widget script dynamically if not already loaded
-        if (
-          !document.querySelector(
-            'script[src="https://assets.calendly.com/assets/external/widget.js"]'
-          )
-        ) {
-          const script = document.createElement("script");
-          script.src = "https://assets.calendly.com/assets/external/widget.js";
-          document.body.appendChild(script);
-        }
-      }
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/js/jquery.scrolly.min.js"></script>
+  <script src="assets/js/jquery.dropotron.min.js"></script>
+  <script src="assets/js/jquery.scrollex.min.js"></script>
+  <script src="assets/js/browser.min.js"></script>
+  <script src="assets/js/breakpoints.min.js"></script>
+  <script src="assets/js/util.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/include.js"></script>
+  <script src="assets/js/site-modern.js"></script>
+  <script src="assets/js/consent.js"></script>
 
-      function closeCalendly() {
-        document.getElementById("calendlyModal").style.display = "none";
-      }
-      // Close when clicking outside modal
-      window.addEventListener("click", function (event) {
-        const calendlyModal = document.getElementById("calendlyModal");
-        if (calendlyModal && event.target == calendlyModal) {
-          closeCalendly();
-        }
-      });
-    </script>
-
-    <script>
-      // Burger menu functionality
-      document.addEventListener("DOMContentLoaded", function () {
-        const burgerToggle = document.querySelector(".burger-menu-toggle");
-        const navMenu = document.getElementById("nav-menu");
-
-        if (burgerToggle && navMenu) {
-          burgerToggle.addEventListener("click", function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            // Toggle menu visibility
-            navMenu.classList.toggle("open");
-
-            // Toggle burger animation
-            burgerToggle.classList.toggle("active");
-
-            // Update ARIA attributes for accessibility
-            const isExpanded = navMenu.classList.contains("open");
-            burgerToggle.setAttribute("aria-expanded", isExpanded);
-          });
-
-          // Close menu when clicking on a link
-          navMenu.addEventListener("click", function (e) {
-            if (e.target.tagName === "A") {
-              navMenu.classList.remove("open");
-              burgerToggle.classList.remove("active");
-              burgerToggle.setAttribute("aria-expanded", "false");
-            }
-          });
-
-          // Close menu when clicking outside
-          document.addEventListener("click", function (e) {
-            if (
-              !navMenu.contains(e.target) &&
-              !burgerToggle.contains(e.target)
-            ) {
-              navMenu.classList.remove("open");
-              burgerToggle.classList.remove("active");
-              burgerToggle.setAttribute("aria-expanded", "false");
-            }
-          });
-
-          // Close menu on window resize if switching to desktop
-          window.addEventListener("resize", function () {
-            if (window.innerWidth > 768) {
-              navMenu.classList.remove("open");
-              burgerToggle.classList.remove("active");
-              burgerToggle.setAttribute("aria-expanded", "false");
-            }
-          });
-        }
-      });
-    </script>
-<div id="cookie-banner" class="cookie-banner">
-  <div class="cookie-content">
-    <p>
-      This website uses cookies and external services (e.g. Calendly and
-      analytics tools) to provide functionality and improve the website.
-      You can accept or reject their use.
-      <a href="privacy_policy_ENG.html">Privacy Policy</a>
-    </p>
-    <div class="cookie-actions">
-      <button id="accept-cookies" class="button primary small">Accept</button>
-      <button id="reject-cookies" class="button small">Reject</button>
+  <div id="cookie-banner" class="cookie-banner">
+    <div class="cookie-content">
+      <p>This website uses cookies and external services such as Calendly and analytics tools to provide functionality and improve the website. You can accept or reject their use. <a href="privacy_policy_ENG.html">Privacy Policy</a></p>
+      <div class="cookie-actions">
+        <button id="accept-cookies" class="button primary small">Accept</button>
+        <button id="reject-cookies" class="button small">Reject</button>
+      </div>
     </div>
   </div>
-</div>
-
- <script src="assets/js/consent.js"></script>
-
-  </body>
+</body>
 </html>

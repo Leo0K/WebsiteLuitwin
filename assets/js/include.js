@@ -49,13 +49,17 @@
       }
     }
 
-    if (currentPage === "index.html") {
-      document.querySelectorAll("#nav-menu a[data-section-link]").forEach(function (link) {
-        const section = link.dataset.sectionLink;
+    const homePage = document.body.dataset.homePage || (currentPage && currentPage.indexOf("_ENG") !== -1 ? "index_ENG.html" : "index.html");
+
+    document.querySelectorAll("#nav-menu a[data-section-link]").forEach(function (link) {
+      const section = link.dataset.sectionLink;
+      if (currentPage === homePage) {
         link.setAttribute("href", "#" + section);
         link.classList.add("scrolly");
-      });
-    }
+      } else {
+        link.setAttribute("href", homePage + "#" + section);
+      }
+    });
   }
 
   if (document.readyState === "loading") {

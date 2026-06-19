@@ -358,3 +358,59 @@
 
   document.addEventListener("partials:loaded", initSharedHeaderMenu);
 })();
+
+
+// AI-like shared header hover spotlight
+(function () {
+  function initAiHeaderHover() {
+    const header = document.getElementById("header");
+    if (!header || header.dataset.aiHoverReady === "true") {
+      return;
+    }
+
+    header.dataset.aiHoverReady = "true";
+
+    header.addEventListener("pointermove", function (event) {
+      const rect = header.getBoundingClientRect();
+      const x = event.clientX - rect.left;
+      const y = event.clientY - rect.top;
+      header.style.setProperty("--header-mx", x + "px");
+      header.style.setProperty("--header-my", y + "px");
+    }, { passive: true });
+
+    header.querySelectorAll("a, button").forEach(function (item) {
+      item.addEventListener("pointermove", function (event) {
+        const rect = item.getBoundingClientRect();
+        item.style.setProperty("--item-mx", (event.clientX - rect.left) + "px");
+        item.style.setProperty("--item-my", (event.clientY - rect.top) + "px");
+      }, { passive: true });
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initAiHeaderHover);
+  } else {
+    initAiHeaderHover();
+  }
+
+  document.addEventListener("partials:loaded", initAiHeaderHover);
+})();
+
+
+// Automatic legal/date labels
+(function () {
+  function updateAutomaticDates() {
+    document.querySelectorAll('[data-auto-date="month-year"]').forEach(function (element) {
+      const lang = (document.documentElement.lang || 'de').toLowerCase();
+      const locale = lang.indexOf('en') === 0 ? 'en-US' : 'de-DE';
+      const value = new Intl.DateTimeFormat(locale, { month: 'long', year: 'numeric' }).format(new Date());
+      element.textContent = value.charAt(0).toUpperCase() + value.slice(1);
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', updateAutomaticDates);
+  } else {
+    updateAutomaticDates();
+  }
+})();

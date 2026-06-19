@@ -12,33 +12,13 @@
 <noscript><link href="assets/css/noscript.css" rel="stylesheet"/></noscript>
 
 </head>
-<body class="landing is-preload modern-site ai-check-page">
+<body class="landing is-preload modern-site ai-check-page" data-current-page="ai-infrastructure-check.html" data-language-url="ai-infrastructure-check_ENG.html">
 <div aria-hidden="true" class="site-ai-background">
 <canvas id="siteAiCanvas"></canvas>
 <div class="mouse-soft-glow"></div>
 </div>
 <div id="page-wrapper">
-<header class="alt" id="header">
-<a class="language-switch" href="ai-infrastructure-check_ENG.html">
-<img alt="English" class="flag-icon" src="images/gb.svg"/>
-          English
-        </a>
-<nav id="nav">
-<button aria-controls="nav-menu" aria-expanded="false" aria-label="Toggle navigation menu" class="burger-menu-toggle">
-<span class="burger-line"></span>
-<span class="burger-line"></span>
-<span class="burger-line"></span>
-</button>
-<ul id="nav-menu">
-<li><a href="index.html">Startseite</a></li>
-<li><a href="generic.html">Fachwissen</a></li>
-<li><a href="ai-infrastructure-check.html" aria-current="page">KI-Infrastruktur Check</a></li>
-<li><a href="https://www.linkedin.com/in/luitwin-mallmann-18b80510b/" rel="noopener" target="_blank">Über mich</a></li>
-<li><a href="#contact">Kontakt</a></li>
-<li><a href="privacy_policy.html">Datenschutz</a></li>
-</ul>
-</nav>
-</header>
+<div data-include="partials/header.html"></div>
 <section id="quiz-banner">
 <div class="inner">
 <div class="hero-copy">
@@ -169,5 +149,6 @@
 
 
 
-<script src="assets/js/ai-check-quiz.js"></script><script src="assets/js/site-modern.js"></script></body>
+<script src="assets/js/ai-check-quiz.js"></script><script src="assets/js/include.js"></script>
+<script src="assets/js/site-modern.js"></script></body>
 </html>

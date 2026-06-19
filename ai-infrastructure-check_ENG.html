@@ -1,597 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <title>AI Infrastructure Check — Luitwin Mallmann Data Science</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-    <link rel="icon" type="image/png" href="images/favicon.png" />
-    <link rel="stylesheet" href="assets/css/main.css" />
-    <link rel="stylesheet" href="assets/css/custom.css" />
-    <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-    <style>
-      body {
-        background: #09101b;
-        color: #f5f7fb;
-      }
+<head>
+  <meta charset="utf-8" />
+  <title>AI Infrastructure Check — Luitwin Mallmann Data Science</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <link rel="icon" type="image/png" href="images/favicon.png" />
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <link rel="stylesheet" href="assets/css/custom.css" />
+  <link rel="stylesheet" href="assets/css/site-modern.css" />
+  <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+</head>
+<body class="landing is-preload modern-site ai-check-page" data-current-page="ai-infrastructure-check_ENG.html" data-home-page="index_ENG.html" data-language-url="ai-infrastructure-check.html">
+  <div class="site-ai-background" aria-hidden="true">
+    <canvas id="siteAiCanvas"></canvas>
+    <div class="mouse-soft-glow"></div>
+  </div>
 
-      #quiz-banner {
-        padding: 4rem 0 2rem;
-        background: linear-gradient(180deg, rgba(7, 11, 38, 0.95), rgba(12, 17, 46, 1));
-      }
+  <div id="page-wrapper">
+    <div data-include="partials/header_EN.html"></div>
 
-      #quiz-banner .inner {
-        max-width: 900px;
-        margin: 0 auto;
-        padding: 0 2rem;
-      }
-
-      #quiz-banner h1 {
-        margin-bottom: 0.75rem;
-        font-size: clamp(2.4rem, 4vw, 3.6rem);
-        line-height: 1.05;
-        color: #ffffff;
-      }
-
-      #quiz-banner p {
-        max-width: 720px;
-        color: #a6b3d1;
-        font-size: 1rem;
-        line-height: 1.8;
-        margin-bottom: 1.7rem;
-      }
-
-      #quiz-banner .actions {
-        margin-bottom: 2rem;
-      }
-
-      #quiz-section {
-        padding: 2rem 0 4rem;
-      }
-
-      .quiz-container {
-        max-width: 940px;
-        margin: 0 auto;
-        padding: 0 2rem;
-      }
-
-      .quiz-card {
-        padding: 2.25rem;
-        border-radius: 1.2rem;
-        background: rgba(17, 24, 44, 0.92);
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        box-shadow: 0 30px 70px rgba(0, 0, 0, 0.25);
-      }
-
-      .quiz-intro {
-        margin-bottom: 2rem;
-      }
-
-      .quiz-intro .subtitle {
-        display: inline-block;
-        margin-bottom: 1rem;
-        color: #8da2cc;
-        text-transform: uppercase;
-        letter-spacing: 0.25em;
-        font-size: 0.78rem;
-      }
-
-      .quiz-intro h2 {
-        font-size: clamp(2rem, 4vw, 3rem);
-        margin-bottom: 1rem;
-        line-height: 1.06;
-      }
-
-      .quiz-intro p {
-        max-width: 760px;
-        color: #bcc7dc;
-        font-size: 1rem;
-        line-height: 1.8;
-      }
-
-      .q-block {
-        margin-bottom: 1rem;
-        padding: 1.4rem 1.5rem;
-        border-radius: 1rem;
-        background: rgba(255, 255, 255, 0.03);
-        border: 1px solid rgba(255, 255, 255, 0.08);
-      }
-
-      .q-number {
-        font-size: 0.78rem;
-        letter-spacing: 0.22em;
-        text-transform: uppercase;
-        color: #7f92bb;
-        margin-bottom: 0.8rem;
-      }
-
-      .q-text {
-        font-size: 1rem;
-        color: #fff;
-        font-weight: 600;
-        margin-bottom: 0.45rem;
-        line-height: 1.4;
-      }
-
-      .q-hint {
-        margin-bottom: 1rem;
-        color: #9aa6c4;
-        font-size: 0.95rem;
-        line-height: 1.6;
-      }
-
-      .opts {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 0.9rem;
-      }
-
-      .opt {
-        padding: 0.95rem 1.1rem;
-        background: rgba(255, 255, 255, 0.04);
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        border-radius: 0.95rem;
-        color: #d8e0f4;
-        font-size: 0.95rem;
-        line-height: 1.45;
-        cursor: pointer;
-        transition: transform 0.15s ease, border-color 0.15s ease, background 0.15s ease;
-        min-height: 62px;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-      }
-
-      .opt:hover {
-        transform: translateY(-1px);
-        border-color: rgba(52, 104, 255, 0.35);
-        background: rgba(52, 104, 255, 0.12);
-        color: #fff;
-      }
-
-      .opt.sel {
-        background: rgba(52, 104, 255, 0.24);
-        border-color: rgba(52, 104, 255, 0.65);
-        color: #fff;
-      }
-
-      .result {
-        display: none;
-        margin-top: 1.5rem;
-      }
-
-      .result.show {
-        display: block;
-      }
-
-      .result-panel {
-        border-radius: 1rem;
-        overflow: hidden;
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        background: rgba(255, 255, 255, 0.035);
-      }
-
-      .result-header {
-        padding: 1.6rem 1.6rem 1.4rem;
-        background: rgba(19, 28, 55, 0.98);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-      }
-
-      .result-label {
-        text-transform: uppercase;
-        letter-spacing: 0.22em;
-        font-size: 0.78rem;
-        color: #5a80d2;
-        margin-bottom: 0.8rem;
-      }
-
-      .result-title {
-        font-size: 1.85rem;
-        line-height: 1.1;
-        color: #fff;
-      }
-
-      .result-body,
-      .result-scores,
-      .result-tags,
-      .result-cta {
-        padding: 1.4rem 1.6rem;
-      }
-
-      .result-body {
-        color: #bbc5da;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-      }
-
-      .score-label {
-        text-transform: uppercase;
-        letter-spacing: 0.2em;
-        font-size: 0.78rem;
-        margin-bottom: 1rem;
-        color: #8a9cc0;
-      }
-
-      .score-row {
-        display: flex;
-        gap: 0.9rem;
-        align-items: center;
-        margin-bottom: 0.85rem;
-      }
-
-      .score-name {
-        min-width: 130px;
-        color: #d3daf0;
-        font-size: 0.95rem;
-      }
-
-      .score-bar-wrap {
-        flex: 1;
-        height: 10px;
-        background: rgba(255, 255, 255, 0.08);
-        border-radius: 999px;
-        overflow: hidden;
-      }
-
-      .score-bar {
-        height: 100%;
-        border-radius: 999px;
-        transition: width 0.6s cubic-bezier(.4,0,.2,1);
-      }
-
-      .score-val {
-        min-width: 58px;
-        text-align: right;
-        color: #a1b0d5;
-        font-size: 0.85rem;
-      }
-
-      .result-tags {
-        gap: 0.75rem;
-        display: flex;
-        flex-wrap: wrap;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-      }
-
-      .tag {
-        padding: 0.65rem 1rem;
-        border-radius: 999px;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        background: rgba(255, 255, 255, 0.04);
-        color: #cad4ef;
-        font-size: 0.86rem;
-      }
-
-      .result-cta {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        flex-wrap: wrap;
-        gap: 1rem;
-      }
-
-      .cta-text {
-        color: #c7d0ea;
-        max-width: 630px;
-        font-size: 0.98rem;
-      }
-
-      .cta-text strong {
-        color: #fff;
-      }
-
-      .cta-btn {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        gap: 0.7rem;
-        min-width: 220px;
-        padding: 1rem 1.6rem;
-        border-radius: 999px;
-        background: #1b5fff;
-        color: #fff;
-        text-decoration: none;
-        font-size: 0.95rem;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 0.18em;
-      }
-
-      .cta-btn:hover {
-        background: #164dc8;
-      }
-
-      @media (max-width: 900px) {
-        .opts {
-          grid-template-columns: 1fr;
-        }
-      }
-
-      @media (max-width: 700px) {
-        .quiz-card {
-          padding: 1.5rem;
-        }
-
-        .result-cta {
-          flex-direction: column;
-          align-items: stretch;
-        }
-
-        .cta-btn {
-          width: 100%;
-        }
-      }
-    </style>
-  </head>
-  <body class="landing is-preload">
-    <div class="top-black-bar"></div>
-    <div id="page-wrapper">
-      <header id="header" class="alt">
-        <a href="ai-infrastructure-check.html" class="language-switch">
-          <img src="images/de.svg" alt="Deutsch" class="flag-icon" />
-          Deutsch
-        </a>
-        <nav id="nav">
-          <button class="burger-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-menu">
-            <span class="burger-line"></span>
-            <span class="burger-line"></span>
-            <span class="burger-line"></span>
-          </button>
-          <ul id="nav-menu">
-            <li><a href="index_ENG.html">Home</a></li>
-            <li><a href="generic_ENG.html">Expertise</a></li>
-            <li><a href="ai-infrastructure-check_ENG.html">AI Infrastructure Check</a></li>
-            <li><a href="https://www.linkedin.com/in/luitwin-mallmann-18b80510b/" target="_blank">About Me</a></li>
-            <li><a href="#contact">Contact</a></li>
-            <li><a href="privacy_policy_ENG.html">Privacy Policy</a></li>
-          </ul>
-        </nav>
-      </header>
-
-      <section id="quiz-banner">
-        <div class="inner">
-          <h1>AI Infrastructure Check</h1>
-          <p>Answer 6 quick questions and get a tailored recommendation for the best next step in your data & AI journey.</p>
-          <ul class="actions special">
-            <li><a class="button primary" href="https://calendly.com/luitwin/30min" target="_blank" rel="noopener">Book a free call</a></li>
-          </ul>
+    <section id="quiz-banner">
+      <div class="inner">
+        <div class="hero-copy">
+          <div class="hero-badges reveal"><span>6 questions</span><span>Direct recommendation</span><span>No signup</span></div>
+          <h1 class="reveal">AI Infrastructure Check</h1>
+          <p class="reveal">Answer 6 short questions and receive an individual recommendation for your next practical step in data and AI.</p>
+          <ul class="actions special reveal"><li><a class="button primary" href="https://calendly.com/luitwin/30min" target="_blank" rel="noopener">Book a free call</a></li></ul>
         </div>
-      </section>
+        <div class="hero-orb-card reveal" aria-hidden="true"><span class="floating-chip">Data Sources</span><span class="floating-chip">Cloud</span><span class="floating-chip">Governance</span><span class="floating-chip">BI / AI</span></div>
+      </div>
+    </section>
 
-      <section id="quiz-section" class="wrapper style3 special">
-        <div class="inner quiz-container">
-          <div class="quiz-card">
-            <div class="quiz-intro">
-              <span class="subtitle">Assess readiness</span>
-              <h2>Which AI infrastructure fits your company?</h2>
-              <p>Based on your data sources, volume, freshness requirements and operating capacity, you’ll get a recommendation for the practical next step — from SharePoint + Power BI up to a complete cloud architecture.</p>
-            </div>
-
-            <div class="progress-wrap">
-              <div class="progress-meta">
-                <span class="progress-label">Progress</span>
-                <span class="progress-count" id="prog-count">0 / 6</span>
-              </div>
-              <div class="progress-bar"><div class="progress-fill" id="prog-fill"></div></div>
-            </div>
-
-            <div class="q-block" id="qb0">
-              <div class="q-number">Question 01</div>
-              <div class="q-text">How many different data sources does your company use?</div>
-              <div class="q-hint">ERP, CRM, webshop, Excel lists, emails, machines, POS — everything counts.</div>
-              <div class="opts" data-q="0">
-                <span class="opt" data-v="0">1–2 sources</span>
-                <span class="opt" data-v="1">3–5 sources</span>
-                <span class="opt" data-v="2">6–10 sources</span>
-                <span class="opt" data-v="3">More than 10</span>
-              </div>
-            </div>
-
-            <div class="q-block" id="qb1">
-              <div class="q-number">Question 02</div>
-              <div class="q-text">How much data volume is generated per month?</div>
-              <div class="q-hint">Rough estimate is fine — include Excel files, PDFs, photos, logs.</div>
-              <div class="opts" data-q="1">
-                <span class="opt" data-v="0">Under 100 MB</span>
-                <span class="opt" data-v="1">100 MB – 1 GB</span>
-                <span class="opt" data-v="2">1 – 10 GB</span>
-                <span class="opt" data-v="3">Over 10 GB</span>
-              </div>
-            </div>
-
-            <div class="q-block" id="qb2">
-              <div class="q-number">Question 03</div>
-              <div class="q-text">How fresh do the data need to be?</div>
-              <div class="q-hint">How quickly does someone in the business need the latest numbers?</div>
-              <div class="opts" data-q="2">
-                <span class="opt" data-v="0">Monthly is enough</span>
-                <span class="opt" data-v="1">Weekly</span>
-                <span class="opt" data-v="2">Daily</span>
-                <span class="opt" data-v="3">Real-time / hourly</span>
-              </div>
-            </div>
-
-            <div class="q-block" id="qb3">
-              <div class="q-number">Question 04</div>
-              <div class="q-text">Is there someone who operates the system long-term?</div>
-              <div class="q-hint">Internal or external IT partner that is regularly involved.</div>
-              <div class="opts" data-q="3">
-                <span class="opt" data-v="0">No one</span>
-                <span class="opt" data-v="1">External IT support occasionally</span>
-                <span class="opt" data-v="2">Dedicated IT partner or internal IT person</span>
-                <span class="opt" data-v="3">Own data engineer / IT team</span>
-              </div>
-            </div>
-
-            <div class="q-block" id="qb4">
-              <div class="q-number">Question 05</div>
-              <div class="q-text">How sensitive is your data?</div>
-              <div class="q-hint">Personal data, trade secrets, customer data, finance.</div>
-              <div class="opts" data-q="4">
-                <span class="opt" data-v="0">Low sensitivity</span>
-                <span class="opt" data-v="1">Medium — customer lists, finance</span>
-                <span class="opt" data-v="2">High — salaries, contracts, health</span>
-                <span class="opt" data-v="3">Very high — regulated: medical, finance, legal</span>
-              </div>
-            </div>
-
-            <div class="q-block" id="qb5">
-              <div class="q-number">Question 06</div>
-              <div class="q-text">What is the concrete goal with AI?</div>
-              <div class="q-hint">What should the outcome be — honest and specific.</div>
-              <div class="opts" data-q="5">
-                <span class="opt" data-v="0">Better reports and clarity</span>
-                <span class="opt" data-v="1">Predictions — demand, failures, sales</span>
-                <span class="opt" data-v="2">Search documents and knowledge</span>
-                <span class="opt" data-v="3">Automate processes</span>
-              </div>
-            </div>
-
-            <div class="result" id="result"></div>
+    <section id="quiz-section" class="wrapper style3 special">
+      <div class="inner quiz-container">
+        <div class="quiz-card reveal">
+          <div class="quiz-intro">
+            <span class="subtitle">Assessment</span>
+            <h2>Which AI infrastructure fits your company?</h2>
+            <p>Based on your data sources, data volume, freshness requirements and IT capacity, you receive a recommendation for your next practical step, from SharePoint + Power BI to a complete cloud architecture.</p>
           </div>
+
+          <div class="progress-wrap"><div class="progress-meta"><span class="progress-label">Progress</span><span class="progress-count" id="prog-count">0 / 6</span></div><div class="progress-bar"><div class="progress-fill" id="prog-fill"></div></div></div>
+
+          <div class="q-block reveal" id="qb0"><div class="q-number">Question 01</div><div class="q-text">How many different data sources does your company have?</div><div class="q-hint">ERP, CRM, webshop, Excel lists, emails, machines, POS — everything counts.</div><div class="opts" data-q="0"><span class="opt" data-v="0">1–2 sources</span><span class="opt" data-v="1">3–5 sources</span><span class="opt" data-v="2">6–10 sources</span><span class="opt" data-v="3">More than 10</span></div></div>
+          <div class="q-block reveal" id="qb1"><div class="q-number">Question 02</div><div class="q-text">How much data volume is created per month?</div><div class="q-hint">A rough estimate is enough, including Excel files, PDFs, images and logs.</div><div class="opts" data-q="1"><span class="opt" data-v="0">Under 100 MB</span><span class="opt" data-v="1">100 MB – 1 GB</span><span class="opt" data-v="2">1 – 10 GB</span><span class="opt" data-v="3">Over 10 GB</span></div></div>
+          <div class="q-block reveal" id="qb2"><div class="q-number">Question 03</div><div class="q-text">How fresh do the data need to be for decisions?</div><div class="q-hint">How quickly does someone in the company need the latest numbers?</div><div class="opts" data-q="2"><span class="opt" data-v="0">Monthly is enough</span><span class="opt" data-v="1">Weekly</span><span class="opt" data-v="2">Daily</span><span class="opt" data-v="3">Real-time / hourly</span></div></div>
+          <div class="q-block reveal" id="qb3"><div class="q-number">Question 04</div><div class="q-text">Is there someone who can operate the system long-term?</div><div class="q-hint">Internal staff or an external IT provider who is regularly available.</div><div class="opts" data-q="3"><span class="opt" data-v="0">No, nobody</span><span class="opt" data-v="1">External IT provider occasionally</span><span class="opt" data-v="2">Regular IT provider or internal IT person</span><span class="opt" data-v="3">Own data engineer / IT team</span></div></div>
+          <div class="q-block reveal" id="qb4"><div class="q-number">Question 05</div><div class="q-text">How sensitive are your data?</div><div class="q-hint">Personal data, trade secrets, customer data and financial data.</div><div class="opts" data-q="4"><span class="opt" data-v="0">Barely sensitive</span><span class="opt" data-v="1">Moderate, customer lists or financial data</span><span class="opt" data-v="2">High, salaries, contracts or health</span><span class="opt" data-v="3">Very high, regulated sectors</span></div></div>
+          <div class="q-block reveal" id="qb5"><div class="q-number">Question 06</div><div class="q-text">What is your concrete goal with AI?</div><div class="q-hint">What should come out at the end, honestly and concretely?</div><div class="opts" data-q="5"><span class="opt" data-v="0">Better overview / reports</span><span class="opt" data-v="1">Forecasts, sales, failures, demand</span><span class="opt" data-v="2">Search documents / knowledge</span><span class="opt" data-v="3">Process automation</span></div></div>
+          <div class="result" id="result"></div>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <section id="contact" class="wrapper style4">
-        <div class="inner">
-          <header>
-            <h2>Next step</h2>
-            <p>Book a free initial consultation to review your score and discuss the right AI infrastructure for your business.</p>
-          </header>
-          <ul class="actions stacked">
-            <li><a href="https://calendly.com/luitwin/30min" class="button primary" target="_blank" rel="noopener">Schedule a free call</a></li>
-          </ul>
-        </div>
-      </section>
-    </div>
+    <section id="contact" class="wrapper style4 reveal">
+      <div class="inner contact-panel">
+        <div class="contact-copy"><span class="section-eyebrow">Next step</span><h2>Discuss your result</h2><p>Book a free call to discuss your result and find the right AI infrastructure for your company.</p><div class="contact-points"><span>30 minutes</span><span>Free</span><span>Online</span></div></div>
+        <div class="contact-card"><a class="button primary fit" href="https://calendly.com/luitwin/30min" target="_blank" rel="noopener">Book a free call</a></div>
+      </div>
+    </section>
+  </div>
 
-    <script>
-      const CALENDLY = 'https://calendly.com/luitwin/30min';
-
-      const answers = [null, null, null, null, null, null];
-
-      const qLabels = ['Data sources', 'Volume', 'Freshness', 'IT capacity', 'Sensitivity', 'AI goal'];
-      const scoreLabels = [
-        ['Minimal', 'Low', 'Medium', 'High'],
-        ['Minimal', 'Low', 'Medium', 'High'],
-        ['Monthly', 'Weekly', 'Daily', 'Real-time'],
-        ['None', 'Occasional', 'Dedicated', 'Internal'],
-        ['Low', 'Medium', 'High', 'Very high'],
-        ['Reports', 'Predictions', 'Knowledge', 'Automation']
-      ];
-
-      const recs = [
-        {
-          min: 0,
-          max: 4,
-          accent: '#60d098',
-          tagStyle: 'color:#60d098;border-color:rgba(96,208,152,0.3)',
-          label: 'Recommendation',
-          title: 'SharePoint + Power BI',
-          body: 'Your company is at the beginning of digital maturity. This is the right moment for a practical first step. SharePoint is often already included in M365 licenses and creates a single source of truth. Power BI connects directly and delivers first dashboards without a database. No overkill, no system nobody operates.',
-          tags: ['SharePoint', 'OneDrive', 'Power BI', 'M365', 'No data engineer needed'],
-          ctaText: 'In a free call, I’ll show you how to build a working data foundation in 2 weeks.',
-          barColor: '#60d098'
-        },
-        {
-          min: 5,
-          max: 9,
-          accent: '#60a8f0',
-          tagStyle: 'color:#60a8f0;border-color:rgba(96,168,240,0.3)',
-          label: 'Recommendation',
-          title: 'Azure SQL + dbt + Power BI',
-          body: 'You are ready for a real database layer. Azure SQL is managed, GDPR-compatible on EU servers, and scales easily. dbt enables versioned SQL transformations that are maintainable and transparent. Power BI serves as the reporting layer. Simple automation can follow with Power Automate or a Python script.',
-          tags: ['Azure SQL', 'dbt Core', 'Power BI', 'Power Automate', 'GDPR-ready'],
-          ctaText: 'I’ll show you how this maps to your stack in a free discovery call.',
-          barColor: '#60a8f0'
-        },
-        {
-          min: 10,
-          max: 14,
-          accent: '#a888f0',
-          tagStyle: 'color:#a888f0;border-color:rgba(168,136,240,0.3)',
-          label: 'Recommendation',
-          title: 'Azure Data Lake + dbt + ADF',
-          body: 'You have multiple sources and a significant data volume. This is a good time for a proper data foundation: Azure Data Lake Gen2 for storage, dbt for transformation, and Azure Data Factory for pipelines. Power BI remains the reporting layer. This architecture enables analytical AI like demand forecasting, anomaly detection, and predictive maintenance.',
-          tags: ['Azure Data Lake Gen2', 'dbt', 'Azure Data Factory', 'Power BI', 'Medallion architecture'],
-          ctaText: 'Let’s build an architecture that fits your size and budget.',
-          barColor: '#a888f0'
-        },
-        {
-          min: 15,
-          max: 99,
-          accent: '#f0a830',
-          tagStyle: 'color:#f0a830;border-color:rgba(240,168,48,0.3)',
-          label: 'Recommendation',
-          title: 'Full Cloud Architecture',
-          body: 'Your business has complex needs: many sources, large volume, real-time requirements, or regulated data. You need a thoughtful architecture — Azure Synapse or Databricks for the platform, Azure Data Factory for ingestion, and a strong IAM/privacy concept from day one. This is where an experienced partner makes the difference.',
-          tags: ['Azure Synapse / Databricks', 'ADF', 'IAM & Governance', 'GDPR concept', 'Strategic guidance'],
-          ctaText: 'This is the kind of project I support — from architecture to first productive AI.',
-          barColor: '#f0a830'
-        }
-      ];
-
-      document.querySelectorAll('.opts').forEach(group => {
-        group.querySelectorAll('.opt').forEach(btn => {
-          btn.addEventListener('click', () => {
-            const q = parseInt(group.dataset.q, 10);
-            group.querySelectorAll('.opt').forEach(b => b.classList.remove('sel'));
-            btn.classList.add('sel');
-            answers[q] = parseInt(btn.dataset.v, 10);
-            document.getElementById('qb' + q).classList.add('answered');
-            updateProgress();
-            const done = answers.filter(a => a !== null).length;
-            if (done === 6) {
-              setTimeout(showResult, 300);
-            }
-          });
-        });
-      });
-
-      function updateProgress() {
-        const done = answers.filter(a => a !== null).length;
-        document.getElementById('prog-fill').style.width = done / 6 * 100 + '%';
-        document.getElementById('prog-count').textContent = done + ' / 6';
-      }
-
-      function showResult() {
-        const score = answers.reduce((s, v) => s + v, 0);
-        const rec = recs.find(r => score >= r.min && score <= r.max) || recs[recs.length - 1];
-        const el = document.getElementById('result');
-
-        const tagsHtml = rec.tags.map(t => `<span class="tag" style="${rec.tagStyle}">${t}</span>`).join('');
-
-        const barsHtml = answers.map((v, i) => `
-          <div class="score-row">
-            <span class="score-name">${qLabels[i]}</span>
-            <div class="score-bar-wrap">
-              <div class="score-bar" style="width:${Math.round(v / 3 * 100)}%; background:${rec.barColor}"></div>
-            </div>
-            <span class="score-val">${scoreLabels[i][v]}</span>
-          </div>
-        `).join('');
-
-        el.innerHTML = `
-          <div class="result-panel">
-            <div class="result-header">
-              <div class="result-label">${rec.label}</div>
-              <div class="result-title">${rec.title}</div>
-            </div>
-            <div class="result-body">${rec.body}</div>
-            <div class="result-scores">
-              <div class="score-label">Your profile</div>
-              ${barsHtml}
-            </div>
-            <div class="result-tags">${tagsHtml}</div>
-            <div class="result-cta">
-              <p class="cta-text"><strong>Next step:</strong> ${rec.ctaText}</p>
-              <a class="cta-btn" href="${CALENDLY}" target="_blank" rel="noopener">Schedule a free call<span class="cta-arrow">→</span></a>
-            </div>
-          </div>
-        `;
-
-        el.classList.add('show');
-        setTimeout(() => el.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 100);
-      }
-    </script>
-  </body>
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/js/jquery.scrolly.min.js"></script>
+  <script src="assets/js/jquery.dropotron.min.js"></script>
+  <script src="assets/js/jquery.scrollex.min.js"></script>
+  <script src="assets/js/browser.min.js"></script>
+  <script src="assets/js/breakpoints.min.js"></script>
+  <script src="assets/js/util.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/ai-check-quiz_EN.js"></script>
+  <script src="assets/js/include.js"></script>
+  <script src="assets/js/site-modern.js"></script>
+</body>
 </html>
