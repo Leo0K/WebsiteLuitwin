@@ -16,14 +16,14 @@
 <link href="../assets/css/site-modern.css" rel="stylesheet"/>
 <noscript><link href="../assets/css/noscript.css" rel="stylesheet"/></noscript>
 </head>
-<body data-site-language="en" class="landing is-preload modern-home" data-current-page="index.html" data-home-page="index.html">
+<body data-site-language="en" class="landing is-preload modern-home" data-current-page="index.html" data-home-page="index.html" data-language-url="../de/index.html">
 <div aria-hidden="true" class="site-ai-background">
 <canvas id="siteAiCanvas"></canvas>
 <div class="mouse-soft-glow"></div>
 </div>
 <div id="page-wrapper"><header class="alt ai-header" id="header">
   <div class="header-ai-layer" aria-hidden="true"><span class="header-orb header-orb-a"></span><span class="header-orb header-orb-b"></span><span class="header-scanline"></span></div>
-  <a class="language-switch" href="../de/index.html">
+  <a class="language-switch" href="../de/index.html" data-language-switch>
     <img alt="Deutsch" class="flag-icon" src="../images/de.svg" />
     <span>Deutsch</span>
   </a>
@@ -62,6 +62,17 @@
 <p>Hover over a card or click it to reveal the full project details.</p>
 </header>
 <div aria-label="Project overview" class="project-grid">
+<article aria-expanded="false" class="project-card" tabindex="0">
+<div class="project-media"><img alt="AI Infrastructure and Data Governance Workshop" src="../images/project-ai-governance.jpg"/></div>
+<div class="project-content">
+<div class="project-chip">AI Strategy &amp; Data Governance</div>
+<h3>AI Infrastructure &amp; Data Governance Workshop</h3>
+<p class="project-subtitle project-logo-subtitle">
+<img alt="Zukunftszentrum KI NRW" class="project-client-logo" src="../images/zukunftszentrum-ki-nrw.svg"/>
+</p>
+<p class="project-details">Hands-on workshop for small and medium-sized companies on AI infrastructure, data governance and regulatory requirements. The session focused on suitable data architectures, governance foundations and practical next steps toward production-ready AI solutions.</p>
+</div>
+</article>
 <article aria-expanded="false" class="project-card" tabindex="0">
 <div class="project-media"><img alt="Lufthansa Cargo Logo" src="../images/LufthansaCargo.png"/></div>
 <div class="project-content">
@@ -142,6 +153,7 @@
 </div>
 <script src="../assets/js/jquery.min.js"></script>
 <script src="../assets/js/jquery.scrolly.min.js"></script>
+<script src="../assets/js/jquery.dropotron.min.js"></script>
 <script src="../assets/js/jquery.scrollex.min.js"></script>
 <script src="../assets/js/browser.min.js"></script>
 <script src="../assets/js/breakpoints.min.js"></script>

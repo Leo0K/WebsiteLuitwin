@@ -17,7 +17,7 @@
 <link href="../assets/css/custom.css" rel="stylesheet"/><link href="../assets/css/site-modern.css" rel="stylesheet"/>
 <noscript><link href="../assets/css/noscript.css" rel="stylesheet"/></noscript>
 </head>
-<body data-site-language="de" class="landing is-preload modern-home" data-current-page="index.html" data-home-page="index.html">
+<body data-site-language="de" class="landing is-preload modern-home" data-current-page="index.html" data-home-page="index.html" data-language-url="../en/index.html">
 <div aria-hidden="true" class="site-ai-background">
 <canvas id="siteAiCanvas"></canvas>
 <div class="mouse-soft-glow"></div>
@@ -25,7 +25,7 @@
 <div class="top-black-bar"></div>
 <div id="page-wrapper"><header class="alt ai-header" id="header">
   <div class="header-ai-layer" aria-hidden="true"><span class="header-orb header-orb-a"></span><span class="header-orb header-orb-b"></span><span class="header-scanline"></span></div>
-  <a class="language-switch" href="../en/index.html">
+  <a class="language-switch" href="../en/index.html" data-language-switch>
     <img alt="English" class="flag-icon" src="../images/gb.svg" />
     <span>English</span>
   </a>
@@ -77,6 +77,21 @@
 <p>Fahren Sie über eine Karte oder klicken Sie darauf, um die Details zu öffnen.</p>
 </header>
 <div aria-label="Projektübersicht" class="project-grid">
+<article aria-expanded="false" class="project-card" tabindex="0">
+<div class="project-media">
+<img alt="KI-Infrastruktur und Data Governance Workshop" src="../images/project-ai-governance.jpg"/>
+</div>
+<div class="project-content">
+<div class="project-chip">KI Strategie &amp; Data Governance</div>
+<h3>KI-Infrastruktur &amp; Data Governance Workshop</h3>
+<p class="project-subtitle project-logo-subtitle">
+<img alt="Zukunftszentrum KI NRW" class="project-client-logo" src="../images/zukunftszentrum-ki-nrw.svg"/>
+</p>
+<p class="project-details">
+                  Praxisorientierter Workshop für kleine und mittelständische Unternehmen zu KI-Infrastruktur, Data Governance und regulatorischen Anforderungen. Im Fokus standen passende Datenarchitekturen, Governance-Grundlagen und realistische nächste Schritte auf dem Weg zu produktiven KI-Lösungen.
+                </p>
+</div>
+</article>
 <article aria-expanded="false" class="project-card" tabindex="0">
 <div class="project-media">
 <img alt="Lufthansa Cargo Logo" src="../images/LufthansaCargo.png"/>
@@ -227,6 +242,7 @@
 </div>
 <script src="../assets/js/jquery.min.js"></script>
 <script src="../assets/js/jquery.scrolly.min.js"></script>
+<script src="../assets/js/jquery.dropotron.min.js"></script>
 <script src="../assets/js/jquery.scrollex.min.js"></script>
 <script src="../assets/js/browser.min.js"></script>
 <script src="../assets/js/breakpoints.min.js"></script>
