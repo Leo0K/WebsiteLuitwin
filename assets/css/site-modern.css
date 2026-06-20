@@ -2461,3 +2461,21 @@ body.modern-home {
     padding: 1.25rem !important;
   }
 }
+
+
+/* Robust anchor positioning under the fixed AI header */
+#Leistungspaket,
+#contact,
+#two,
+[id] {
+  scroll-margin-top: 110px;
+}
+
+@media (max-width: 900px) {
+  #Leistungspaket,
+  #contact,
+  #two,
+  [id] {
+    scroll-margin-top: 92px;
+  }
+}

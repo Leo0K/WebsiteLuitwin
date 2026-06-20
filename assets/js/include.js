@@ -1,83 +1,79 @@
 (function () {
-  async function includePartials() {
-    const includeElements = Array.from(document.querySelectorAll("[data-include]"));
+  function initNavigation() {
+    const header = document.getElementById('header');
+    const navMenu = document.getElementById('nav-menu');
+    const burgerToggle = document.querySelector('.burger-menu-toggle');
 
-    await Promise.all(includeElements.map(async function (element) {
-      const file = element.getAttribute("data-include");
+    function closeMenu() {
+      if (!navMenu || !burgerToggle) return;
+      navMenu.classList.remove('open');
+      burgerToggle.classList.remove('active');
+      burgerToggle.setAttribute('aria-expanded', 'false');
+    }
 
-      if (!file) {
-        return;
-      }
+    function updateHeader() {
+      if (header) header.classList.toggle('is-scrolled', window.scrollY > 24);
+    }
 
-      try {
-        const response = await fetch(file, { cache: "no-cache" });
+    function scrollToTarget(targetId) {
+      const target = document.getElementById(targetId);
+      if (!target) return false;
+      const headerHeight = header ? header.getBoundingClientRect().height : 0;
+      const top = target.getBoundingClientRect().top + window.pageYOffset - headerHeight - 18;
+      window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
+      try { history.pushState(null, '', '#' + targetId); } catch (error) { location.hash = targetId; }
+      return true;
+    }
 
-        if (!response.ok) {
-          throw new Error("Unable to load " + file);
+    if (burgerToggle && navMenu && !burgerToggle.dataset.bound) {
+      burgerToggle.dataset.bound = 'true';
+      burgerToggle.addEventListener('click', function (event) {
+        event.preventDefault();
+        event.stopPropagation();
+        navMenu.classList.toggle('open');
+        burgerToggle.classList.toggle('active');
+        burgerToggle.setAttribute('aria-expanded', String(navMenu.classList.contains('open')));
+      });
+      document.addEventListener('click', function (event) {
+        if (!navMenu.contains(event.target) && !burgerToggle.contains(event.target)) closeMenu();
+      });
+      window.addEventListener('resize', function () {
+        if (window.innerWidth > 900) closeMenu();
+      }, { passive: true });
+    }
+
+    if (navMenu && !navMenu.dataset.bound) {
+      navMenu.dataset.bound = 'true';
+      navMenu.addEventListener('click', function (event) {
+        const link = event.target.closest('a');
+        if (!link) return;
+        const href = link.getAttribute('href') || '';
+        const url = new URL(link.href, window.location.href);
+        const isSamePage = url.origin === window.location.origin && url.pathname === window.location.pathname;
+        if (href.startsWith('#') || (isSamePage && url.hash)) {
+          const targetId = (url.hash || href).replace('#', '');
+          if (targetId && scrollToTarget(targetId)) {
+            event.preventDefault();
+            closeMenu();
+            return;
+          }
         }
-
-        element.innerHTML = await response.text();
-        element.removeAttribute("data-include");
-        element.setAttribute("data-included", file);
-      } catch (error) {
-        console.error(error);
-      }
-    }));
-
-    configureHeader();
-    document.dispatchEvent(new CustomEvent("partials:loaded"));
-  }
-
-  function configureHeader() {
-    const currentPage = document.body.dataset.currentPage || "";
-    const languageUrl = document.body.dataset.languageUrl || "";
-    const languageSwitch = document.querySelector("[data-language-switch]");
-
-    if (languageSwitch) {
-      if (languageUrl) {
-        languageSwitch.setAttribute("href", languageUrl);
-      }
-
-      const currentLanguage = document.body.dataset.siteLanguage || (location.pathname.indexOf("/en/") !== -1 ? "en" : "de");
-      const nextLanguage = currentLanguage === "en" ? "de" : "en";
-
-      languageSwitch.addEventListener("click", function () {
-        try {
-          localStorage.setItem("siteLanguage", nextLanguage);
-        } catch (error) {
-          console.warn("Language preference could not be saved", error);
-        }
+        closeMenu();
       });
     }
 
-    document.querySelectorAll("#nav-menu a[aria-current]").forEach(function (link) {
-      link.removeAttribute("aria-current");
-    });
+    updateHeader();
+    window.addEventListener('scroll', updateHeader, { passive: true });
 
-    if (currentPage) {
-      const activeLink = document.querySelector('#nav-menu a[data-page-link="' + currentPage + '"]');
-
-      if (activeLink) {
-        activeLink.setAttribute("aria-current", "page");
-      }
+    if (location.hash) {
+      const targetId = location.hash.slice(1);
+      window.setTimeout(function () { scrollToTarget(targetId); }, 120);
     }
-
-    const homePage = document.body.dataset.homePage || (currentPage && currentPage.indexOf("_ENG") !== -1 ? "index_ENG.html" : "index.html");
-
-    document.querySelectorAll("#nav-menu a[data-section-link]").forEach(function (link) {
-      const section = link.dataset.sectionLink;
-      if (currentPage === homePage) {
-        link.setAttribute("href", "#" + section);
-        link.classList.add("scrolly");
-      } else {
-        link.setAttribute("href", homePage + "#" + section);
-      }
-    });
   }
 
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", includePartials);
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initNavigation);
   } else {
-    includePartials();
+    initNavigation();
   }
 })();

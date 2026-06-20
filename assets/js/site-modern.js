@@ -1,4 +1,3 @@
-
 (function () {
   window.addEventListener("load", function () {
     document.body.classList.remove("is-preload");
@@ -24,51 +23,7 @@
     if (modal && event.target === modal) window.closeCalendly();
   });
 
-  document.addEventListener("DOMContentLoaded", function () {
-    const burgerToggle = document.querySelector(".burger-menu-toggle");
-    const navMenu = document.getElementById("nav-menu");
-    const header = document.getElementById("header");
-
-    if (burgerToggle && navMenu) {
-      burgerToggle.addEventListener("click", function (e) {
-        e.preventDefault();
-        e.stopPropagation();
-        navMenu.classList.toggle("open");
-        burgerToggle.classList.toggle("active");
-        burgerToggle.setAttribute("aria-expanded", String(navMenu.classList.contains("open")));
-      });
-
-      navMenu.addEventListener("click", function (e) {
-        if (e.target.tagName === "A") {
-          navMenu.classList.remove("open");
-          burgerToggle.classList.remove("active");
-          burgerToggle.setAttribute("aria-expanded", "false");
-        }
-      });
-
-      document.addEventListener("click", function (e) {
-        if (!navMenu.contains(e.target) && !burgerToggle.contains(e.target)) {
-          navMenu.classList.remove("open");
-          burgerToggle.classList.remove("active");
-          burgerToggle.setAttribute("aria-expanded", "false");
-        }
-      });
-
-      window.addEventListener("resize", function () {
-        if (window.innerWidth > 768) {
-          navMenu.classList.remove("open");
-          burgerToggle.classList.remove("active");
-          burgerToggle.setAttribute("aria-expanded", "false");
-        }
-      }, { passive: true });
-    }
-
-    function updateHeader() {
-      if (header) header.classList.toggle("is-scrolled", window.scrollY > 24);
-    }
-    updateHeader();
-    window.addEventListener("scroll", updateHeader, { passive: true });
-
+  function initRevealsAndCards() {
     document.querySelectorAll("#banner, .projects-heading, .project-card, .features li, #contact").forEach(function (el) {
       el.classList.add("reveal-lite");
     });
@@ -93,6 +48,8 @@
 
     const projectCards = document.querySelectorAll(".project-card");
     projectCards.forEach(function (card) {
+      if (card.dataset.projectReady === "true") return;
+      card.dataset.projectReady = "true";
       card.addEventListener("click", function () {
         const isOpen = card.classList.contains("is-open");
         projectCards.forEach(function (otherCard) {
@@ -104,7 +61,6 @@
           card.setAttribute("aria-expanded", "true");
         }
       });
-
       card.addEventListener("keydown", function (event) {
         if (event.key === "Enter" || event.key === " ") {
           event.preventDefault();
@@ -112,7 +68,13 @@
         }
       });
     });
-  });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initRevealsAndCards);
+  } else {
+    initRevealsAndCards();
+  }
 })();
 
 (function () {
@@ -161,9 +123,7 @@
     canvas.style.width = width + "px";
     canvas.style.height = height + "px";
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-
-    const baseCount = Math.floor((width * height) / 22000);
-    const count = Math.min(96, Math.max(52, baseCount));
+    const count = Math.min(96, Math.max(52, Math.floor((width * height) / 22000)));
     points = Array.from({ length: count }, function (_, i) {
       const layer = i % 3;
       return {
@@ -186,8 +146,7 @@
         const dy = p.y - q.y;
         const dist = Math.sqrt(dx * dx + dy * dy);
         if (dist < 146) {
-          const alpha = 0.26 * (1 - dist / 146);
-          ctx.strokeStyle = "rgba(" + p.hue + "," + alpha + ")";
+          ctx.strokeStyle = "rgba(" + p.hue + "," + (0.26 * (1 - dist / 146)) + ")";
           ctx.lineWidth = 1;
           ctx.beginPath();
           ctx.moveTo(p.x, p.y);
@@ -195,7 +154,6 @@
           ctx.stroke();
         }
       }
-
       const mdx = p.x - mouseX;
       const mdy = p.y - mouseY;
       const md = Math.sqrt(mdx * mdx + mdy * mdy);
@@ -218,7 +176,6 @@
       if (p.x > width + 30) p.x = -30;
       if (p.y < -30) p.y = height + 30;
       if (p.y > height + 30) p.y = -30;
-
       const dx = p.x - mouseX;
       const dy = p.y - mouseY;
       const dist = Math.sqrt(dx * dx + dy * dy);
@@ -226,7 +183,6 @@
         p.x += dx / Math.max(dist, 1) * 0.08;
         p.y += dy / Math.max(dist, 1) * 0.08;
       }
-
       ctx.beginPath();
       ctx.fillStyle = "rgba(" + p.hue + ",0.9)";
       ctx.shadowColor = "rgba(" + p.hue + ",0.78)";
@@ -248,7 +204,6 @@
       ctx.moveTo(i + xOffset, y1);
       ctx.bezierCurveTo(i + 70 + xOffset, y1 - 80, i + 130 + xOffset, y1 + 80, i + 220 + xOffset, y1);
       ctx.stroke();
-
       ctx.strokeStyle = "rgba(96,165,250,0.105)";
       ctx.beginPath();
       ctx.moveTo(i - xOffset, y2);
@@ -274,7 +229,6 @@
     mouseX = event.clientX;
     mouseY = event.clientY;
   }, { passive: true });
-
   resizeCanvas();
   raf = requestAnimationFrame(draw);
   window.addEventListener("resize", resizeCanvas, { passive: true });
@@ -283,101 +237,16 @@
   });
 })();
 
-
-
-// Final robust menu behavior for all pages, including shared header partials
-(function () {
-  let menuInitialized = false;
-
-  function initSharedHeaderMenu() {
-    const header = document.getElementById("header");
-    const burgerToggle = document.querySelector(".burger-menu-toggle");
-    const navMenu = document.getElementById("nav-menu");
-
-    if (!burgerToggle || !navMenu || menuInitialized) {
-      return;
-    }
-
-    menuInitialized = true;
-
-    function closeMenu() {
-      navMenu.classList.remove("open");
-      burgerToggle.classList.remove("active");
-      burgerToggle.setAttribute("aria-expanded", "false");
-    }
-
-    function toggleMenu(event) {
-      event.preventDefault();
-      event.stopPropagation();
-      const isOpen = navMenu.classList.toggle("open");
-      burgerToggle.classList.toggle("active", isOpen);
-      burgerToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
-    }
-
-    burgerToggle.addEventListener("click", toggleMenu);
-
-    navMenu.addEventListener("click", function (event) {
-      if (event.target.closest("a")) {
-        closeMenu();
-      }
-    });
-
-    document.addEventListener("click", function (event) {
-      if (!navMenu.contains(event.target) && !burgerToggle.contains(event.target)) {
-        closeMenu();
-      }
-    });
-
-    document.addEventListener("keydown", function (event) {
-      if (event.key === "Escape") {
-        closeMenu();
-      }
-    });
-
-    window.addEventListener("resize", function () {
-      if (window.innerWidth > 1220) {
-        closeMenu();
-      }
-    }, { passive: true });
-
-    function updateHeader() {
-      if (header) {
-        header.classList.toggle("is-scrolled", window.scrollY > 18);
-      }
-    }
-
-    updateHeader();
-    window.addEventListener("scroll", updateHeader, { passive: true });
-  }
-
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", initSharedHeaderMenu);
-  } else {
-    initSharedHeaderMenu();
-  }
-
-  document.addEventListener("partials:loaded", initSharedHeaderMenu);
-})();
-
-
-// AI-like shared header hover spotlight
 (function () {
   function initAiHeaderHover() {
     const header = document.getElementById("header");
-    if (!header || header.dataset.aiHoverReady === "true") {
-      return;
-    }
-
+    if (!header || header.dataset.aiHoverReady === "true") return;
     header.dataset.aiHoverReady = "true";
-
     header.addEventListener("pointermove", function (event) {
       const rect = header.getBoundingClientRect();
-      const x = event.clientX - rect.left;
-      const y = event.clientY - rect.top;
-      header.style.setProperty("--header-mx", x + "px");
-      header.style.setProperty("--header-my", y + "px");
+      header.style.setProperty("--header-mx", (event.clientX - rect.left) + "px");
+      header.style.setProperty("--header-my", (event.clientY - rect.top) + "px");
     }, { passive: true });
-
     header.querySelectorAll("a, button").forEach(function (item) {
       item.addEventListener("pointermove", function (event) {
         const rect = item.getBoundingClientRect();
@@ -392,24 +261,21 @@
   } else {
     initAiHeaderHover();
   }
-
   document.addEventListener("partials:loaded", initAiHeaderHover);
 })();
 
-
-// Automatic legal/date labels
 (function () {
   function updateAutomaticDates() {
     document.querySelectorAll('[data-auto-date="month-year"]').forEach(function (element) {
-      const lang = (document.documentElement.lang || 'de').toLowerCase();
-      const locale = lang.indexOf('en') === 0 ? 'en-US' : 'de-DE';
-      const value = new Intl.DateTimeFormat(locale, { month: 'long', year: 'numeric' }).format(new Date());
+      const lang = (document.documentElement.lang || "de").toLowerCase();
+      const locale = lang.indexOf("en") === 0 ? "en-US" : "de-DE";
+      const value = new Intl.DateTimeFormat(locale, { month: "long", year: "numeric" }).format(new Date());
       element.textContent = value.charAt(0).toUpperCase() + value.slice(1);
     });
   }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', updateAutomaticDates);
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", updateAutomaticDates);
   } else {
     updateAutomaticDates();
   }
