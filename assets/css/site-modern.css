@@ -2504,3 +2504,19 @@ body.modern-home {
 .project-card:focus-visible .project-client-logo {
   background: rgba(255, 255, 255, 0.96);
 }
+
+
+body.privacy-page #main > header {
+  padding: 8rem 1.5rem 4rem !important;
+  text-align: center;
+  background: transparent !important;
+  background-image: none !important;
+}
+
+body.privacy-page #main > header h2 {
+  color: #fff;
+}
+
+body.privacy-page #main > header p {
+  color: rgba(248, 250, 252, 0.72);
+}
