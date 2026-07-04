@@ -2520,3 +2520,67 @@ body.privacy-page #main > header h2 {
 body.privacy-page #main > header p {
   color: rgba(248, 250, 252, 0.72);
 }
+/* --------------------------------------------------------------------------
+   FINAL CLICK-SAFE HEADER OVERRIDE
+   --------------------------------------------------------------------------
+   The language switch is intentionally isolated from the normal navigation.
+   This prevents clicks on "Startseite/Home" from landing on the language link.
+*/
+#header.ai-header,
+#header.ai-header.alt {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) auto !important;
+  align-items: center !important;
+  column-gap: clamp(0.45rem, 1.2vw, 1rem) !important;
+  overflow: visible !important;
+}
+
+#header.ai-header #nav {
+  grid-column: 1 !important;
+  grid-row: 1 !important;
+  position: relative !important;
+  z-index: 30 !important;
+  min-width: 0 !important;
+  display: flex !important;
+  justify-content: flex-end !important;
+  align-items: center !important;
+}
+
+#header.ai-header .language-switch {
+  grid-column: 2 !important;
+  grid-row: 1 !important;
+  position: relative !important;
+  z-index: 20 !important;
+  max-width: 10.5rem !important;
+  pointer-events: auto !important;
+  margin-left: 0 !important;
+}
+
+#header.ai-header #nav-menu,
+#header.ai-header #nav-menu li,
+#header.ai-header #nav-menu a,
+#header.ai-header .burger-menu-toggle {
+  position: relative !important;
+  z-index: 31 !important;
+  pointer-events: auto !important;
+}
+
+#header.ai-header #nav-menu a {
+  isolation: isolate;
+}
+
+@media screen and (max-width: 1220px) {
+  #header.ai-header,
+  #header.ai-header.alt {
+    grid-template-columns: auto auto !important;
+    justify-content: space-between !important;
+  }
+
+  #header.ai-header #nav {
+    justify-content: flex-start !important;
+  }
+
+  #header.ai-header #nav-menu.open {
+    z-index: 10050 !important;
+  }
+}
