@@ -4686,3 +4686,574 @@ body[data-theme="light"] .project-detail-button:hover {
     transform: none !important;
   }
 }
+
+/* --------------------------------------------------------------------------
+   FINAL CLEAN THEME REFINEMENT
+   --------------------------------------------------------------------------
+   Cleaner light-mode palette, consistent card surfaces, readable text and a
+   slightly calmer dark mode. This is intentionally appended as the final layer
+   so it overrides older one-off color fixes from previous iterations.
+*/
+:root {
+  color-scheme: dark light;
+  --lm-radius-lg: 30px;
+  --lm-radius-md: 22px;
+}
+
+body[data-theme="light"],
+html[data-theme="light"] body {
+  color-scheme: light;
+  --lm-page-bg: #f6f8fb;
+  --lm-bg: #f6f8fb;
+  --lm-heading: #0b1220;
+  --lm-text: #172033;
+  --lm-muted: #42526a;
+  --lm-muted-2: #64748b;
+  --lm-card: rgba(255, 255, 255, 0.88);
+  --lm-card-strong: rgba(255, 255, 255, 0.96);
+  --lm-card-soft: rgba(255, 255, 255, 0.78);
+  --lm-elevated: #ffffff;
+  --lm-border: rgba(15, 23, 42, 0.11);
+  --lm-border-strong: rgba(15, 23, 42, 0.16);
+  --lm-accent: #0f766e;
+  --lm-accent-2: #2563eb;
+  --lm-accent-3: #7c3aed;
+  --lm-header-bg: rgba(255, 255, 255, 0.88);
+  --lm-header-bg-scrolled: rgba(255, 255, 255, 0.96);
+  --lm-control-bg: rgba(255, 255, 255, 0.78);
+  --lm-control-bg-hover: rgba(240, 247, 255, 0.96);
+  --lm-shadow: 0 20px 56px rgba(15, 23, 42, 0.10);
+  --lm-shadow-soft: 0 10px 30px rgba(15, 23, 42, 0.07);
+}
+
+body[data-theme="dark"],
+html[data-theme="dark"] body {
+  color-scheme: dark;
+  --lm-page-bg: #07101f;
+  --lm-bg: #07101f;
+  --lm-heading: #f8fafc;
+  --lm-text: #e8eef8;
+  --lm-muted: #b9c5d6;
+  --lm-muted-2: #93a4bb;
+  --lm-card: rgba(10, 18, 32, 0.72);
+  --lm-card-strong: rgba(10, 18, 32, 0.86);
+  --lm-card-soft: rgba(10, 18, 32, 0.54);
+  --lm-elevated: rgba(15, 23, 42, 0.92);
+  --lm-border: rgba(226, 232, 240, 0.13);
+  --lm-border-strong: rgba(125, 211, 252, 0.23);
+  --lm-header-bg: rgba(5, 13, 26, 0.86);
+  --lm-header-bg-scrolled: rgba(4, 10, 22, 0.95);
+  --lm-control-bg: rgba(255, 255, 255, 0.07);
+  --lm-control-bg-hover: rgba(255, 255, 255, 0.12);
+  --lm-shadow: 0 22px 64px rgba(0, 0, 0, 0.34);
+  --lm-shadow-soft: 0 14px 38px rgba(0, 0, 0, 0.24);
+}
+
+body.modern-site,
+body.modern-home {
+  background: var(--lm-page-bg) !important;
+  color: var(--lm-text) !important;
+}
+
+/* Softer, cleaner animated background in light mode while keeping it visible. */
+body[data-theme="light"] .site-ai-background {
+  background:
+    radial-gradient(circle at 14% 12%, rgba(20, 184, 166, 0.18), transparent 26rem),
+    radial-gradient(circle at 86% 18%, rgba(37, 99, 235, 0.15), transparent 28rem),
+    radial-gradient(circle at 54% 92%, rgba(124, 58, 237, 0.12), transparent 32rem),
+    linear-gradient(135deg, #f8fbff 0%, #eef5fb 46%, #f7f6ff 100%) !important;
+}
+
+body[data-theme="light"] .site-ai-background::before {
+  opacity: 0.64 !important;
+  filter: blur(48px) saturate(1.05) !important;
+}
+
+body[data-theme="light"] .site-ai-background::after {
+  background-image:
+    linear-gradient(rgba(15, 23, 42, 0.052) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(15, 23, 42, 0.052) 1px, transparent 1px) !important;
+  opacity: 0.48 !important;
+}
+
+body[data-theme="light"] #siteAiCanvas {
+  opacity: 0.42 !important;
+  mix-blend-mode: multiply !important;
+  filter: saturate(1.05) contrast(1.04) !important;
+}
+
+body[data-theme="dark"] .site-ai-background {
+  background:
+    radial-gradient(circle at 18% 12%, rgba(94, 234, 212, 0.18), transparent 28rem),
+    radial-gradient(circle at 82% 18%, rgba(96, 165, 250, 0.16), transparent 30rem),
+    radial-gradient(circle at 55% 92%, rgba(167, 139, 250, 0.12), transparent 34rem),
+    linear-gradient(135deg, #06101f 0%, #0b1628 48%, #101827 100%) !important;
+}
+
+/* Global text color normalization. */
+body[data-theme="light"] h1,
+body[data-theme="light"] h2,
+body[data-theme="light"] h3,
+body[data-theme="light"] h4,
+body[data-theme="light"] h5,
+body[data-theme="light"] h6,
+body[data-theme="light"] strong,
+body[data-theme="light"] b,
+body[data-theme="light"] .major h2,
+body[data-theme="light"] .projects-heading h2,
+body[data-theme="light"] .quiz-intro h2,
+body[data-theme="light"] .result-title,
+body[data-theme="light"] .metric strong,
+body[data-theme="light"] .process-card strong,
+body[data-theme="light"] .skill-card h3,
+body[data-theme="light"] .skill-card h4,
+body[data-theme="light"] .contact-form h3,
+body[data-theme="light"] .footer-brand strong {
+  color: var(--lm-heading) !important;
+}
+
+body[data-theme="light"] p,
+body[data-theme="light"] li,
+body[data-theme="light"] small,
+body[data-theme="light"] label,
+body[data-theme="light"] .major p,
+body[data-theme="light"] .subtitle,
+body[data-theme="light"] .section-kicker,
+body[data-theme="light"] .intro-panel p,
+body[data-theme="light"] .skill-card p,
+body[data-theme="light"] .skill-card li,
+body[data-theme="light"] .process-card span,
+body[data-theme="light"] .metric span,
+body[data-theme="light"] .cta-panel p,
+body[data-theme="light"] .quiz-intro p,
+body[data-theme="light"] .q-hint,
+body[data-theme="light"] .result-body,
+body[data-theme="light"] .score-label,
+body[data-theme="light"] .score-val,
+body[data-theme="light"] .cta-text,
+body[data-theme="light"] #contact p,
+body[data-theme="light"] .footer-brand p,
+body[data-theme="light"] .footer-copy {
+  color: var(--lm-muted) !important;
+}
+
+body[data-theme="dark"] p,
+body[data-theme="dark"] li,
+body[data-theme="dark"] small,
+body[data-theme="dark"] label,
+body[data-theme="dark"] .major p,
+body[data-theme="dark"] .subtitle,
+body[data-theme="dark"] .intro-panel p,
+body[data-theme="dark"] .skill-card p,
+body[data-theme="dark"] .skill-card li,
+body[data-theme="dark"] .process-card span,
+body[data-theme="dark"] .metric span,
+body[data-theme="dark"] .cta-panel p,
+body[data-theme="dark"] #contact p {
+  color: var(--lm-muted) !important;
+}
+
+body[data-theme="light"] .section-eyebrow,
+body[data-theme="light"] .section-kicker,
+body[data-theme="light"] .q-number,
+body[data-theme="light"] .result-label,
+body[data-theme="light"] .project-modal__eyebrow {
+  color: var(--lm-accent) !important;
+}
+
+/* Clean shared surfaces: one visual language for boxes/cards across pages. */
+body[data-theme="light"] #banner .inner,
+body[data-theme="light"] .expertise-page #main > header::before,
+body[data-theme="light"].about-page #main > header::before,
+body[data-theme="light"] .privacy-page #main > header::before,
+body[data-theme="light"] .ai-check-page #quiz-banner .inner,
+body[data-theme="light"] .expertise-page .wrapper.style5 .inner,
+body[data-theme="light"] .privacy-page .legal-panel,
+body[data-theme="light"] .quiz-card,
+body[data-theme="light"] #contact .inner,
+body[data-theme="light"] #contact .contact-panel,
+body[data-theme="light"] .modern-home #Leistungspaket > .inner,
+body[data-theme="light"] .projects-inner,
+body[data-theme="light"] .tech-stack-strip .inner {
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.92), rgba(248, 251, 255, 0.78)),
+    radial-gradient(circle at 12% 8%, rgba(20, 184, 166, 0.075), transparent 24rem),
+    radial-gradient(circle at 92% 18%, rgba(37, 99, 235, 0.06), transparent 26rem) !important;
+  border-color: var(--lm-border) !important;
+  box-shadow: var(--lm-shadow) !important;
+  color: var(--lm-text) !important;
+}
+
+body[data-theme="dark"] #banner .inner,
+body[data-theme="dark"] .expertise-page #main > header::before,
+body[data-theme="dark"].about-page #main > header::before,
+body[data-theme="dark"] .ai-check-page #quiz-banner .inner,
+body[data-theme="dark"] .expertise-page .wrapper.style5 .inner,
+body[data-theme="dark"] .privacy-page .legal-panel,
+body[data-theme="dark"] .quiz-card,
+body[data-theme="dark"] #contact .inner,
+body[data-theme="dark"] #contact .contact-panel,
+body[data-theme="dark"] .modern-home #Leistungspaket > .inner,
+body[data-theme="dark"] .projects-inner,
+body[data-theme="dark"] .tech-stack-strip .inner {
+  background:
+    linear-gradient(145deg, rgba(10, 18, 32, 0.76), rgba(10, 18, 32, 0.48)),
+    radial-gradient(circle at 12% 8%, rgba(94, 234, 212, 0.10), transparent 24rem),
+    radial-gradient(circle at 92% 18%, rgba(96, 165, 250, 0.08), transparent 26rem) !important;
+  border-color: var(--lm-border) !important;
+  box-shadow: var(--lm-shadow) !important;
+}
+
+body[data-theme="light"] .intro-panel,
+body[data-theme="light"] .metric-panel,
+body[data-theme="light"] .metric,
+body[data-theme="light"] .skill-card,
+body[data-theme="light"] .process-card,
+body[data-theme="light"] .cta-panel,
+body[data-theme="light"] .features li,
+body[data-theme="light"] .q-block,
+body[data-theme="light"] .result-panel,
+body[data-theme="light"] .result-header,
+body[data-theme="light"] .privacy-page .legal-intro-card,
+body[data-theme="light"] .privacy-page .legal-card,
+body[data-theme="light"] .privacy-page .legal-updated,
+body[data-theme="light"] .contact-card,
+body[data-theme="light"] .contact-form,
+body[data-theme="light"] .project-modal__section,
+body[data-theme="light"] .project-modal__grid > div {
+  background: rgba(255, 255, 255, 0.94) !important;
+  border-color: var(--lm-border) !important;
+  box-shadow: var(--lm-shadow-soft) !important;
+  color: var(--lm-text) !important;
+}
+
+body[data-theme="dark"] .intro-panel,
+body[data-theme="dark"] .metric-panel,
+body[data-theme="dark"] .metric,
+body[data-theme="dark"] .skill-card,
+body[data-theme="dark"] .process-card,
+body[data-theme="dark"] .cta-panel,
+body[data-theme="dark"] .features li,
+body[data-theme="dark"] .q-block,
+body[data-theme="dark"] .result-panel,
+body[data-theme="dark"] .result-header,
+body[data-theme="dark"] .privacy-page .legal-intro-card,
+body[data-theme="dark"] .privacy-page .legal-card,
+body[data-theme="dark"] .privacy-page .legal-updated,
+body[data-theme="dark"] .contact-card,
+body[data-theme="dark"] .contact-form,
+body[data-theme="dark"] .project-modal__section,
+body[data-theme="dark"] .project-modal__grid > div {
+  background: rgba(10, 18, 32, 0.66) !important;
+  border-color: var(--lm-border) !important;
+  box-shadow: var(--lm-shadow-soft) !important;
+  color: var(--lm-text) !important;
+}
+
+/* Header in light mode should feel crisp, not grey-on-grey. */
+body[data-theme="light"] #header.ai-header,
+body[data-theme="light"] #header.ai-header.alt,
+body[data-theme="light"] #header.ai-header.is-scrolled {
+  background:
+    radial-gradient(circle at var(--header-mx) var(--header-my), rgba(20, 184, 166, 0.12), transparent 16rem),
+    rgba(255, 255, 255, 0.91) !important;
+  border-bottom-color: rgba(15, 23, 42, 0.11) !important;
+  box-shadow: 0 12px 36px rgba(15, 23, 42, 0.10) !important;
+}
+
+body[data-theme="light"] #header.ai-header .language-switch,
+body[data-theme="light"] #header.ai-header .theme-toggle,
+body[data-theme="light"] #header.ai-header .burger-menu-toggle,
+body[data-theme="light"] #header.ai-header #nav-menu a {
+  color: #172033 !important;
+  background: rgba(255, 255, 255, 0.74) !important;
+  border-color: rgba(15, 23, 42, 0.10) !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.9), 0 8px 22px rgba(15, 23, 42, 0.07) !important;
+}
+
+body[data-theme="light"] #header.ai-header .language-switch:hover,
+body[data-theme="light"] #header.ai-header .theme-toggle:hover,
+body[data-theme="light"] #header.ai-header .burger-menu-toggle:hover,
+body[data-theme="light"] #header.ai-header #nav-menu a:hover,
+body[data-theme="light"] #header.ai-header #nav-menu a[aria-current="page"],
+body[data-theme="light"] #header.ai-header #nav-menu a.is-active {
+  color: #0b1220 !important;
+  background: #ffffff !important;
+  border-color: rgba(37, 99, 235, 0.24) !important;
+}
+
+/* Project cards keep white text because they sit on image overlays in both themes. */
+.project-card .project-content h3,
+.project-card .project-subtitle,
+.project-card .project-details,
+.project-card .project-details p,
+.project-card .project-details li {
+  color: #ffffff !important;
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.45);
+}
+
+.project-card .project-subtitle,
+.project-card .project-details {
+  color: rgba(255, 255, 255, 0.82) !important;
+}
+
+body[data-theme="light"] .project-media::after {
+  background: linear-gradient(180deg, rgba(7, 12, 22, 0.05) 0%, rgba(7, 12, 22, 0.48) 42%, rgba(7, 12, 22, 0.92) 100%) !important;
+}
+
+body[data-theme="light"] .project-chip,
+body[data-theme="dark"] .project-chip {
+  color: rgba(255, 255, 255, 0.92) !important;
+  background: rgba(15, 23, 42, 0.52) !important;
+  border-color: rgba(255, 255, 255, 0.20) !important;
+}
+
+/* Forms and inputs: clearer, less muddy in light mode. */
+body[data-theme="light"] .contact-form input,
+body[data-theme="light"] .contact-form select,
+body[data-theme="light"] .contact-form textarea,
+body[data-theme="light"] input,
+body[data-theme="light"] select,
+body[data-theme="light"] textarea {
+  background: #ffffff !important;
+  color: #0b1220 !important;
+  border-color: rgba(15, 23, 42, 0.16) !important;
+  box-shadow: inset 0 1px 2px rgba(15, 23, 42, 0.04) !important;
+}
+
+body[data-theme="light"] .contact-form input:focus,
+body[data-theme="light"] .contact-form select:focus,
+body[data-theme="light"] .contact-form textarea:focus,
+body[data-theme="light"] input:focus,
+body[data-theme="light"] select:focus,
+body[data-theme="light"] textarea:focus {
+  border-color: rgba(37, 99, 235, 0.38) !important;
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.11) !important;
+}
+
+body[data-theme="dark"] .contact-form input,
+body[data-theme="dark"] .contact-form select,
+body[data-theme="dark"] .contact-form textarea,
+body[data-theme="dark"] input,
+body[data-theme="dark"] select,
+body[data-theme="dark"] textarea {
+  background: rgba(2, 6, 23, 0.42) !important;
+  color: #f8fafc !important;
+  border-color: rgba(226, 232, 240, 0.15) !important;
+}
+
+/* Badges/chips should be readable in light mode without looking neon. */
+body[data-theme="light"] .expertise-badges span,
+body[data-theme="light"] .hero-badges span,
+body[data-theme="light"] .tag,
+body[data-theme="light"] .tech-stack-badges span,
+body[data-theme="light"] .contact-points span,
+body[data-theme="light"] .contact-mail {
+  color: #172033 !important;
+  background: rgba(241, 245, 249, 0.92) !important;
+  border-color: rgba(15, 23, 42, 0.12) !important;
+}
+
+body[data-theme="light"] .skill-icon {
+  color: #0b1220 !important;
+  background: linear-gradient(135deg, rgba(20, 184, 166, 0.18), rgba(37, 99, 235, 0.12)) !important;
+  border-color: rgba(37, 99, 235, 0.16) !important;
+}
+
+/* Privacy/legal cards were especially low contrast in light mode. */
+body[data-theme="light"] .privacy-page .legal-card h3,
+body[data-theme="light"] .privacy-page .legal-intro-card h3,
+body[data-theme="light"] .privacy-page .legal-updated strong {
+  color: var(--lm-heading) !important;
+}
+
+body[data-theme="light"] .privacy-page .legal-card p,
+body[data-theme="light"] .privacy-page .legal-card li,
+body[data-theme="light"] .privacy-page .legal-intro-card p,
+body[data-theme="light"] .privacy-page .legal-updated {
+  color: var(--lm-muted) !important;
+}
+
+/* Footer: less heavy in light, still premium in dark. */
+body[data-theme="light"] #footer {
+  background: rgba(248, 250, 252, 0.90) !important;
+  border-top-color: rgba(15, 23, 42, 0.10) !important;
+  box-shadow: 0 -14px 42px rgba(15, 23, 42, 0.06) !important;
+}
+
+body[data-theme="dark"] #footer {
+  background: rgba(5, 13, 26, 0.78) !important;
+  border-top-color: rgba(226, 232, 240, 0.10) !important;
+}
+
+/* Modals use the same clean theme. */
+body[data-theme="light"] .project-modal__panel {
+  background: #ffffff !important;
+  color: var(--lm-text) !important;
+}
+
+body[data-theme="light"] .project-modal__body h2,
+body[data-theme="light"] .project-modal__grid strong,
+body[data-theme="light"] .project-modal__section strong {
+  color: var(--lm-heading) !important;
+}
+
+body[data-theme="light"] .project-modal__subtitle,
+body[data-theme="light"] .project-modal__section p,
+body[data-theme="light"] .project-modal__grid p {
+  color: var(--lm-muted) !important;
+}
+
+/* Small polish: avoid over-bright borders and keep spacing modern. */
+.projects-inner,
+.modern-home #Leistungspaket > .inner,
+#contact .inner,
+#contact .contact-panel,
+.expertise-page .wrapper.style5 .inner,
+.quiz-card,
+.privacy-page .legal-panel {
+  border-width: 1px !important;
+}
+
+body[data-theme="light"] .button.primary,
+body[data-theme="light"] input[type="submit"].primary,
+body[data-theme="light"] input[type="button"].primary {
+  color: #ffffff !important;
+  background: linear-gradient(135deg, #0f766e 0%, #2563eb 66%, #7c3aed 100%) !important;
+  box-shadow: 0 14px 34px rgba(37, 99, 235, 0.18) !important;
+}
+
+body[data-theme="dark"] .button.primary,
+body[data-theme="dark"] input[type="submit"].primary,
+body[data-theme="dark"] input[type="button"].primary {
+  color: #04111f !important;
+}
+
+@media screen and (max-width: 760px) {
+  body[data-theme="light"] #banner .inner,
+  body[data-theme="light"] .expertise-page .wrapper.style5 .inner,
+  body[data-theme="light"] .privacy-page .legal-panel,
+  body[data-theme="light"] .quiz-card,
+  body[data-theme="light"] #contact .inner,
+  body[data-theme="light"] #contact .contact-panel,
+  body[data-theme="light"] .modern-home #Leistungspaket > .inner,
+  body[data-theme="light"] .projects-inner,
+  body[data-theme="light"] .tech-stack-strip .inner {
+    background: rgba(255, 255, 255, 0.94) !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   PROJECT SECTION RESPONSIVE VISIBILITY FIX
+   --------------------------------------------------------------------------
+   Project cards use absolutely positioned media/content. A previous responsive
+   override set min-height:auto, which can collapse the cards on tablet/mobile
+   widths. Keep a real card height at every breakpoint so Meine Projekte / My
+   Projects remains visible and scrollable when the viewport is reduced.
+*/
+.projects-section,
+.projects-inner,
+.project-grid {
+  max-width: 100% !important;
+}
+
+.project-grid {
+  overflow: visible !important;
+}
+
+.project-card,
+.project-card.is-open {
+  display: block !important;
+  min-width: 0 !important;
+  visibility: visible !important;
+}
+
+.project-media {
+  z-index: 0 !important;
+}
+
+.project-content {
+  z-index: 2 !important;
+  max-width: 100% !important;
+}
+
+@media screen and (max-width: 980px) {
+  .projects-section {
+    padding-left: 0.85rem !important;
+    padding-right: 0.85rem !important;
+  }
+
+  .projects-inner {
+    width: min(100%, 760px) !important;
+    overflow: visible !important;
+  }
+
+  .project-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+  }
+
+  .project-card,
+  .project-card.is-open {
+    grid-column: auto !important;
+    min-height: clamp(360px, 58vw, 500px) !important;
+    height: auto !important;
+    transform: none !important;
+  }
+
+  .project-card:hover,
+  .project-card.is-open,
+  .project-card:focus-visible {
+    transform: none !important;
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .projects-section {
+    padding-left: 0.55rem !important;
+    padding-right: 0.55rem !important;
+  }
+
+  .projects-inner {
+    padding: 0.9rem !important;
+    border-radius: 22px !important;
+    overflow: visible !important;
+  }
+
+  .project-grid {
+    gap: 0.9rem !important;
+  }
+
+  .project-card,
+  .project-card.is-open {
+    min-height: 390px !important;
+    border-radius: 22px !important;
+  }
+
+  .project-content {
+    padding: 1rem !important;
+  }
+
+  .project-chip {
+    max-width: 100% !important;
+    white-space: normal !important;
+    line-height: 1.25 !important;
+  }
+
+  .project-content h3 {
+    font-size: 1.18rem !important;
+    line-height: 1.2 !important;
+  }
+
+  .project-details {
+    font-size: 0.88rem !important;
+    line-height: 1.5 !important;
+  }
+}
+
+@media screen and (max-width: 380px) {
+  .project-card,
+  .project-card.is-open {
+    min-height: 410px !important;
+  }
+}
