@@ -132,9 +132,21 @@
         vx: (Math.random() - 0.5) * (0.14 + layer * 0.035),
         vy: (Math.random() - 0.5) * (0.14 + layer * 0.035),
         r: Math.random() * 1.7 + 0.9,
+        layer: layer,
         hue: layer === 0 ? "94,234,212" : layer === 1 ? "96,165,250" : "168,85,247"
       };
     });
+  }
+
+  function isLightTheme() {
+    const bodyTheme = document.body && document.body.dataset ? document.body.dataset.theme : "";
+    const htmlTheme = document.documentElement && document.documentElement.dataset ? document.documentElement.dataset.theme : "";
+    return bodyTheme === "light" || htmlTheme === "light";
+  }
+
+  function pointColor(point) {
+    if (!isLightTheme()) return point.hue;
+    return point.layer === 0 ? "15,118,110" : point.layer === 1 ? "37,99,235" : "109,40,217";
   }
 
   function drawNeuralPaths() {
@@ -146,7 +158,7 @@
         const dy = p.y - q.y;
         const dist = Math.sqrt(dx * dx + dy * dy);
         if (dist < 146) {
-          ctx.strokeStyle = "rgba(" + p.hue + "," + (0.26 * (1 - dist / 146)) + ")";
+          ctx.strokeStyle = "rgba(" + pointColor(p) + "," + ((isLightTheme() ? 0.34 : 0.26) * (1 - dist / 146)) + ")";
           ctx.lineWidth = 1;
           ctx.beginPath();
           ctx.moveTo(p.x, p.y);
@@ -158,7 +170,7 @@
       const mdy = p.y - mouseY;
       const md = Math.sqrt(mdx * mdx + mdy * mdy);
       if (md < 190) {
-        ctx.strokeStyle = "rgba(255,255,255," + (0.18 * (1 - md / 190)) + ")";
+        ctx.strokeStyle = isLightTheme() ? "rgba(15,23,42," + (0.16 * (1 - md / 190)) + ")" : "rgba(255,255,255," + (0.18 * (1 - md / 190)) + ")";
         ctx.lineWidth = 1;
         ctx.beginPath();
         ctx.moveTo(p.x, p.y);
@@ -184,8 +196,8 @@
         p.y += dy / Math.max(dist, 1) * 0.08;
       }
       ctx.beginPath();
-      ctx.fillStyle = "rgba(" + p.hue + ",0.9)";
-      ctx.shadowColor = "rgba(" + p.hue + ",0.78)";
+      ctx.fillStyle = "rgba(" + pointColor(p) + "," + (isLightTheme() ? "0.78" : "0.9") + ")";
+      ctx.shadowColor = "rgba(" + pointColor(p) + "," + (isLightTheme() ? "0.34" : "0.78") + ")";
       ctx.shadowBlur = 10;
       ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
       ctx.fill();
@@ -199,12 +211,12 @@
     const xOffset = (time * 0.018) % 220;
     ctx.lineWidth = 1;
     for (let i = -220; i < width + 220; i += 220) {
-      ctx.strokeStyle = "rgba(94,234,212,0.12)";
+      ctx.strokeStyle = isLightTheme() ? "rgba(15,118,110,0.18)" : "rgba(94,234,212,0.12)";
       ctx.beginPath();
       ctx.moveTo(i + xOffset, y1);
       ctx.bezierCurveTo(i + 70 + xOffset, y1 - 80, i + 130 + xOffset, y1 + 80, i + 220 + xOffset, y1);
       ctx.stroke();
-      ctx.strokeStyle = "rgba(96,165,250,0.105)";
+      ctx.strokeStyle = isLightTheme() ? "rgba(37,99,235,0.16)" : "rgba(96,165,250,0.105)";
       ctx.beginPath();
       ctx.moveTo(i - xOffset, y2);
       ctx.bezierCurveTo(i + 70 - xOffset, y2 + 80, i + 130 - xOffset, y2 - 80, i + 220 - xOffset, y2);

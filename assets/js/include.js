@@ -14,6 +14,10 @@
       de: '../de/ai-infrastructure-check.html',
       en: '../en/ai-infrastructure-check.html'
     },
+    'about.html': {
+      de: '../de/about.html',
+      en: '../en/about.html'
+    },
     'privacy.html': {
       de: '../de/privacy.html',
       en: '../en/privacy.html'
@@ -28,12 +32,15 @@
       languageLabel: 'English',
       languageFlag: '../images/gb.svg',
       languageAlt: 'English',
+      themeLabel: 'Design wechseln',
+      themeLight: 'Hell',
+      themeDark: 'Dunkel',
       links: [
         { key: 'home', label: 'Startseite', page: 'index.html' },
         { key: 'services', label: 'Mein Leistungspaket', page: 'index.html', hash: 'Leistungspaket' },
         { key: 'expertise', label: 'Fachwissen', page: 'expertise.html' },
         { key: 'ai-check', label: 'KI-Infrastruktur Check', page: 'ai-infrastructure-check.html' },
-        { key: 'about', label: 'Über mich', external: 'https://www.linkedin.com/in/luitwin-mallmann-18b80510b/' },
+        { key: 'about', label: 'Über mich', page: 'about.html' },
         { key: 'contact', label: 'Kontakt', page: 'index.html', hash: 'contact' },
         { key: 'privacy', label: 'Datenschutz', page: 'privacy.html' }
       ]
@@ -45,12 +52,15 @@
       languageLabel: 'Deutsch',
       languageFlag: '../images/de.svg',
       languageAlt: 'Deutsch',
+      themeLabel: 'Switch color mode',
+      themeLight: 'Light',
+      themeDark: 'Dark',
       links: [
         { key: 'home', label: 'Home', page: 'index.html' },
         { key: 'services', label: 'Services', page: 'index.html', hash: 'Leistungspaket' },
         { key: 'expertise', label: 'Expertise', page: 'expertise.html' },
         { key: 'ai-check', label: 'AI Infrastructure Check', page: 'ai-infrastructure-check.html' },
-        { key: 'about', label: 'About Me', external: 'https://www.linkedin.com/in/luitwin-mallmann-18b80510b/' },
+        { key: 'about', label: 'About Me', page: 'about.html' },
         { key: 'contact', label: 'Contact', page: 'index.html', hash: 'contact' },
         { key: 'privacy', label: 'Privacy Policy', page: 'privacy.html' }
       ]
@@ -91,7 +101,67 @@
     }
   }
 
+
+  const THEME_STORAGE_KEY = 'luitwinTheme';
+
+  function storedTheme() {
+    try {
+      const value = window.localStorage && window.localStorage.getItem(THEME_STORAGE_KEY);
+      return value === 'light' || value === 'dark' ? value : null;
+    } catch (error) {
+      return null;
+    }
+  }
+
+  function preferredTheme() {
+    const saved = storedTheme();
+    if (saved) return saved;
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) return 'light';
+    return 'dark';
+  }
+
+  function saveTheme(theme) {
+    try {
+      if (window.localStorage) window.localStorage.setItem(THEME_STORAGE_KEY, theme);
+    } catch (error) {
+      // Ignore private browsing/storage restrictions.
+    }
+  }
+
+  function themeLabels() {
+    const lang = currentLanguage();
+    return TRANSLATIONS[lang] || TRANSLATIONS.de;
+  }
+
+  function updateThemeButtons(theme) {
+    const labels = themeLabels();
+    document.querySelectorAll('[data-theme-toggle]').forEach(function (button) {
+      const text = button.querySelector('[data-theme-text]');
+      const icon = button.querySelector('[data-theme-icon]');
+      const isLight = theme === 'light';
+      button.setAttribute('aria-label', labels.themeLabel);
+      button.setAttribute('title', labels.themeLabel);
+      button.setAttribute('aria-pressed', String(isLight));
+      if (text) text.textContent = isLight ? labels.themeLight : labels.themeDark;
+      if (icon) icon.textContent = isLight ? '☀' : '☾';
+    });
+  }
+
+  function applyTheme(theme, persist) {
+    const safeTheme = theme === 'light' ? 'light' : 'dark';
+    document.documentElement.dataset.theme = safeTheme;
+    if (document.body) document.body.dataset.theme = safeTheme;
+    updateThemeButtons(safeTheme);
+    if (persist) saveTheme(safeTheme);
+  }
+
+  function toggleTheme() {
+    const current = (document.body && document.body.dataset.theme) || document.documentElement.dataset.theme || preferredTheme();
+    applyTheme(current === 'light' ? 'dark' : 'light', true);
+  }
+
   function buildHeader() {
+    applyTheme(preferredTheme(), false);
     const header = document.getElementById('header');
     if (!header) return;
 
@@ -151,15 +221,27 @@
     nav.appendChild(menu);
     header.appendChild(nav);
 
-    // Keep the language switch physically separated from the page navigation.
-    // This prevents the language-switch hit area from overlapping the first nav item.
+    // Keep all right-side controls physically separated from the page navigation.
+    // This prevents language/theme controls from overlapping normal menu items.
+    const headerActions = document.createElement('div');
+    headerActions.className = 'header-actions';
+
+    const themeToggle = document.createElement('button');
+    themeToggle.className = 'theme-toggle';
+    themeToggle.type = 'button';
+    themeToggle.setAttribute('data-theme-toggle', '');
+    themeToggle.innerHTML = '<span class="theme-toggle-icon" data-theme-icon aria-hidden="true"></span><span class="theme-toggle-text" data-theme-text></span>';
+    headerActions.appendChild(themeToggle);
+
     const languageSwitch = document.createElement('a');
     languageSwitch.className = 'language-switch';
     languageSwitch.href = languageUrl;
     languageSwitch.setAttribute('data-language-switch', '');
     languageSwitch.setAttribute('aria-label', labels.languageLabel);
     languageSwitch.innerHTML = '<img alt="' + labels.languageAlt + '" class="flag-icon" src="' + labels.languageFlag + '" /><span>' + labels.languageLabel + '</span>';
-    header.appendChild(languageSwitch);
+    headerActions.appendChild(languageSwitch);
+    header.appendChild(headerActions);
+    updateThemeButtons((document.body && document.body.dataset.theme) || preferredTheme());
   }
 
   function initNavigation() {
@@ -170,6 +252,17 @@
     const header = document.getElementById('header');
     const navMenu = document.getElementById('nav-menu');
     const burgerToggle = document.querySelector('.burger-menu-toggle');
+    const themeToggle = document.querySelector('[data-theme-toggle]');
+
+    if (themeToggle && !themeToggle.dataset.bound) {
+      themeToggle.dataset.bound = 'true';
+      themeToggle.addEventListener('click', function (event) {
+        event.preventDefault();
+        event.stopPropagation();
+        toggleTheme();
+        closeMenu();
+      });
+    }
 
     function closeMenu() {
       if (!navMenu || !burgerToggle) return;
@@ -235,6 +328,8 @@
       window.setTimeout(function () { scrollToTarget(targetId); }, 120);
     }
   }
+
+  if (document.body) applyTheme(preferredTheme(), false);
 
   if (document.getElementById('header')) {
     initNavigation();

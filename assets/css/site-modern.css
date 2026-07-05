@@ -2584,3 +2584,1193 @@ body.privacy-page #main > header p {
     z-index: 10050 !important;
   }
 }
+
+
+/* About page additions */
+.about-page #main > header {
+  padding-bottom: 3rem;
+}
+
+.about-wrapper .inner {
+  max-width: 1180px;
+}
+
+.about-hero-grid {
+  display: grid;
+  grid-template-columns: minmax(220px, 0.85fr) minmax(0, 1.75fr);
+  gap: clamp(1.2rem, 3vw, 2rem);
+  align-items: stretch;
+  margin-bottom: clamp(1.5rem, 4vw, 3rem);
+}
+
+.about-photo-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 24px;
+  min-height: 100%;
+  background: rgba(18, 24, 38, 0.78);
+  border: 1px solid rgba(255,255,255,0.12);
+  box-shadow: 0 18px 45px rgba(0,0,0,0.22);
+}
+
+.about-photo-card img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 360px;
+  object-fit: cover;
+}
+
+.about-photo-caption {
+  position: absolute;
+  left: 1rem;
+  right: 1rem;
+  bottom: 1rem;
+  padding: 0.9rem 1rem;
+  border-radius: 18px;
+  background: rgba(6, 10, 18, 0.74);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.14);
+}
+
+.about-photo-caption strong,
+.about-photo-caption span {
+  display: block;
+}
+
+.about-photo-caption strong {
+  color: #fff;
+  font-size: 1rem;
+  letter-spacing: 0.04em;
+}
+
+.about-photo-caption span {
+  color: rgba(255,255,255,0.74);
+  font-size: 0.82rem;
+  margin-top: 0.2rem;
+}
+
+.about-intro-card {
+  margin: 0;
+  height: 100%;
+}
+
+.about-intro-card .actions {
+  margin-top: 1.5rem;
+}
+
+.about-metric-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.9rem;
+  margin: 0 0 clamp(1.8rem, 4vw, 3.2rem);
+}
+
+.about-metric-grid .metric {
+  min-height: 100%;
+}
+
+.about-skills-grid {
+  margin-top: 1rem;
+}
+
+.about-timeline .process-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.about-page .cta-panel .actions {
+  align-items: center;
+}
+
+@media screen and (max-width: 980px) {
+  .about-hero-grid,
+  .about-metric-grid,
+  .about-timeline .process-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .about-photo-card img {
+    min-height: 300px;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .about-hero-grid,
+  .about-metric-grid,
+  .about-timeline .process-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-photo-card img {
+    min-height: 280px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   FINAL READABILITY + LIGHT/DARK THEME SYSTEM
+   -------------------------------------------------------------------------- */
+body[data-theme="dark"],
+html[data-theme="dark"] body {
+  --lm-bg: #07101f;
+  --lm-page-bg: #07101f;
+  --lm-card: rgba(15, 23, 42, 0.78);
+  --lm-card-strong: rgba(15, 23, 42, 0.90);
+  --lm-card-soft: rgba(15, 23, 42, 0.58);
+  --lm-text: #f8fafc;
+  --lm-heading: #ffffff;
+  --lm-muted: rgba(226, 232, 240, 0.86);
+  --lm-muted-2: rgba(203, 213, 225, 0.74);
+  --lm-border: rgba(255, 255, 255, 0.15);
+  --lm-border-strong: rgba(125, 211, 252, 0.28);
+  --lm-header-bg: rgba(4, 12, 24, 0.88);
+  --lm-header-bg-scrolled: rgba(3, 8, 18, 0.96);
+  --lm-control-bg: rgba(255, 255, 255, 0.07);
+  --lm-control-bg-hover: rgba(255, 255, 255, 0.12);
+  --lm-shadow: 0 22px 64px rgba(0, 0, 0, 0.32);
+}
+
+body[data-theme="light"],
+html[data-theme="light"] body {
+  --lm-bg: #f5f8fc;
+  --lm-page-bg: #f5f8fc;
+  --lm-card: rgba(255, 255, 255, 0.88);
+  --lm-card-strong: rgba(255, 255, 255, 0.96);
+  --lm-card-soft: rgba(255, 255, 255, 0.72);
+  --lm-text: #102033;
+  --lm-heading: #071527;
+  --lm-muted: rgba(15, 23, 42, 0.78);
+  --lm-muted-2: rgba(51, 65, 85, 0.70);
+  --lm-border: rgba(15, 23, 42, 0.12);
+  --lm-border-strong: rgba(14, 116, 144, 0.24);
+  --lm-accent: #0f766e;
+  --lm-accent-2: #2563eb;
+  --lm-accent-3: #7c3aed;
+  --lm-header-bg: rgba(255, 255, 255, 0.86);
+  --lm-header-bg-scrolled: rgba(255, 255, 255, 0.96);
+  --lm-control-bg: rgba(15, 23, 42, 0.045);
+  --lm-control-bg-hover: rgba(14, 116, 144, 0.10);
+  --lm-shadow: 0 20px 58px rgba(15, 23, 42, 0.13);
+}
+
+body.modern-site,
+body.modern-home {
+  background: var(--lm-page-bg) !important;
+  color: var(--lm-text) !important;
+}
+
+body[data-theme="light"] .site-ai-background {
+  background:
+    radial-gradient(circle at 16% 12%, rgba(20, 184, 166, 0.18), transparent 27rem),
+    radial-gradient(circle at 82% 20%, rgba(37, 99, 235, 0.14), transparent 29rem),
+    radial-gradient(circle at 54% 92%, rgba(124, 58, 237, 0.11), transparent 34rem),
+    linear-gradient(135deg, #f8fbff 0%, #edf4fb 48%, #f6f7fb 100%) !important;
+}
+
+body[data-theme="light"] .site-ai-background::before {
+  opacity: 0.52;
+  filter: blur(46px);
+}
+
+body[data-theme="light"] .site-ai-background::after {
+  background-image:
+    linear-gradient(rgba(15, 23, 42, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(15, 23, 42, 0.045) 1px, transparent 1px);
+  opacity: 0.48;
+}
+
+body[data-theme="light"] #siteAiCanvas {
+  opacity: 0.32;
+  mix-blend-mode: multiply;
+}
+
+body[data-theme="light"] .mouse-soft-glow {
+  opacity: 0.25;
+}
+
+/* Header controls: navigation, theme toggle and language switch */
+#header.ai-header,
+#header.ai-header.alt {
+  grid-template-columns: minmax(0, 1fr) auto !important;
+  background:
+    radial-gradient(circle at var(--header-mx) var(--header-my), rgba(94, 234, 212, 0.14), transparent 18rem),
+    var(--lm-header-bg) !important;
+  border-bottom-color: var(--lm-border-strong) !important;
+  color: var(--lm-text) !important;
+}
+
+#header.ai-header.is-scrolled {
+  background:
+    radial-gradient(circle at var(--header-mx) var(--header-my), rgba(96, 165, 250, 0.12), transparent 16rem),
+    var(--lm-header-bg-scrolled) !important;
+}
+
+.header-actions {
+  grid-column: 2 !important;
+  grid-row: 1 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  gap: 0.55rem !important;
+  position: relative !important;
+  z-index: 20 !important;
+  min-width: max-content !important;
+}
+
+#header.ai-header .theme-toggle,
+#header.ai-header .language-switch,
+#header.ai-header #nav-menu a,
+#header.ai-header .burger-menu-toggle {
+  color: var(--lm-text) !important;
+  background: var(--lm-control-bg) !important;
+  border-color: var(--lm-border) !important;
+}
+
+#header.ai-header .theme-toggle,
+#header.ai-header .language-switch {
+  min-height: 2.65rem !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 0.45rem !important;
+  border-radius: 999px !important;
+  line-height: 1 !important;
+  white-space: nowrap !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.08) !important;
+}
+
+#header.ai-header .theme-toggle {
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  cursor: pointer !important;
+  width: auto !important;
+  height: auto !important;
+  padding: 0 0.85rem !important;
+  margin: 0 !important;
+  font: inherit !important;
+  letter-spacing: 0.04em !important;
+  text-transform: none !important;
+}
+
+#header.ai-header .theme-toggle-icon {
+  display: inline-flex;
+  width: 1.1rem;
+  justify-content: center;
+  font-size: 0.98rem;
+}
+
+#header.ai-header .theme-toggle-text {
+  font-size: 0.76rem;
+  font-weight: 700;
+}
+
+#header.ai-header .theme-toggle:hover,
+#header.ai-header .language-switch:hover,
+#header.ai-header #nav-menu a:hover,
+#header.ai-header #nav-menu a[aria-current="page"],
+#header.ai-header .burger-menu-toggle:hover,
+#header.ai-header .burger-menu-toggle.active {
+  color: var(--lm-heading) !important;
+  background: var(--lm-control-bg-hover) !important;
+  border-color: var(--lm-border-strong) !important;
+}
+
+body[data-theme="light"] #header.ai-header #nav-menu a[aria-current="page"] {
+  color: #0f766e !important;
+}
+
+body[data-theme="light"] .burger-menu-toggle .burger-line {
+  background: #102033 !important;
+}
+
+/* More readable panels across both themes */
+.modern-site #main > header,
+.modern-home #banner .inner,
+.intro-panel,
+.metric-panel,
+.skill-card,
+.process-card,
+.cta-panel,
+.project-card,
+.result-card,
+.check-card,
+.privacy-card,
+.about-wrapper .inner > .process-section {
+  color: var(--lm-text) !important;
+}
+
+.intro-panel,
+.metric-panel,
+.skill-card,
+.process-card,
+.cta-panel,
+.metric,
+.project-card,
+.check-card,
+.privacy-card {
+  background: var(--lm-card) !important;
+  border-color: var(--lm-border) !important;
+  box-shadow: var(--lm-shadow) !important;
+}
+
+.intro-panel p,
+.skill-card p,
+.skill-card li,
+.process-card span,
+.cta-panel p,
+.metric span,
+.project-card p,
+.check-card p,
+.privacy-card p,
+.modern-site #main > header p,
+.modern-home #banner p {
+  color: var(--lm-muted) !important;
+}
+
+.intro-panel h3,
+.skill-card h4,
+.process-card strong,
+.cta-panel h3,
+.metric strong,
+.project-card h3,
+.check-card h3,
+.privacy-card h3,
+.modern-site #main > header h2,
+.modern-home #banner h1,
+.modern-home #banner h2 {
+  color: var(--lm-heading) !important;
+}
+
+.expertise-badges span,
+.project-chip,
+.skill-icon {
+  color: var(--lm-heading) !important;
+  background: linear-gradient(135deg, rgba(94, 234, 212, 0.18), rgba(96, 165, 250, 0.12)) !important;
+  border-color: var(--lm-border-strong) !important;
+}
+
+body[data-theme="light"] .button,
+body[data-theme="light"] input[type="submit"],
+body[data-theme="light"] input[type="reset"],
+body[data-theme="light"] input[type="button"] {
+  color: #102033 !important;
+  box-shadow: inset 0 0 0 2px rgba(15, 23, 42, 0.22) !important;
+}
+
+body[data-theme="light"] .button.primary,
+body[data-theme="light"] input[type="submit"].primary,
+body[data-theme="light"] input[type="reset"].primary,
+body[data-theme="light"] input[type="button"].primary {
+  color: #ffffff !important;
+  background: linear-gradient(135deg, #0f766e, #2563eb) !important;
+  box-shadow: none !important;
+}
+
+body[data-theme="light"] #footer,
+body[data-theme="light"] #footer .copyright,
+body[data-theme="light"] #footer .icons a {
+  color: rgba(15, 23, 42, 0.72) !important;
+}
+
+/* About page: text-first layout matching the other internal pages */
+.about-page #main > header {
+  padding-bottom: 3rem;
+}
+
+.about-wrapper .inner {
+  max-width: 1180px;
+}
+
+.about-intro-grid {
+  align-items: stretch;
+  margin-bottom: clamp(1.8rem, 4vw, 3.2rem);
+}
+
+.about-profile-facts {
+  display: grid !important;
+  gap: 0.9rem !important;
+  align-content: stretch !important;
+}
+
+.about-profile-facts .metric {
+  min-height: 100%;
+}
+
+.about-intro-card {
+  margin: 0;
+  height: 100%;
+}
+
+.about-intro-card .actions {
+  margin-top: 1.5rem;
+}
+
+.about-skills-grid {
+  margin-top: 1rem;
+}
+
+.about-timeline .process-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.about-page .cta-panel .actions {
+  align-items: center;
+}
+
+/* Disable the old portrait-led About layout if old markup is still cached. */
+.about-hero-grid {
+  grid-template-columns: 1fr !important;
+}
+
+.about-photo-card {
+  display: none !important;
+}
+
+@media screen and (max-width: 1220px) {
+  .header-actions {
+    gap: 0.45rem !important;
+  }
+
+  #header.ai-header .theme-toggle-text {
+    display: none;
+  }
+
+  #header.ai-header .theme-toggle {
+    width: 2.65rem !important;
+    padding: 0 !important;
+  }
+
+  #header.ai-header #nav-menu.open {
+    background: var(--lm-card-strong) !important;
+    border-color: var(--lm-border-strong) !important;
+  }
+}
+
+@media screen and (max-width: 980px) {
+  .about-intro-grid,
+  .about-timeline .process-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .about-intro-grid,
+  .about-timeline .process-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .header-actions {
+    gap: 0.35rem !important;
+  }
+
+  #header.ai-header .language-switch span {
+    display: none !important;
+  }
+
+  #header.ai-header .language-switch {
+    min-width: 2.65rem !important;
+    padding-left: 0.65rem !important;
+    padding-right: 0.65rem !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   FINAL PATCH: ABOUT HEADER IMAGE REMOVAL + VISIBLE LIGHT BACKGROUND
+   -------------------------------------------------------------------------- */
+body.about-page #main > header {
+  position: relative !important;
+  padding: clamp(8rem, 13vw, 10.5rem) 1.5rem clamp(3rem, 7vw, 4.8rem) !important;
+  text-align: center !important;
+  background: transparent !important;
+  background-image: none !important;
+  overflow: hidden !important;
+}
+
+body.about-page #main > header::before {
+  content: "";
+  position: absolute;
+  inset: 5.6rem max(1rem, calc((100vw - 980px) / 2)) 1.4rem;
+  border-radius: 32px;
+  background:
+    radial-gradient(circle at 18% 20%, rgba(94, 234, 212, 0.12), transparent 18rem),
+    radial-gradient(circle at 86% 76%, rgba(96, 165, 250, 0.11), transparent 18rem),
+    var(--lm-card-soft);
+  border: 1px solid var(--lm-border-strong);
+  box-shadow: var(--lm-shadow);
+  backdrop-filter: blur(18px);
+  z-index: -1;
+}
+
+body.about-page #main > header h2,
+body.about-page #main > header p,
+body.about-page #main > header .section-eyebrow,
+body.about-page #main > header .expertise-badges {
+  position: relative;
+  z-index: 1;
+}
+
+body[data-theme="light"].about-page #main > header::before {
+  background:
+    radial-gradient(circle at 16% 20%, rgba(20, 184, 166, 0.12), transparent 18rem),
+    radial-gradient(circle at 88% 78%, rgba(37, 99, 235, 0.10), transparent 18rem),
+    rgba(255, 255, 255, 0.78);
+}
+
+/* Keep the animated AI background visible in light mode by using stronger
+   contrast and a darker canvas palette. */
+body[data-theme="light"] .site-ai-background {
+  background:
+    radial-gradient(circle at 16% 12%, rgba(20, 184, 166, 0.26), transparent 27rem),
+    radial-gradient(circle at 82% 20%, rgba(37, 99, 235, 0.22), transparent 29rem),
+    radial-gradient(circle at 54% 92%, rgba(124, 58, 237, 0.18), transparent 34rem),
+    linear-gradient(135deg, #f4f9ff 0%, #eaf3fb 48%, #f7f4ff 100%) !important;
+}
+
+body[data-theme="light"] .site-ai-background::before {
+  opacity: 0.82 !important;
+  filter: blur(42px) saturate(1.15) !important;
+}
+
+body[data-theme="light"] .site-ai-background::after {
+  background-image:
+    linear-gradient(rgba(15, 23, 42, 0.075) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(15, 23, 42, 0.075) 1px, transparent 1px) !important;
+  opacity: 0.72 !important;
+}
+
+body[data-theme="light"] #siteAiCanvas {
+  opacity: 0.62 !important;
+  mix-blend-mode: multiply !important;
+  filter: saturate(1.25) contrast(1.12) !important;
+}
+
+body[data-theme="light"] .mouse-soft-glow {
+  opacity: 0.38 !important;
+  filter: blur(48px) saturate(1.2) !important;
+}
+
+@media screen and (max-width: 736px) {
+  body.about-page #main > header::before {
+    inset: 5.25rem 0.75rem 1rem;
+    border-radius: 24px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   FINAL PATCH: PROJECT FRAME SPACING + ABOUT PORTRAIT RESTORE
+   -------------------------------------------------------------------------- */
+.projects-section {
+  padding-left: clamp(0.75rem, 2vw, 1.25rem) !important;
+  padding-right: clamp(0.75rem, 2vw, 1.25rem) !important;
+}
+
+.projects-inner {
+  box-sizing: border-box !important;
+  width: min(1180px, 100%) !important;
+  padding: clamp(1.25rem, 3vw, 2.75rem) !important;
+  border-radius: 34px !important;
+  border: 1px solid var(--lm-border-strong) !important;
+  overflow: hidden !important;
+  box-shadow: var(--lm-shadow) !important;
+}
+
+.project-grid {
+  gap: clamp(1rem, 2vw, 1.35rem) !important;
+}
+
+.projects-heading {
+  margin-bottom: clamp(1.5rem, 3vw, 2.4rem) !important;
+}
+
+body[data-theme="light"] .projects-inner {
+  background:
+    radial-gradient(circle at 12% 8%, rgba(20, 184, 166, 0.12), transparent 24rem),
+    radial-gradient(circle at 90% 12%, rgba(37, 99, 235, 0.10), transparent 26rem),
+    rgba(255, 255, 255, 0.72) !important;
+  border-color: rgba(15, 23, 42, 0.14) !important;
+}
+
+/* Restore the portrait on About pages, but keep it inside the content area —
+   not behind the name/header. */
+.about-intro-grid {
+  display: grid !important;
+  grid-template-columns: minmax(210px, 0.72fr) minmax(0, 1.45fr) minmax(250px, 0.86fr) !important;
+  gap: clamp(1rem, 2.4vw, 1.45rem) !important;
+  align-items: stretch !important;
+}
+
+.about-photo-card {
+  display: block !important;
+  position: relative !important;
+  min-height: 100% !important;
+  margin: 0 !important;
+  overflow: hidden !important;
+  border-radius: 28px !important;
+  background: var(--lm-card) !important;
+  border: 1px solid var(--lm-border) !important;
+  box-shadow: var(--lm-shadow) !important;
+}
+
+.about-photo-card img {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 420px !important;
+  object-fit: cover !important;
+  object-position: center top !important;
+  filter: saturate(1.02) contrast(1.02) !important;
+}
+
+.about-photo-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, transparent 42%, rgba(3, 7, 18, 0.62) 100%);
+}
+
+.about-photo-caption {
+  position: absolute !important;
+  left: 1rem !important;
+  right: 1rem !important;
+  bottom: 1rem !important;
+  z-index: 2 !important;
+  padding: 0.85rem 1rem !important;
+  border-radius: 18px !important;
+  background: rgba(6, 10, 18, 0.72) !important;
+  border: 1px solid rgba(255, 255, 255, 0.16) !important;
+  backdrop-filter: blur(14px) !important;
+}
+
+.about-photo-caption strong,
+.about-photo-caption span {
+  display: block !important;
+}
+
+.about-photo-caption strong {
+  color: #ffffff !important;
+  font-size: 1rem !important;
+  line-height: 1.2 !important;
+}
+
+.about-photo-caption span {
+  margin-top: 0.25rem !important;
+  color: rgba(255, 255, 255, 0.78) !important;
+  font-size: 0.82rem !important;
+  line-height: 1.35 !important;
+}
+
+body[data-theme="light"] .about-photo-card {
+  background: rgba(255, 255, 255, 0.76) !important;
+  border-color: rgba(15, 23, 42, 0.14) !important;
+}
+
+@media screen and (max-width: 1120px) {
+  .about-intro-grid {
+    grid-template-columns: minmax(220px, 0.8fr) minmax(0, 1.2fr) !important;
+  }
+
+  .about-profile-facts {
+    grid-column: 1 / -1 !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
+
+  .about-photo-card img {
+    min-height: 360px !important;
+  }
+}
+
+@media screen and (max-width: 736px) {
+  .projects-inner {
+    padding: 1rem !important;
+    border-radius: 24px !important;
+  }
+
+  .about-intro-grid,
+  .about-profile-facts {
+    grid-template-columns: 1fr !important;
+  }
+
+  .about-photo-card img {
+    min-height: 320px !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   FINAL RESPONSIVE + READABILITY PASS
+   --------------------------------------------------------------------------
+   Goal: keep buttons inside cards, make the site usable on phones/tablets,
+   and improve light-mode contrast across all content surfaces.
+*/
+
+/* Accessible mobile viewport support: avoid horizontal page drift. */
+html,
+body,
+#page-wrapper,
+.wrapper,
+.inner,
+section,
+article,
+div {
+  max-width: 100%;
+}
+
+body.modern-site,
+body.modern-home {
+  overflow-x: hidden !important;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+/* Stronger base text contrast, especially in light mode where the template
+   still injects some low-contrast inherited colors. */
+body[data-theme="light"],
+html[data-theme="light"] body {
+  --lm-text: #0b1728;
+  --lm-heading: #03111f;
+  --lm-muted: rgba(15, 23, 42, 0.86);
+  --lm-muted-2: rgba(30, 41, 59, 0.78);
+  --lm-card: rgba(255, 255, 255, 0.93);
+  --lm-card-strong: rgba(255, 255, 255, 0.98);
+  --lm-card-soft: rgba(255, 255, 255, 0.84);
+  --lm-border: rgba(15, 23, 42, 0.16);
+  --lm-border-strong: rgba(14, 116, 144, 0.30);
+  --lm-control-bg: rgba(15, 23, 42, 0.06);
+  --lm-control-bg-hover: rgba(14, 116, 144, 0.13);
+}
+
+body[data-theme="light"] p,
+body[data-theme="light"] li,
+body[data-theme="light"] dd,
+body[data-theme="light"] td,
+body[data-theme="light"] label,
+body[data-theme="light"] small,
+body[data-theme="light"] .subtitle,
+body[data-theme="light"] .project-subtitle,
+body[data-theme="light"] .project-details,
+body[data-theme="light"] .project-details li,
+body[data-theme="light"] .project-content p,
+body[data-theme="light"] .check-card p,
+body[data-theme="light"] .result-card p,
+body[data-theme="light"] .privacy-card p,
+body[data-theme="light"] .intro-panel p,
+body[data-theme="light"] .skill-card p,
+body[data-theme="light"] .process-card span,
+body[data-theme="light"] .metric span,
+body[data-theme="light"] .cta-panel p,
+body[data-theme="light"] #contact p,
+body[data-theme="light"] #footer,
+body[data-theme="light"] #footer * {
+  color: var(--lm-muted) !important;
+}
+
+body[data-theme="light"] h1,
+body[data-theme="light"] h2,
+body[data-theme="light"] h3,
+body[data-theme="light"] h4,
+body[data-theme="light"] h5,
+body[data-theme="light"] h6,
+body[data-theme="light"] strong,
+body[data-theme="light"] b,
+body[data-theme="light"] .metric strong,
+body[data-theme="light"] .process-card strong,
+body[data-theme="light"] .project-content h3,
+body[data-theme="light"] .skill-card h4 {
+  color: var(--lm-heading) !important;
+}
+
+body[data-theme="light"] a:not(.button):not(.language-switch):not(.icon) {
+  color: #0f766e !important;
+}
+
+body[data-theme="light"] .section-eyebrow,
+body[data-theme="light"] .section-kicker {
+  color: #0f766e !important;
+}
+
+/* Make all glass cards readable and consistent in both themes. */
+.intro-panel,
+.metric-panel,
+.skill-card,
+.process-card,
+.cta-panel,
+.metric,
+.project-card,
+.projects-inner,
+.check-card,
+.result-card,
+.privacy-card,
+#contact .inner,
+#contact .contact-panel,
+.about-photo-card {
+  min-width: 0 !important;
+  color: var(--lm-text) !important;
+  background-color: var(--lm-card) !important;
+  border-color: var(--lm-border) !important;
+}
+
+body[data-theme="light"] .intro-panel,
+body[data-theme="light"] .metric-panel,
+body[data-theme="light"] .skill-card,
+body[data-theme="light"] .process-card,
+body[data-theme="light"] .cta-panel,
+body[data-theme="light"] .metric,
+body[data-theme="light"] .project-card,
+body[data-theme="light"] .check-card,
+body[data-theme="light"] .result-card,
+body[data-theme="light"] .privacy-card,
+body[data-theme="light"] #contact .inner,
+body[data-theme="light"] #contact .contact-panel {
+  background: var(--lm-card-strong) !important;
+  box-shadow: 0 18px 48px rgba(15, 23, 42, 0.12) !important;
+}
+
+/* Buttons and action rows: prevent the exact About-page overflow. */
+ul.actions,
+ul.actions.special,
+.actions,
+.cta-panel .actions,
+.about-intro-card .actions,
+.about-page .cta-panel .actions,
+#banner .actions,
+#contact .actions,
+.contact-actions {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  gap: 0.75rem !important;
+  margin-left: 0 !important;
+  padding-left: 0 !important;
+  max-width: 100% !important;
+}
+
+ul.actions li,
+ul.actions.special li,
+.actions li,
+.cta-panel .actions li,
+.about-intro-card .actions li,
+.about-page .cta-panel .actions li,
+#banner .actions li,
+#contact .actions li,
+.contact-actions li {
+  margin: 0 !important;
+  padding: 0 !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+}
+
+.button,
+.button.primary,
+a.button,
+input[type="submit"],
+input[type="reset"],
+input[type="button"] {
+  max-width: 100% !important;
+  min-width: 0 !important;
+  height: auto !important;
+  white-space: normal !important;
+  overflow-wrap: anywhere !important;
+  word-break: normal !important;
+  line-height: 1.25 !important;
+  text-align: center !important;
+}
+
+.about-intro-card .button,
+.about-page .cta-panel .button,
+#contact .button,
+#banner .button {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-height: 2.85rem !important;
+}
+
+/* About page: keep the portrait, but stop the three-column layout from
+   squeezing text/buttons on medium screens. */
+.about-intro-grid {
+  grid-template-columns: minmax(220px, 0.72fr) minmax(0, 1.35fr) !important;
+  grid-template-areas:
+    "photo intro"
+    "facts facts" !important;
+  align-items: stretch !important;
+}
+
+.about-photo-card {
+  grid-area: photo !important;
+}
+
+.about-intro-card {
+  grid-area: intro !important;
+}
+
+.about-profile-facts {
+  grid-area: facts !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+}
+
+.about-intro-card,
+.about-profile-facts,
+.about-photo-card,
+.about-page .cta-panel,
+.about-skills-grid,
+.about-timeline,
+.projects-inner {
+  overflow: hidden !important;
+}
+
+.about-intro-card p,
+.about-intro-card li,
+.about-intro-card a,
+.about-profile-facts span,
+.skill-card p,
+.process-card span,
+.cta-panel p,
+.project-card p,
+.project-card li {
+  overflow-wrap: anywhere !important;
+  hyphens: auto;
+}
+
+.about-photo-card img {
+  min-height: 360px !important;
+}
+
+/* Site-wide grid behavior for tablet/phone. */
+.project-grid,
+.skills-grid,
+.about-skills-grid,
+.process-grid,
+.about-timeline .process-grid,
+.intro-grid,
+.about-intro-grid,
+.about-profile-facts,
+.privacy-page .legal-intro-grid,
+.ai-check-page .contact-grid,
+#contact .contact-grid {
+  min-width: 0 !important;
+}
+
+@media screen and (max-width: 1180px) {
+  .projects-inner,
+  .about-wrapper .inner,
+  .expertise-page .wrapper.style5 .inner,
+  .ai-check-page .wrapper .inner,
+  .privacy-page .wrapper .inner,
+  #contact .inner {
+    width: min(100% - 2rem, 980px) !important;
+  }
+
+  .about-timeline .process-grid,
+  .process-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+@media screen and (max-width: 980px) {
+  body.about-page #main > header,
+  .expertise-page #main > header,
+  .privacy-page #main > header,
+  .ai-check-page #quiz-banner,
+  #banner {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  .about-intro-grid {
+    grid-template-columns: minmax(190px, 0.68fr) minmax(0, 1.15fr) !important;
+    gap: 1rem !important;
+  }
+
+  .about-profile-facts {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
+
+  .skills-grid,
+  .about-skills-grid,
+  .project-grid,
+  .intro-grid,
+  .privacy-page .legal-intro-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .project-card,
+  .project-card.is-open {
+    min-height: auto !important;
+  }
+}
+
+@media screen and (max-width: 760px) {
+  .projects-inner,
+  .about-wrapper .inner,
+  .expertise-page .wrapper.style5 .inner,
+  .ai-check-page .wrapper .inner,
+  .privacy-page .wrapper .inner,
+  #contact .inner {
+    width: min(100% - 1.25rem, 680px) !important;
+  }
+
+  .about-intro-grid {
+    grid-template-columns: 1fr !important;
+    grid-template-areas:
+      "photo"
+      "intro"
+      "facts" !important;
+  }
+
+  .about-profile-facts,
+  .about-timeline .process-grid,
+  .process-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .about-photo-card img {
+    min-height: 300px !important;
+    max-height: 520px !important;
+  }
+
+  .intro-panel,
+  .metric-panel,
+  .skill-card,
+  .process-card,
+  .cta-panel,
+  .project-card,
+  .check-card,
+  .result-card,
+  .privacy-card {
+    border-radius: 20px !important;
+  }
+
+  .projects-inner {
+    border-radius: 24px !important;
+    padding: 1rem !important;
+  }
+
+  .expertise-badges {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 0.55rem !important;
+  }
+}
+
+@media screen and (max-width: 560px) {
+  #header.ai-header,
+  #header.ai-header.alt {
+    grid-template-columns: auto auto !important;
+    padding: 0.45rem 0.55rem !important;
+  }
+
+  .header-actions {
+    gap: 0.3rem !important;
+  }
+
+  #header.ai-header .theme-toggle,
+  #header.ai-header .language-switch,
+  .burger-menu-toggle {
+    width: 2.5rem !important;
+    min-width: 2.5rem !important;
+    height: 2.5rem !important;
+    min-height: 2.5rem !important;
+    padding: 0 !important;
+  }
+
+  #header.ai-header .language-switch span,
+  #header.ai-header .theme-toggle-text {
+    display: none !important;
+  }
+
+  body.about-page #main > header,
+  .expertise-page #main > header,
+  .privacy-page #main > header,
+  .ai-check-page #quiz-banner,
+  #banner {
+    padding-top: 6.4rem !important;
+  }
+
+  body.about-page #main > header h2,
+  .expertise-page #main > header h2,
+  .privacy-page #main > header h2,
+  #banner h1,
+  #banner h2 {
+    font-size: clamp(1.7rem, 11vw, 2.35rem) !important;
+    line-height: 1.08 !important;
+    overflow-wrap: anywhere !important;
+  }
+
+  body.about-page #main > header p,
+  .expertise-page #main > header p,
+  .privacy-page #main > header p,
+  #banner p {
+    font-size: 0.98rem !important;
+    line-height: 1.55 !important;
+  }
+
+  .about-photo-card img {
+    min-height: 270px !important;
+  }
+
+  ul.actions,
+  ul.actions.special,
+  .actions,
+  .cta-panel .actions,
+  .about-intro-card .actions,
+  .about-page .cta-panel .actions,
+  #banner .actions,
+  #contact .actions,
+  .contact-actions {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    width: 100% !important;
+  }
+
+  ul.actions li,
+  ul.actions.special li,
+  .actions li,
+  .cta-panel .actions li,
+  .about-intro-card .actions li,
+  .about-page .cta-panel .actions li,
+  #banner .actions li,
+  #contact .actions li,
+  .contact-actions li {
+    width: 100% !important;
+  }
+
+  .button,
+  .button.primary,
+  a.button,
+  input[type="submit"],
+  input[type="reset"],
+  input[type="button"] {
+    width: 100% !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  .project-content,
+  .intro-panel,
+  .metric-panel,
+  .skill-card,
+  .process-card,
+  .cta-panel {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+}
+
+@media screen and (max-width: 380px) {
+  .projects-inner,
+  .about-wrapper .inner,
+  .expertise-page .wrapper.style5 .inner,
+  .ai-check-page .wrapper .inner,
+  .privacy-page .wrapper .inner,
+  #contact .inner {
+    width: min(100% - 0.8rem, 360px) !important;
+  }
+
+  .about-photo-caption {
+    left: 0.65rem !important;
+    right: 0.65rem !important;
+    bottom: 0.65rem !important;
+    padding: 0.75rem !important;
+  }
+}
+
