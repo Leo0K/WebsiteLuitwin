@@ -177,7 +177,6 @@ body.modern-home #page-wrapper {
   text-transform: uppercase;
 }
 
-/* Home page */
 #banner {
   min-height: auto !important;
   padding: 8.5rem 1.25rem 5rem !important;
@@ -450,7 +449,6 @@ body.modern-home #page-wrapper {
   border: 1px solid rgba(255,255,255,0.12);
 }
 
-/* Generic expertise page */
 .expertise-page #main > header {
   position: relative;
   min-height: auto;
@@ -628,7 +626,6 @@ body.modern-home #page-wrapper {
   z-index: 2;
 }
 
-/* AI infrastructure check */
 .ai-check-page #quiz-banner {
   padding: 8rem 1rem 3rem;
   background: transparent !important;
@@ -877,8 +874,6 @@ body.modern-home #page-wrapper {
   * { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
 }
 
-
-/* Transparency and AI-check CTA refinements */
 .modern-home #banner .inner,
 .expertise-page .wrapper.style5 .inner,
 .quiz-card,
@@ -953,7 +948,6 @@ body.modern-home #page-wrapper {
   }
 }
 
-/* Responsive robustness pass */
 .modern-site .inner,
 .modern-home .inner,
 .projects-inner,
@@ -988,7 +982,6 @@ body.modern-home #page-wrapper {
   word-break: normal;
 }
 
-/* More transparent shared inner panels, still readable */
 .modern-home #banner .inner,
 .expertise-page .wrapper.style5 .inner,
 .ai-check-page #quiz-banner .inner,
@@ -1027,7 +1020,6 @@ body.modern-home #page-wrapper {
   background: rgba(255,255,255,0.055) !important;
 }
 
-/* Header and navigation do not overlap content at intermediate widths */
 #header {
   display: flex !important;
   align-items: center;
@@ -1133,7 +1125,6 @@ body.modern-home #page-wrapper {
   }
 }
 
-/* Cards and sections adapt smoothly at tablet widths */
 @media screen and (max-width: 900px) {
   .features {
     display: grid !important;
@@ -1259,7 +1250,6 @@ body.modern-home #page-wrapper {
   }
 }
 
-/* Leistungspaket polish */
 .modern-home #Leistungspaket {
   position: relative;
   padding: clamp(4rem, 8vw, 6.5rem) 1rem !important;
@@ -1429,7 +1419,6 @@ body.modern-home #page-wrapper {
   }
 }
 
-/* Contact section polish */
 #contact {
   position: relative;
   padding: clamp(3.5rem, 7vw, 6rem) 1rem !important;
@@ -1650,10 +1639,6 @@ body.modern-home #page-wrapper {
   }
 }
 
-
-/* --------------------------------------------------------------------------
-   Final cross-page responsive/header fixes
-   -------------------------------------------------------------------------- */
 :root {
   --lm-surface: rgba(15, 23, 42, 0.42);
   --lm-surface-strong: rgba(15, 23, 42, 0.58);
@@ -1676,7 +1661,6 @@ body.modern-home {
   min-width: 0;
 }
 
-/* Consistent top navigation on every page */
 #header,
 #header.alt {
   position: fixed !important;
@@ -1793,7 +1777,6 @@ body.modern-home {
   cursor: pointer;
 }
 
-/* Use the burger earlier so intermediate window sizes cannot overlap. */
 @media screen and (max-width: 1220px) {
   #header {
     grid-template-columns: minmax(0, auto) auto;
@@ -1888,14 +1871,12 @@ body.modern-home {
   }
 }
 
-/* Give all pages enough top spacing below the fixed header. */
 #banner,
 .expertise-page #main > header,
 .ai-check-page #quiz-banner {
   padding-top: clamp(7rem, 9vw, 8.75rem) !important;
 }
 
-/* More transparent shared panels, but keep contrast readable. */
 .modern-home #banner .inner,
 .expertise-page .wrapper.style5 .inner,
 .ai-check-page #quiz-banner .inner,
@@ -1927,7 +1908,6 @@ body.modern-home {
   border-color: rgba(255,255,255,0.15) !important;
 }
 
-/* Text and content never overflow cards. */
 .modern-site h1,
 .modern-site h2,
 .modern-site h3,
@@ -1951,7 +1931,6 @@ body.modern-home {
   hyphens: auto;
 }
 
-/* Generic page spacing fixes */
 .expertise-page .wrapper.style5 {
   padding-inline: 1rem !important;
 }
@@ -1974,7 +1953,6 @@ body.modern-home {
   min-width: 0;
 }
 
-/* AI infra page layout fixes */
 .ai-check-page #quiz-banner {
   padding-inline: 1rem !important;
 }
@@ -2012,7 +1990,6 @@ body.modern-home {
   min-width: min(8rem, 35vw) !important;
 }
 
-/* Contact section stays clean on every page. */
 #contact .inner,
 #contact .contact-panel,
 .ai-check-page #contact .inner {
@@ -2122,10 +2099,6 @@ body.modern-home {
   }
 }
 
-
-/* --------------------------------------------------------------------------
-   Shared AI header polish
-   -------------------------------------------------------------------------- */
 #header.ai-header,
 #header.ai-header.alt {
   --header-mx: 50%;
@@ -2307,8 +2280,6 @@ body.modern-home {
   }
 }
 
-
-/* Privacy page */
 .privacy-page .legal-hero {
   min-height: 46vh;
   display: grid;
@@ -2421,8 +2392,6 @@ body.modern-home {
   }
 }
 
-
-/* Privacy page aligned with shared modern pages */
 .privacy-page #main > header {
   padding-top: clamp(8rem, 13vw, 11rem);
   padding-bottom: clamp(3rem, 7vw, 5rem);
@@ -2462,8 +2431,6 @@ body.modern-home {
   }
 }
 
-
-/* Robust anchor positioning under the fixed AI header */
 #Leistungspaket,
 #contact,
 #two,
@@ -2479,7 +2446,6 @@ body.modern-home {
     scroll-margin-top: 92px;
   }
 }
-
 
 .project-logo-subtitle {
   display: block;
@@ -2505,7 +2471,6 @@ body.modern-home {
   background: rgba(255, 255, 255, 0.96);
 }
 
-
 body.privacy-page #main > header {
   padding: 8rem 1.5rem 4rem !important;
   text-align: center;
@@ -2520,12 +2485,7 @@ body.privacy-page #main > header h2 {
 body.privacy-page #main > header p {
   color: rgba(248, 250, 252, 0.72);
 }
-/* --------------------------------------------------------------------------
-   FINAL CLICK-SAFE HEADER OVERRIDE
-   --------------------------------------------------------------------------
-   The language switch is intentionally isolated from the normal navigation.
-   This prevents clicks on "Startseite/Home" from landing on the language link.
-*/
+
 #header.ai-header,
 #header.ai-header.alt {
   display: grid !important;
@@ -2585,8 +2545,6 @@ body.privacy-page #main > header p {
   }
 }
 
-
-/* About page additions */
 .about-page #main > header {
   padding-bottom: 3rem;
 }
@@ -2706,9 +2664,6 @@ body.privacy-page #main > header p {
   }
 }
 
-/* --------------------------------------------------------------------------
-   FINAL READABILITY + LIGHT/DARK THEME SYSTEM
-   -------------------------------------------------------------------------- */
 body[data-theme="dark"],
 html[data-theme="dark"] body {
   --lm-bg: #07101f;
@@ -2787,7 +2742,6 @@ body[data-theme="light"] .mouse-soft-glow {
   opacity: 0.25;
 }
 
-/* Header controls: navigation, theme toggle and language switch */
 #header.ai-header,
 #header.ai-header.alt {
   grid-template-columns: minmax(0, 1fr) auto !important;
@@ -2882,7 +2836,6 @@ body[data-theme="light"] .burger-menu-toggle .burger-line {
   background: #102033 !important;
 }
 
-/* More readable panels across both themes */
 .modern-site #main > header,
 .modern-home #banner .inner,
 .intro-panel,
@@ -2971,7 +2924,6 @@ body[data-theme="light"] #footer .icons a {
   color: rgba(15, 23, 42, 0.72) !important;
 }
 
-/* About page: text-first layout matching the other internal pages */
 .about-page #main > header {
   padding-bottom: 3rem;
 }
@@ -3016,7 +2968,6 @@ body[data-theme="light"] #footer .icons a {
   align-items: center;
 }
 
-/* Disable the old portrait-led About layout if old markup is still cached. */
 .about-hero-grid {
   grid-template-columns: 1fr !important;
 }
@@ -3073,9 +3024,6 @@ body[data-theme="light"] #footer .icons a {
   }
 }
 
-/* --------------------------------------------------------------------------
-   FINAL PATCH: ABOUT HEADER IMAGE REMOVAL + VISIBLE LIGHT BACKGROUND
-   -------------------------------------------------------------------------- */
 body.about-page #main > header {
   position: relative !important;
   padding: clamp(8rem, 13vw, 10.5rem) 1.5rem clamp(3rem, 7vw, 4.8rem) !important;
@@ -3115,8 +3063,6 @@ body[data-theme="light"].about-page #main > header::before {
     rgba(255, 255, 255, 0.78);
 }
 
-/* Keep the animated AI background visible in light mode by using stronger
-   contrast and a darker canvas palette. */
 body[data-theme="light"] .site-ai-background {
   background:
     radial-gradient(circle at 16% 12%, rgba(20, 184, 166, 0.26), transparent 27rem),
@@ -3155,9 +3101,6 @@ body[data-theme="light"] .mouse-soft-glow {
   }
 }
 
-/* --------------------------------------------------------------------------
-   FINAL PATCH: PROJECT FRAME SPACING + ABOUT PORTRAIT RESTORE
-   -------------------------------------------------------------------------- */
 .projects-section {
   padding-left: clamp(0.75rem, 2vw, 1.25rem) !important;
   padding-right: clamp(0.75rem, 2vw, 1.25rem) !important;
@@ -3189,8 +3132,6 @@ body[data-theme="light"] .projects-inner {
   border-color: rgba(15, 23, 42, 0.14) !important;
 }
 
-/* Restore the portrait on About pages, but keep it inside the content area —
-   not behind the name/header. */
 .about-intro-grid {
   display: grid !important;
   grid-template-columns: minmax(210px, 0.72fr) minmax(0, 1.45fr) minmax(250px, 0.86fr) !important;
@@ -3295,14 +3236,6 @@ body[data-theme="light"] .about-photo-card {
   }
 }
 
-/* --------------------------------------------------------------------------
-   FINAL RESPONSIVE + READABILITY PASS
-   --------------------------------------------------------------------------
-   Goal: keep buttons inside cards, make the site usable on phones/tablets,
-   and improve light-mode contrast across all content surfaces.
-*/
-
-/* Accessible mobile viewport support: avoid horizontal page drift. */
 html,
 body,
 #page-wrapper,
@@ -3321,8 +3254,6 @@ body.modern-home {
   text-size-adjust: 100%;
 }
 
-/* Stronger base text contrast, especially in light mode where the template
-   still injects some low-contrast inherited colors. */
 body[data-theme="light"],
 html[data-theme="light"] body {
   --lm-text: #0b1728;
@@ -3387,7 +3318,6 @@ body[data-theme="light"] .section-kicker {
   color: #0f766e !important;
 }
 
-/* Make all glass cards readable and consistent in both themes. */
 .intro-panel,
 .metric-panel,
 .skill-card,
@@ -3424,7 +3354,6 @@ body[data-theme="light"] #contact .contact-panel {
   box-shadow: 0 18px 48px rgba(15, 23, 42, 0.12) !important;
 }
 
-/* Buttons and action rows: prevent the exact About-page overflow. */
 ul.actions,
 ul.actions.special,
 .actions,
@@ -3484,8 +3413,6 @@ input[type="button"] {
   min-height: 2.85rem !important;
 }
 
-/* About page: keep the portrait, but stop the three-column layout from
-   squeezing text/buttons on medium screens. */
 .about-intro-grid {
   grid-template-columns: minmax(220px, 0.72fr) minmax(0, 1.35fr) !important;
   grid-template-areas:
@@ -3534,7 +3461,6 @@ input[type="button"] {
   min-height: 360px !important;
 }
 
-/* Site-wide grid behavior for tablet/phone. */
 .project-grid,
 .skills-grid,
 .about-skills-grid,
@@ -3774,9 +3700,6 @@ input[type="button"] {
   }
 }
 
-
-
-/* UX feature pass: active nav, scroll progress, tech stack, project modal, contact form, enhanced footer. */
 .scroll-progress {
   position: fixed;
   top: 0;
@@ -4265,8 +4188,6 @@ input[type="button"] {
   }
 }
 
-
-/* Final About hero tagline polish: prevent long intro text from looking like an overflowing label. */
 body.about-page #main > header .about-hero-tagline {
   max-width: min(720px, calc(100vw - 3rem)) !important;
   margin: 0.85rem auto 1.25rem !important;
@@ -4295,13 +4216,6 @@ body[data-theme="light"].about-page #main > header .about-hero-tagline {
   }
 }
 
-/* --------------------------------------------------------------------------
-   Modern button polish
-   --------------------------------------------------------------------------
-   A single button system for CTAs, form actions, project details, cookie
-   controls and compact header controls. It keeps the original HTML intact but
-   makes buttons feel more current, readable and touch-friendly.
-*/
 :root {
   --lm-button-radius: 999px;
   --lm-button-shadow: 0 14px 34px rgba(37, 99, 235, 0.22), 0 6px 16px rgba(0, 0, 0, 0.18);
@@ -4687,13 +4601,6 @@ body[data-theme="light"] .project-detail-button:hover {
   }
 }
 
-/* --------------------------------------------------------------------------
-   FINAL CLEAN THEME REFINEMENT
-   --------------------------------------------------------------------------
-   Cleaner light-mode palette, consistent card surfaces, readable text and a
-   slightly calmer dark mode. This is intentionally appended as the final layer
-   so it overrides older one-off color fixes from previous iterations.
-*/
 :root {
   color-scheme: dark light;
   --lm-radius-lg: 30px;
@@ -4755,7 +4662,6 @@ body.modern-home {
   color: var(--lm-text) !important;
 }
 
-/* Softer, cleaner animated background in light mode while keeping it visible. */
 body[data-theme="light"] .site-ai-background {
   background:
     radial-gradient(circle at 14% 12%, rgba(20, 184, 166, 0.18), transparent 26rem),
@@ -4790,7 +4696,6 @@ body[data-theme="dark"] .site-ai-background {
     linear-gradient(135deg, #06101f 0%, #0b1628 48%, #101827 100%) !important;
 }
 
-/* Global text color normalization. */
 body[data-theme="light"] h1,
 body[data-theme="light"] h2,
 body[data-theme="light"] h3,
@@ -4861,7 +4766,6 @@ body[data-theme="light"] .project-modal__eyebrow {
   color: var(--lm-accent) !important;
 }
 
-/* Clean shared surfaces: one visual language for boxes/cards across pages. */
 body[data-theme="light"] #banner .inner,
 body[data-theme="light"] .expertise-page #main > header::before,
 body[data-theme="light"].about-page #main > header::before,
@@ -4950,7 +4854,6 @@ body[data-theme="dark"] .project-modal__grid > div {
   color: var(--lm-text) !important;
 }
 
-/* Header in light mode should feel crisp, not grey-on-grey. */
 body[data-theme="light"] #header.ai-header,
 body[data-theme="light"] #header.ai-header.alt,
 body[data-theme="light"] #header.ai-header.is-scrolled {
@@ -4982,7 +4885,6 @@ body[data-theme="light"] #header.ai-header #nav-menu a.is-active {
   border-color: rgba(37, 99, 235, 0.24) !important;
 }
 
-/* Project cards keep white text because they sit on image overlays in both themes. */
 .project-card .project-content h3,
 .project-card .project-subtitle,
 .project-card .project-details,
@@ -5008,7 +4910,6 @@ body[data-theme="dark"] .project-chip {
   border-color: rgba(255, 255, 255, 0.20) !important;
 }
 
-/* Forms and inputs: clearer, less muddy in light mode. */
 body[data-theme="light"] .contact-form input,
 body[data-theme="light"] .contact-form select,
 body[data-theme="light"] .contact-form textarea,
@@ -5042,7 +4943,6 @@ body[data-theme="dark"] textarea {
   border-color: rgba(226, 232, 240, 0.15) !important;
 }
 
-/* Badges/chips should be readable in light mode without looking neon. */
 body[data-theme="light"] .expertise-badges span,
 body[data-theme="light"] .hero-badges span,
 body[data-theme="light"] .tag,
@@ -5060,7 +4960,6 @@ body[data-theme="light"] .skill-icon {
   border-color: rgba(37, 99, 235, 0.16) !important;
 }
 
-/* Privacy/legal cards were especially low contrast in light mode. */
 body[data-theme="light"] .privacy-page .legal-card h3,
 body[data-theme="light"] .privacy-page .legal-intro-card h3,
 body[data-theme="light"] .privacy-page .legal-updated strong {
@@ -5074,7 +4973,6 @@ body[data-theme="light"] .privacy-page .legal-updated {
   color: var(--lm-muted) !important;
 }
 
-/* Footer: less heavy in light, still premium in dark. */
 body[data-theme="light"] #footer {
   background: rgba(248, 250, 252, 0.90) !important;
   border-top-color: rgba(15, 23, 42, 0.10) !important;
@@ -5086,7 +4984,6 @@ body[data-theme="dark"] #footer {
   border-top-color: rgba(226, 232, 240, 0.10) !important;
 }
 
-/* Modals use the same clean theme. */
 body[data-theme="light"] .project-modal__panel {
   background: #ffffff !important;
   color: var(--lm-text) !important;
@@ -5104,7 +5001,6 @@ body[data-theme="light"] .project-modal__grid p {
   color: var(--lm-muted) !important;
 }
 
-/* Small polish: avoid over-bright borders and keep spacing modern. */
 .projects-inner,
 .modern-home #Leistungspaket > .inner,
 #contact .inner,
@@ -5143,14 +5039,6 @@ body[data-theme="dark"] input[type="button"].primary {
   }
 }
 
-/* --------------------------------------------------------------------------
-   PROJECT SECTION RESPONSIVE VISIBILITY FIX
-   --------------------------------------------------------------------------
-   Project cards use absolutely positioned media/content. A previous responsive
-   override set min-height:auto, which can collapse the cards on tablet/mobile
-   widths. Keep a real card height at every breakpoint so Meine Projekte / My
-   Projects remains visible and scrollable when the viewport is reduced.
-*/
 .projects-section,
 .projects-inner,
 .project-grid {
@@ -5256,4 +5144,129 @@ body[data-theme="dark"] input[type="button"].primary {
   .project-card.is-open {
     min-height: 410px !important;
   }
+}
+
+body[data-theme="light"] .project-card .project-media::after {
+  background: linear-gradient(180deg, rgba(5, 9, 17, 0.20) 0%, rgba(5, 9, 17, 0.66) 45%, rgba(5, 9, 17, 0.96) 100%) !important;
+}
+
+body[data-theme="light"] .project-card,
+body[data-theme="light"] .project-card:hover,
+body[data-theme="light"] .project-card.is-open,
+body[data-theme="light"] .project-card:focus-visible {
+  background: rgba(15, 23, 42, 0.18) !important;
+  border-color: rgba(255, 255, 255, 0.30) !important;
+}
+
+body[data-theme="light"] .project-card .project-content,
+body[data-theme="light"] .project-card .project-content h3,
+body[data-theme="light"] .project-card .project-subtitle,
+body[data-theme="light"] .project-card .project-details,
+body[data-theme="light"] .project-card .project-details li,
+body[data-theme="light"] .project-card .project-content p,
+body[data-theme="light"] .project-card .project-content span,
+body[data-theme="light"] .project-card .project-content strong,
+body[data-theme="light"] .project-card .project-content b {
+  color: #ffffff !important;
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.42) !important;
+}
+
+body[data-theme="light"] .project-card .project-subtitle,
+body[data-theme="light"] .project-card .project-details,
+body[data-theme="light"] .project-card .project-details li,
+body[data-theme="light"] .project-card .project-content p {
+  color: rgba(255, 255, 255, 0.88) !important;
+}
+
+body[data-theme="light"] .project-card .project-chip,
+body[data-theme="light"] .project-card::after,
+body[data-theme="light"] .project-card .project-detail-button {
+  color: #ffffff !important;
+  background: rgba(15, 23, 42, 0.54) !important;
+  border-color: rgba(255, 255, 255, 0.28) !important;
+  text-shadow: none !important;
+  backdrop-filter: blur(12px) !important;
+}
+
+body[data-theme="light"] .project-card .project-detail-button:hover,
+body[data-theme="light"] .project-card .project-detail-button:focus-visible {
+  background: rgba(15, 118, 110, 0.82) !important;
+  border-color: rgba(255, 255, 255, 0.42) !important;
+}
+
+body[data-theme="light"] .quiz-card,
+body[data-theme="light"] .ai-check-page #quiz-banner .inner {
+  background: rgba(255, 255, 255, 0.96) !important;
+  border-color: rgba(15, 23, 42, 0.12) !important;
+  box-shadow: 0 24px 70px rgba(15, 23, 42, 0.13) !important;
+}
+
+body[data-theme="light"] .quiz-intro h2,
+body[data-theme="light"] .ai-check-page #quiz-banner h1,
+body[data-theme="light"] .q-text,
+body[data-theme="light"] .result-title,
+body[data-theme="light"] .cta-text strong {
+  color: #0f172a !important;
+  text-shadow: none !important;
+}
+
+body[data-theme="light"] .quiz-intro p,
+body[data-theme="light"] .ai-check-page #quiz-banner p,
+body[data-theme="light"] .progress-meta,
+body[data-theme="light"] .q-hint,
+body[data-theme="light"] .result-body,
+body[data-theme="light"] .score-name,
+body[data-theme="light"] .score-val,
+body[data-theme="light"] .score-label,
+body[data-theme="light"] .cta-text {
+  color: #334155 !important;
+  text-shadow: none !important;
+}
+
+body[data-theme="light"] .q-block,
+body[data-theme="light"] .result-panel,
+body[data-theme="light"] .result-header {
+  background: rgba(248, 250, 252, 0.96) !important;
+  border-color: rgba(15, 23, 42, 0.10) !important;
+}
+
+body[data-theme="light"] .opt,
+body[data-theme="light"] .tag {
+  background: #ffffff !important;
+  border-color: rgba(15, 23, 42, 0.14) !important;
+  color: #1e293b !important;
+  text-shadow: none !important;
+}
+
+body[data-theme="light"] .opt:hover,
+body[data-theme="light"] .opt:focus-visible {
+  background: rgba(14, 116, 144, 0.10) !important;
+  border-color: rgba(14, 116, 144, 0.34) !important;
+  color: #0f172a !important;
+}
+
+body[data-theme="light"] .opt.sel {
+  background: rgba(20, 184, 166, 0.18) !important;
+  border-color: rgba(15, 118, 110, 0.46) !important;
+  color: #0f172a !important;
+}
+
+body[data-theme="light"] .progress-bar,
+body[data-theme="light"] .score-bar-wrap {
+  background: rgba(15, 23, 42, 0.08) !important;
+  border-color: rgba(15, 23, 42, 0.10) !important;
+}
+
+body[data-theme="light"] .result-tags,
+body[data-theme="light"] .result-body {
+  border-color: rgba(15, 23, 42, 0.10) !important;
+}
+
+body[data-theme="light"] .form-feedback,
+body[data-theme="light"] .subtitle,
+body[data-theme="light"] .section-eyebrow,
+body[data-theme="light"] .section-kicker,
+body[data-theme="light"] .q-number,
+body[data-theme="light"] .result-label {
+  text-shadow: none !important;
 }
