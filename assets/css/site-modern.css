@@ -4294,3 +4294,395 @@ body[data-theme="light"].about-page #main > header .about-hero-tagline {
     margin-top: 0.75rem !important;
   }
 }
+
+/* --------------------------------------------------------------------------
+   Modern button polish
+   --------------------------------------------------------------------------
+   A single button system for CTAs, form actions, project details, cookie
+   controls and compact header controls. It keeps the original HTML intact but
+   makes buttons feel more current, readable and touch-friendly.
+*/
+:root {
+  --lm-button-radius: 999px;
+  --lm-button-shadow: 0 14px 34px rgba(37, 99, 235, 0.22), 0 6px 16px rgba(0, 0, 0, 0.18);
+  --lm-button-shadow-hover: 0 20px 46px rgba(37, 99, 235, 0.32), 0 10px 24px rgba(0, 0, 0, 0.24);
+  --lm-button-inset: inset 0 1px 0 rgba(255,255,255,0.24);
+}
+
+body.modern-site .button,
+body.modern-home .button,
+body.modern-site a.button,
+body.modern-home a.button,
+body.modern-site button.button,
+body.modern-home button.button,
+body.modern-site input[type="submit"],
+body.modern-home input[type="submit"],
+body.modern-site input[type="button"],
+body.modern-home input[type="button"],
+body.modern-site input[type="reset"],
+body.modern-home input[type="reset"] {
+  position: relative !important;
+  isolation: isolate !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 0.55rem !important;
+  min-height: 2.9rem !important;
+  padding: 0.78rem 1.15rem !important;
+  border-radius: var(--lm-button-radius) !important;
+  border: 1px solid rgba(148, 163, 184, 0.26) !important;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0.02)),
+    rgba(15, 23, 42, 0.58) !important;
+  color: #f8fafc !important;
+  box-shadow: var(--lm-button-inset), 0 10px 28px rgba(0, 0, 0, 0.18) !important;
+  backdrop-filter: blur(14px) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
+  font-size: clamp(0.78rem, 0.72rem + 0.18vw, 0.9rem) !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.045em !important;
+  line-height: 1.15 !important;
+  text-transform: none !important;
+  text-decoration: none !important;
+  cursor: pointer !important;
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    border-color 180ms ease,
+    background 180ms ease,
+    color 180ms ease,
+    filter 180ms ease !important;
+}
+
+body.modern-site .button::before,
+body.modern-home .button::before,
+body.modern-site button.button::before,
+body.modern-home button.button::before {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  z-index: -1;
+  border-radius: inherit;
+  background: linear-gradient(135deg, rgba(94, 234, 212, 0.11), rgba(96, 165, 250, 0.07), transparent 68%);
+  opacity: 0;
+  transition: opacity 180ms ease;
+}
+
+body.modern-site .button:hover,
+body.modern-home .button:hover,
+body.modern-site button.button:hover,
+body.modern-home button.button:hover,
+body.modern-site input[type="submit"]:hover,
+body.modern-home input[type="submit"]:hover,
+body.modern-site input[type="button"]:hover,
+body.modern-home input[type="button"]:hover,
+body.modern-site input[type="reset"]:hover,
+body.modern-home input[type="reset"]:hover {
+  transform: translateY(-2px) !important;
+  border-color: rgba(94, 234, 212, 0.42) !important;
+  box-shadow: var(--lm-button-inset), 0 18px 42px rgba(0, 0, 0, 0.26) !important;
+  color: #ffffff !important;
+  filter: saturate(1.05) !important;
+}
+
+body.modern-site .button:hover::before,
+body.modern-home .button:hover::before,
+body.modern-site button.button:hover::before,
+body.modern-home button.button:hover::before {
+  opacity: 1;
+}
+
+body.modern-site .button:active,
+body.modern-home .button:active,
+body.modern-site button.button:active,
+body.modern-home button.button:active,
+body.modern-site input[type="submit"]:active,
+body.modern-home input[type="submit"]:active,
+body.modern-site input[type="button"]:active,
+body.modern-home input[type="button"]:active,
+body.modern-site input[type="reset"]:active,
+body.modern-home input[type="reset"]:active {
+  transform: translateY(0) scale(0.985) !important;
+}
+
+body.modern-site .button.primary,
+body.modern-home .button.primary,
+body.modern-site button.button.primary,
+body.modern-home button.button.primary,
+body.modern-site input[type="submit"].primary,
+body.modern-home input[type="submit"].primary,
+body.modern-site input[type="button"].primary,
+body.modern-home input[type="button"].primary {
+  border: 0 !important;
+  background:
+    radial-gradient(circle at 20% 0%, rgba(255,255,255,0.35), transparent 26%),
+    linear-gradient(135deg, var(--lm-accent) 0%, var(--lm-accent-2) 58%, var(--lm-accent-3) 100%) !important;
+  color: #04111f !important;
+  box-shadow: var(--lm-button-inset), var(--lm-button-shadow) !important;
+}
+
+body.modern-site .button.primary:hover,
+body.modern-home .button.primary:hover,
+body.modern-site button.button.primary:hover,
+body.modern-home button.button.primary:hover,
+body.modern-site input[type="submit"].primary:hover,
+body.modern-home input[type="submit"].primary:hover,
+body.modern-site input[type="button"].primary:hover,
+body.modern-home input[type="button"].primary:hover {
+  color: #020617 !important;
+  box-shadow: var(--lm-button-inset), var(--lm-button-shadow-hover) !important;
+}
+
+body.modern-site .button.small,
+body.modern-home .button.small,
+body.modern-site button.button.small,
+body.modern-home button.button.small {
+  min-height: 2.25rem !important;
+  padding: 0.48rem 0.82rem !important;
+  font-size: 0.74rem !important;
+}
+
+body.modern-site .button.fit,
+body.modern-home .button.fit {
+  width: 100% !important;
+}
+
+body.modern-site .actions.special,
+body.modern-home .actions.special {
+  justify-content: center !important;
+}
+
+body.modern-site .form-actions .button,
+body.modern-home .form-actions .button,
+body.modern-site .contact-actions .button,
+body.modern-home .contact-actions .button,
+body.modern-site .about-intro-card .button,
+body.modern-home .about-intro-card .button,
+body.modern-site .cta-panel .button,
+body.modern-home .cta-panel .button {
+  min-width: min(100%, 12.5rem) !important;
+}
+
+.project-detail-button {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: auto !important;
+  min-height: 2.55rem !important;
+  margin-top: 1rem !important;
+  padding: 0.68rem 1rem !important;
+  border-radius: 999px !important;
+  border: 1px solid rgba(94, 234, 212, 0.28) !important;
+  background:
+    linear-gradient(180deg, rgba(94, 234, 212, 0.14), rgba(96, 165, 250, 0.07)),
+    rgba(15, 23, 42, 0.45) !important;
+  color: #e0f2fe !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.16), 0 12px 28px rgba(0,0,0,0.16) !important;
+  font-size: 0.78rem !important;
+  font-weight: 850 !important;
+  letter-spacing: 0.035em !important;
+  cursor: pointer !important;
+  transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease, background 180ms ease !important;
+}
+
+.project-detail-button::after {
+  content: "→";
+  margin-left: 0.45rem;
+  transition: transform 180ms ease;
+}
+
+.project-detail-button:hover {
+  transform: translateY(-2px) !important;
+  border-color: rgba(94, 234, 212, 0.52) !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.18), 0 18px 38px rgba(0,0,0,0.22) !important;
+}
+
+.project-detail-button:hover::after {
+  transform: translateX(3px);
+}
+
+.project-modal__close {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: transform 180ms ease, background 180ms ease, border-color 180ms ease !important;
+}
+
+.project-modal__close:hover {
+  transform: rotate(4deg) scale(1.04) !important;
+  background: rgba(37, 99, 235, 0.88) !important;
+  border-color: rgba(255,255,255,0.28) !important;
+}
+
+#header.ai-header .language-switch,
+#header.ai-header .theme-toggle,
+#header.ai-header .burger-menu-toggle {
+  border-radius: 999px !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.16), 0 8px 22px rgba(0,0,0,0.14) !important;
+}
+
+#header.ai-header .language-switch:hover,
+#header.ai-header .theme-toggle:hover,
+#header.ai-header .burger-menu-toggle:hover {
+  transform: translateY(-1px) !important;
+  border-color: rgba(94, 234, 212, 0.4) !important;
+}
+
+body.modern-site .button:focus-visible,
+body.modern-home .button:focus-visible,
+body.modern-site button:focus-visible,
+body.modern-home button:focus-visible,
+body.modern-site input[type="submit"]:focus-visible,
+body.modern-home input[type="submit"]:focus-visible,
+body.modern-site input[type="button"]:focus-visible,
+body.modern-home input[type="button"]:focus-visible,
+.project-detail-button:focus-visible,
+#header.ai-header .language-switch:focus-visible,
+#header.ai-header .theme-toggle:focus-visible,
+#header.ai-header .burger-menu-toggle:focus-visible {
+  outline: 3px solid rgba(94, 234, 212, 0.55) !important;
+  outline-offset: 3px !important;
+}
+
+body[data-theme="light"].modern-site .button,
+body[data-theme="light"].modern-home .button,
+body[data-theme="light"].modern-site a.button,
+body[data-theme="light"].modern-home a.button,
+body[data-theme="light"].modern-site button.button,
+body[data-theme="light"].modern-home button.button,
+body[data-theme="light"].modern-site input[type="submit"],
+body[data-theme="light"].modern-home input[type="submit"],
+body[data-theme="light"].modern-site input[type="button"],
+body[data-theme="light"].modern-home input[type="button"],
+body[data-theme="light"].modern-site input[type="reset"],
+body[data-theme="light"].modern-home input[type="reset"] {
+  color: #0f172a !important;
+  border-color: rgba(15, 23, 42, 0.12) !important;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.95), rgba(248,250,252,0.82)),
+    rgba(255,255,255,0.86) !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.9), 0 12px 28px rgba(15,23,42,0.10) !important;
+}
+
+body[data-theme="light"].modern-site .button:hover,
+body[data-theme="light"].modern-home .button:hover,
+body[data-theme="light"].modern-site button.button:hover,
+body[data-theme="light"].modern-home button.button:hover,
+body[data-theme="light"].modern-site input[type="submit"]:hover,
+body[data-theme="light"].modern-home input[type="submit"]:hover,
+body[data-theme="light"].modern-site input[type="button"]:hover,
+body[data-theme="light"].modern-home input[type="button"]:hover {
+  color: #020617 !important;
+  border-color: rgba(37, 99, 235, 0.28) !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.95), 0 18px 42px rgba(15,23,42,0.14) !important;
+}
+
+body[data-theme="light"].modern-site .button.primary,
+body[data-theme="light"].modern-home .button.primary,
+body[data-theme="light"].modern-site button.button.primary,
+body[data-theme="light"].modern-home button.button.primary,
+body[data-theme="light"].modern-site input[type="submit"].primary,
+body[data-theme="light"].modern-home input[type="submit"].primary,
+body[data-theme="light"].modern-site input[type="button"].primary,
+body[data-theme="light"].modern-home input[type="button"].primary {
+  color: #020617 !important;
+  background:
+    radial-gradient(circle at 20% 0%, rgba(255,255,255,0.50), transparent 27%),
+    linear-gradient(135deg, #2dd4bf 0%, #3b82f6 58%, #8b5cf6 100%) !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.42), 0 14px 34px rgba(37,99,235,0.24) !important;
+}
+
+body[data-theme="light"] .project-detail-button {
+  color: #0f172a !important;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.94), rgba(219,234,254,0.82)),
+    rgba(255,255,255,0.88) !important;
+  border-color: rgba(37, 99, 235, 0.18) !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.9), 0 10px 24px rgba(15,23,42,0.10) !important;
+}
+
+body[data-theme="light"] .project-detail-button:hover {
+  border-color: rgba(37, 99, 235, 0.34) !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.95), 0 16px 34px rgba(15,23,42,0.14) !important;
+}
+
+@media (max-width: 980px) {
+  body.modern-site .button,
+  body.modern-home .button,
+  body.modern-site button.button,
+  body.modern-home button.button,
+  body.modern-site input[type="submit"],
+  body.modern-home input[type="submit"],
+  body.modern-site input[type="button"],
+  body.modern-home input[type="button"] {
+    min-height: 2.8rem !important;
+    padding-inline: 1rem !important;
+  }
+}
+
+@media (max-width: 640px) {
+  body.modern-site .actions,
+  body.modern-home .actions,
+  body.modern-site .form-actions,
+  body.modern-home .form-actions,
+  body.modern-site .contact-actions,
+  body.modern-home .contact-actions,
+  body.modern-site .cta-panel .actions,
+  body.modern-home .cta-panel .actions,
+  body.modern-site .about-intro-card .actions,
+  body.modern-home .about-intro-card .actions {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    width: 100% !important;
+  }
+
+  body.modern-site .actions li,
+  body.modern-home .actions li,
+  body.modern-site .form-actions > *,
+  body.modern-home .form-actions > *,
+  body.modern-site .contact-actions li,
+  body.modern-home .contact-actions li {
+    width: 100% !important;
+  }
+
+  body.modern-site .button,
+  body.modern-home .button,
+  body.modern-site a.button,
+  body.modern-home a.button,
+  body.modern-site button.button,
+  body.modern-home button.button,
+  body.modern-site input[type="submit"],
+  body.modern-home input[type="submit"],
+  body.modern-site input[type="button"],
+  body.modern-home input[type="button"] {
+    width: 100% !important;
+    min-height: 2.9rem !important;
+  }
+
+  .project-detail-button {
+    width: 100% !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.modern-site .button,
+  body.modern-home .button,
+  body.modern-site button.button,
+  body.modern-home button.button,
+  .project-detail-button,
+  .project-modal__close,
+  #header.ai-header .language-switch,
+  #header.ai-header .theme-toggle,
+  #header.ai-header .burger-menu-toggle {
+    transition: none !important;
+  }
+
+  body.modern-site .button:hover,
+  body.modern-home .button:hover,
+  .project-detail-button:hover,
+  #header.ai-header .language-switch:hover,
+  #header.ai-header .theme-toggle:hover,
+  #header.ai-header .burger-menu-toggle:hover {
+    transform: none !important;
+  }
+}
